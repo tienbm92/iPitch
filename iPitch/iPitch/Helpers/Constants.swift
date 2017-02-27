@@ -7,3 +7,5 @@
 //
 
 import Foundation
+
+let API_KEY = "AIzaSyDk5HMSudJ1WD1PTYxmk3oPA56d_v9GcGY"
