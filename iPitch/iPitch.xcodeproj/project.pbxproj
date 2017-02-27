@@ -7,13 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0838B1DF1E6520340053335D /* Stadium-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0838B1DE1E6520340053335D /* Stadium-icon.png */; };
-		0838B1E11E65296B0053335D /* btnShowLish.png in Resources */ = {isa = PBXBuildFile; fileRef = 0838B1E01E65296B0053335D /* btnShowLish.png */; };
 		0838B1E31E6555190053335D /* DirectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0838B1E21E6555190053335D /* DirectionService.swift */; };
-		0872E7081E63E2FC0083E9F8 /* MapIPitch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0872E7071E63E2FC0083E9F8 /* MapIPitch.storyboard */; };
-		0872E70E1E63E4DC0083E9F8 /* MapIPitchControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0872E70D1E63E4DC0083E9F8 /* MapIPitchControllers.swift */; };
-		0872E71C1E6430A20083E9F8 /* MarkerCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0872E71A1E6430A20083E9F8 /* MarkerCustomView.xib */; };
-		0872E71E1E6430D20083E9F8 /* MarkerCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0872E71D1E6430D20083E9F8 /* MarkerCustomView.swift */; };
 		114417001E640AFB00B95D18 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 114416FF1E640AFB00B95D18 /* GoogleService-Info.plist */; };
 		114417041E64206400B95D18 /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417031E64206400B95D18 /* District.swift */; };
 		1144170A1E6432BD00B95D18 /* PitchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417091E6432BD00B95D18 /* PitchService.swift */; };
@@ -29,16 +23,21 @@
 		11E3FD011E63B98E00875339 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3FD001E63B98E00875339 /* Constants.swift */; };
 		11E3FD071E63BA3B00875339 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3FD061E63BA3B00875339 /* UIView+Extension.swift */; };
 		542D067EEB331F6BB8E2E1F3 /* Pods_iPitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32035D11ED8A0A1652AB1A1A /* Pods_iPitch.framework */; };
+		55125A8D1E66D7E500A3D373 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55125A8C1E66D7E500A3D373 /* WindowManager.swift */; };
+		55422AC61E63F7A0005AA6C8 /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55422AC51E63F7A0005AA6C8 /* Manager.storyboard */; };
+		555F33881E64262400E6851F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555F33871E64262400E6851F /* LoginViewController.swift */; };
+		555F338A1E64265F00E6851F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555F33891E64265F00E6851F /* RegisterViewController.swift */; };
+		5563DB341E667A8C00CBF2E1 /* IQKeyboardManagerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5563DB331E667A8C00CBF2E1 /* IQKeyboardManagerConfiguration.swift */; };
+		55890AEC1E6828F000BC7E75 /* btnShowLish.png in Resources */ = {isa = PBXBuildFile; fileRef = 55890AEA1E6828F000BC7E75 /* btnShowLish.png */; };
+		55890AED1E6828F000BC7E75 /* Stadium-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 55890AEB1E6828F000BC7E75 /* Stadium-icon.png */; };
+		55890AF01E6829A200BC7E75 /* MarkerCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55890AEF1E6829A200BC7E75 /* MarkerCustomView.xib */; };
+		55A125C61E67BC0600456844 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A125C51E67BC0600456844 /* User.swift */; };
+		55FA97CC1E6578610052C22C /* MapIPitch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55FA97CB1E6578610052C22C /* MapIPitch.storyboard */; };
+		55FA97D11E6578A30052C22C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 114416FF1E640AFB00B95D18 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0838B1DE1E6520340053335D /* Stadium-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stadium-icon.png"; sourceTree = "<group>"; };
-		0838B1E01E65296B0053335D /* btnShowLish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnShowLish.png; sourceTree = "<group>"; };
 		0838B1E21E6555190053335D /* DirectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionService.swift; sourceTree = "<group>"; };
-		0872E7071E63E2FC0083E9F8 /* MapIPitch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapIPitch.storyboard; sourceTree = "<group>"; };
-		0872E70D1E63E4DC0083E9F8 /* MapIPitchControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapIPitchControllers.swift; sourceTree = "<group>"; };
-		0872E71A1E6430A20083E9F8 /* MarkerCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerCustomView.xib; sourceTree = "<group>"; };
-		0872E71D1E6430D20083E9F8 /* MarkerCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerCustomView.swift; sourceTree = "<group>"; };
 		114416FF1E640AFB00B95D18 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		114417031E64206400B95D18 /* District.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = District.swift; sourceTree = "<group>"; };
 		114417091E6432BD00B95D18 /* PitchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchService.swift; sourceTree = "<group>"; };
@@ -57,6 +56,17 @@
 		11E3FD061E63BA3B00875339 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		2E0E84E920B86790F5EDD666 /* Pods-iPitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPitch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPitch/Pods-iPitch.debug.xcconfig"; sourceTree = "<group>"; };
 		32035D11ED8A0A1652AB1A1A /* Pods_iPitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55125A8C1E66D7E500A3D373 /* WindowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
+		55422AC51E63F7A0005AA6C8 /* Manager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
+		555F33871E64262400E6851F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		555F33891E64265F00E6851F /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		5563DB331E667A8C00CBF2E1 /* IQKeyboardManagerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQKeyboardManagerConfiguration.swift; sourceTree = "<group>"; };
+		55890AEA1E6828F000BC7E75 /* btnShowLish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnShowLish.png; sourceTree = "<group>"; };
+		55890AEB1E6828F000BC7E75 /* Stadium-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stadium-icon.png"; sourceTree = "<group>"; };
+		55890AEF1E6829A200BC7E75 /* MarkerCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerCustomView.xib; sourceTree = "<group>"; };
+		55A125C51E67BC0600456844 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		55FA97CB1E6578610052C22C /* MapIPitch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapIPitch.storyboard; sourceTree = "<group>"; };
+		55FA97CE1E6578860052C22C /* MapIPitchControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapIPitchControllers.swift; sourceTree = "<group>"; };
 		AAE7DE31520837DD485E60FD /* Pods-iPitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPitch.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPitch/Pods-iPitch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,7 +128,9 @@
 		11E3FCF11E63B8E700875339 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				55125A8C1E66D7E500A3D373 /* WindowManager.swift */,
 				11E3FD001E63B98E00875339 /* Constants.swift */,
+				5563DB331E667A8C00CBF2E1 /* IQKeyboardManagerConfiguration.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -129,6 +141,7 @@
 				11A359CA1E665F4200ABEF43 /* Order.swift */,
 				11A359CB1E665F4200ABEF43 /* Pitch.swift */,
 				114417031E64206400B95D18 /* District.swift */,
+				55A125C51E67BC0600456844 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -148,53 +161,47 @@
 		11E3FCF41E63B8E700875339 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				55890AEE1E6829A200BC7E75 /* UserFlow */,
+				55FA97CB1E6578610052C22C /* MapIPitch.storyboard */,
 				11E3FCF51E63B8E700875339 /* LaunchScreen.storyboard */,
 				11E3FCF61E63B8E700875339 /* Main.storyboard */,
-				11E3FCF71E63B8E700875339 /* ManagerFlow */,
-				11E3FCF81E63B8E700875339 /* UserFlow */,
+				55422AC51E63F7A0005AA6C8 /* Manager.storyboard */,
 			);
 			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		11E3FCF71E63B8E700875339 /* ManagerFlow */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ManagerFlow;
-			sourceTree = "<group>";
-		};
-		11E3FCF81E63B8E700875339 /* UserFlow */ = {
-			isa = PBXGroup;
-			children = (
-				0872E7071E63E2FC0083E9F8 /* MapIPitch.storyboard */,
-				0872E71A1E6430A20083E9F8 /* MarkerCustomView.xib */,
-			);
-			path = UserFlow;
 			sourceTree = "<group>";
 		};
 		11E3FCF91E63B8E700875339 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				11E3FCFA1E63B8E700875339 /* ManagerFlow */,
+				555F33861E6425EB00E6851F /* ManagerFlow */,
 				11E3FCFB1E63B8E700875339 /* UserFlow */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		11E3FCFA1E63B8E700875339 /* ManagerFlow */ = {
+		11E3FCFB1E63B8E700875339 /* UserFlow */ = {
 			isa = PBXGroup;
 			children = (
+				55890AEA1E6828F000BC7E75 /* btnShowLish.png */,
+				55890AEB1E6828F000BC7E75 /* Stadium-icon.png */,
+				55FA97CE1E6578860052C22C /* MapIPitchControllers.swift */,
+			);
+			path = UserFlow;
+			sourceTree = "<group>";
+		};
+		555F33861E6425EB00E6851F /* ManagerFlow */ = {
+			isa = PBXGroup;
+			children = (
+				555F33871E64262400E6851F /* LoginViewController.swift */,
+				555F33891E64265F00E6851F /* RegisterViewController.swift */,
 			);
 			path = ManagerFlow;
 			sourceTree = "<group>";
 		};
-		11E3FCFB1E63B8E700875339 /* UserFlow */ = {
+		55890AEE1E6829A200BC7E75 /* UserFlow */ = {
 			isa = PBXGroup;
 			children = (
-				0872E71D1E6430D20083E9F8 /* MarkerCustomView.swift */,
-				0872E70D1E63E4DC0083E9F8 /* MapIPitchControllers.swift */,
-				0838B1DE1E6520340053335D /* Stadium-icon.png */,
-				0838B1E01E65296B0053335D /* btnShowLish.png */,
+				55890AEF1E6829A200BC7E75 /* MarkerCustomView.xib */,
 			);
 			path = UserFlow;
 			sourceTree = "<group>";
@@ -279,14 +286,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0872E7081E63E2FC0083E9F8 /* MapIPitch.storyboard in Resources */,
+				55FA97D11E6578A30052C22C /* GoogleService-Info.plist in Resources */,
+				55FA97CC1E6578610052C22C /* MapIPitch.storyboard in Resources */,
 				11E3FCFE1E63B8E700875339 /* Main.storyboard in Resources */,
+				55890AF01E6829A200BC7E75 /* MarkerCustomView.xib in Resources */,
 				11E3FCE61E63B64400875339 /* Assets.xcassets in Resources */,
+				55890AED1E6828F000BC7E75 /* Stadium-icon.png in Resources */,
 				11E3FCFD1E63B8E700875339 /* LaunchScreen.storyboard in Resources */,
-				0872E71C1E6430A20083E9F8 /* MarkerCustomView.xib in Resources */,
-				0838B1DF1E6520340053335D /* Stadium-icon.png in Resources */,
+				55890AEC1E6828F000BC7E75 /* btnShowLish.png in Resources */,
 				114417001E640AFB00B95D18 /* GoogleService-Info.plist in Resources */,
-				0838B1E11E65296B0053335D /* btnShowLish.png in Resources */,
+				55422AC61E63F7A0005AA6C8 /* Manager.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,17 +356,20 @@
 			files = (
 				1144170A1E6432BD00B95D18 /* PitchService.swift in Sources */,
 				11E3FD071E63BA3B00875339 /* UIView+Extension.swift in Sources */,
-				0872E71E1E6430D20083E9F8 /* MarkerCustomView.swift in Sources */,
 				11E3FCDF1E63B64400875339 /* AppDelegate.swift in Sources */,
 				11A359CC1E665F4200ABEF43 /* Order.swift in Sources */,
 				0838B1E31E6555190053335D /* DirectionService.swift in Sources */,
+				55125A8D1E66D7E500A3D373 /* WindowManager.swift in Sources */,
+				5563DB341E667A8C00CBF2E1 /* IQKeyboardManagerConfiguration.swift in Sources */,
 				114417041E64206400B95D18 /* District.swift in Sources */,
 				11A359CD1E665F4200ABEF43 /* Pitch.swift in Sources */,
 				11A359D11E66809500ABEF43 /* StorageService.swift in Sources */,
 				1144170C1E64334700B95D18 /* OrderService.swift in Sources */,
 				11E3FD011E63B98E00875339 /* Constants.swift in Sources */,
-				0872E70E1E63E4DC0083E9F8 /* MapIPitchControllers.swift in Sources */,
 				11A359CF1E66754200ABEF43 /* DistrictService.swift in Sources */,
+				55A125C61E67BC0600456844 /* User.swift in Sources */,
+				555F338A1E64265F00E6851F /* RegisterViewController.swift in Sources */,
+				555F33881E64262400E6851F /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
