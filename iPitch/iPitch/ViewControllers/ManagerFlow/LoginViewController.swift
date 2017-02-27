@@ -37,16 +37,7 @@ class LoginViewController: UIViewController {
                 }
                 return
             }
-            self?.redirectToPitchList()
-        }
-    }
-    
-    private func redirectToPitchList() {
-        let storyboard = UIStoryboard(name: "Manager", bundle: nil)
-        let pitchManagerNavController = storyboard.instantiateViewController(
-            withIdentifier: "ManagerNavControllerId")
-        self.present(pitchManagerNavController, animated: true) {
-            UIApplication.shared.keyWindow?.rootViewController = pitchManagerNavController
+            WindowManager.shared.directToPitchList()
         }
     }
     

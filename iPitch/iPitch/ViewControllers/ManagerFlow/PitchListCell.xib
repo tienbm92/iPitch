@@ -27,25 +27,25 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDl-An-amk">
-                        <rect key="frame" x="83" y="8" width="204" height="19.5"/>
+                        <rect key="frame" x="83" y="8" width="204" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNg-Tq-8Wn">
-                        <rect key="frame" x="83" y="35.5" width="204" height="14.5"/>
+                        <rect key="frame" x="83" y="36" width="204" height="13"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="0S1-nb-WRM" userLabel="Detail Image">
-                        <rect key="frame" x="291" y="23" width="25" height="25"/>
+                        <rect key="frame" x="291" y="22" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="0S1-nb-WRM" secondAttribute="height" multiplier="1:1" id="B13-uV-zzv"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvY-wz-hxV">
-                        <rect key="frame" x="16" y="69" width="288" height="0.5"/>
+                        <rect key="frame" x="16" y="69" width="288" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="gjd-YC-mfh"/>
@@ -71,6 +71,11 @@
                     <constraint firstItem="ltg-ml-WEV" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="60:375" id="zPl-fb-nJl"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="pitchImage" destination="ltg-ml-WEV" id="WgY-Xu-U9a"/>
+                <outlet property="pitchLabel" destination="fNg-Tq-8Wn" id="OWF-X0-SpK"/>
+                <outlet property="pitchName" destination="iDl-An-amk" id="jIb-Bq-pJd"/>
+            </connections>
             <point key="canvasLocation" x="25" y="65"/>
         </tableViewCell>
     </objects>

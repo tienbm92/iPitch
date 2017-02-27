@@ -1,0 +1,44 @@
+/* 
+  Localizable.strings
+  iPitch
+
+  Created by Nguyen Quoc Tinh on 3/8/17.
+  Copyright © 2017 Framgia. All rights reserved.
+*/
+
+// MARK: - Title Strings
+
+"PitchesList" = "Danh Sách Sân";
+"Alert" = "Cảnh báo";
+
+// MARK: - Action Strings
+
+"Cancel" = "Hủy";
+"OK" = "OK";
+"OpenLibrary" = "Mở Thư viện";
+"AddPitch" = "Thêm sân";
+"TakePhoto" = "Chụp ảnh";
+"DeletePhoto" = "Xóa ảnh";
+"PreviewPhoto" = "Xem ảnh";
+"EdittingAvatar" = "Chỉnh sửa hình đại diện";
+"Editing" = "Chỉnh sửa";
+"Loading" = "Đang tải...";
+"Signout" = "Đăng xuất";
+
+// MARK: - Error Strings
+
+"NoData" = "Bạn chưa khởi tạo sân.\nVui lòng tạo sân mới để bắt đầu cho thuê.";
+"PitchNotFound" = "Không tìm thấy sân";
+"LocationNotFound" = "Không tìm thấy vị trí";
+"InvalidCloseTime" = "Giờ đóng cửa không hợp lệ";
+"CreatePitchError" = "Lỗi tạo sân";
+"UpdatePitchError" = "Lỗi cập nhật sân";
+"DeletePitchError" = "Lỗi xóa sân";
+"PhotoError" = "Lỗi ảnh";
+"CameraNotFound" = "Không tìm thấy Máy ảnh";
+"LibraryNotFound" = "Không tìm thấy Thư viện";
+"Are you sure you want to sign out?" = "Bạn chắc chắn muốn thoát khỏi tài khoản?";
+"Email can't be empty!" = "Email không thể để trống!";
+"Password can't be empty!" = "Mật khẩu không thể để trống!";
+"Re-type password can't be empty!" = "Nhập lại mật khẩu không thể để trống!";
+"Re-type password and password must be same!" = "Nhập lại mật khẩu không trùng!";

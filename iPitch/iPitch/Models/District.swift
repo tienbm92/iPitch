@@ -9,15 +9,15 @@
 import Foundation
 import ObjectMapper
 
-class District: Mappable {
+struct District: Mappable {
     
     var id: Int?
     var name = ""
     
-    required init?(map: Map) {
+    init?(map: Map) {
     }
     
-    func mapping(map: Map) {
+    mutating func mapping(map: Map) {
         id   <- map["id"]
         name <- map["name"]
     }

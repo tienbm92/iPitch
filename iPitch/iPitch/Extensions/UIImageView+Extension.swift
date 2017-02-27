@@ -30,6 +30,7 @@ extension UIImageView {
         let imageKey = "path\(id)"
         if let image = ImageStore.shared.image(forKey: imageKey) {
             OperationQueue.main.addOperation {
+                self.image = image
                 completion?(.success(image))
             }
             return
