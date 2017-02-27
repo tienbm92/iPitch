@@ -19,7 +19,6 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        IQKeyboardManagerConfiguration.shared.configKeyboard()
     }
     
     func signUp() {

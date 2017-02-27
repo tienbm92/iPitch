@@ -1,20 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="iPitch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,32 +24,115 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="glass_background" translatesAutoresizingMaskIntoConstraints="NO" id="g01-gv-VtI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4F-nn-jKZ">
-                                <rect key="frame" x="97" y="303.5" width="180" height="60"/>
+                                <rect key="frame" x="112.5" y="253.5" width="150" height="50"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="n4F-nn-jKZ" secondAttribute="height" multiplier="3:1" id="ZSX-CR-ffe"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <state key="normal" title="Đặt sân ngay!">
+                                    <color key="titleColor" red="6.5512070507497538e-05" green="0.34076103159618865" blue="0.19562493804164138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.85828579949999995" green="0.40646168869999999" blue="0.26848529809999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="userFlowButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pgr-gl-5VV"/>
+                                    <segue destination="IaT-8E-kjm" kind="presentation" id="UX7-cf-1bk"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bạn cần thuê sân bóng?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75w-wF-1yD">
+                                <rect key="frame" x="12.5" y="203" width="350" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bạn là chủ sân bóng?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xd6-YK-5Z3">
+                                <rect key="frame" x="12.5" y="363.5" width="350" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jW-bO-nR2">
-                                <rect key="frame" x="97" y="393.5" width="180" height="60"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="112.5" y="414" width="150" height="50"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <state key="normal" title="Cho thuê sân!">
+                                    <color key="titleColor" red="6.5512070507497538e-05" green="0.34076103159618865" blue="0.19562493804164138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.85828579949999995" green="0.40646168869999999" blue="0.26848529809999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="managerFlowButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZTC-fi-nH4"/>
+                                    <segue destination="XnX-8j-mYB" kind="presentation" id="Z0r-OD-BxS"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="9jW-bO-nR2" firstAttribute="top" secondItem="xd6-YK-5Z3" secondAttribute="bottom" constant="24" id="01U-Yp-sUk"/>
+                            <constraint firstItem="xd6-YK-5Z3" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="30" id="17y-tH-Dj6"/>
+                            <constraint firstItem="75w-wF-1yD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1VG-5y-Ifp"/>
                             <constraint firstItem="9jW-bO-nR2" firstAttribute="width" secondItem="n4F-nn-jKZ" secondAttribute="width" id="3DB-eb-hWx"/>
-                            <constraint firstItem="n4F-nn-jKZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7AG-qv-gha"/>
-                            <constraint firstItem="n4F-nn-jKZ" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="180:375" id="9rW-0M-isP"/>
-                            <constraint firstItem="9jW-bO-nR2" firstAttribute="top" secondItem="n4F-nn-jKZ" secondAttribute="bottom" constant="30" id="CKd-0P-1WU"/>
+                            <constraint firstItem="g01-gv-VtI" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="3P5-1j-Mke"/>
+                            <constraint firstItem="75w-wF-1yD" firstAttribute="width" secondItem="g01-gv-VtI" secondAttribute="width" multiplier="350:375" id="5P6-iT-UC3"/>
+                            <constraint firstItem="n4F-nn-jKZ" firstAttribute="top" secondItem="75w-wF-1yD" secondAttribute="bottom" constant="24" id="6to-Z4-EfQ"/>
+                            <constraint firstItem="n4F-nn-jKZ" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-30" id="9c9-Bb-Txw"/>
+                            <constraint firstItem="n4F-nn-jKZ" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="150:375" id="9rW-0M-isP"/>
                             <constraint firstItem="n4F-nn-jKZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dt2-4U-KsW"/>
+                            <constraint firstItem="g01-gv-VtI" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="QSn-mj-WQn"/>
+                            <constraint firstItem="g01-gv-VtI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WX1-le-IHW"/>
                             <constraint firstItem="9jW-bO-nR2" firstAttribute="height" secondItem="n4F-nn-jKZ" secondAttribute="height" id="jKF-oh-zQB"/>
                             <constraint firstItem="9jW-bO-nR2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mcY-WI-VW6"/>
+                            <constraint firstItem="xd6-YK-5Z3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mgi-Aq-b3p"/>
+                            <constraint firstItem="g01-gv-VtI" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="q3I-zc-3HC"/>
+                            <constraint firstItem="xd6-YK-5Z3" firstAttribute="width" secondItem="g01-gv-VtI" secondAttribute="width" multiplier="350:375" id="tpr-vr-jxf"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="24.800000000000001" y="35.532233883058474"/>
+        </scene>
+        <!--MapIPitch-->
+        <scene sceneID="6d1-3v-47r">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MapIPitch" id="IaT-8E-kjm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kGt-Mu-Nrn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="674" y="101"/>
+        </scene>
+        <!--Manager-->
+        <scene sceneID="cQp-8w-Jff">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Manager" id="XnX-8j-mYB" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AbU-Rj-J3t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="666" y="144"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="glass_background" width="375" height="666"/>
+    </resources>
 </document>
