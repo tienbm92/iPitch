@@ -196,6 +196,10 @@ class MapIPitchControllers: UIViewController {
         listStadium.reloadData()
     }
     
+    @IBAction func homeButtonTapped(_ sender: UIBarButtonItem) {
+        WindowManager.shared.directToMainStoryboard()
+    }
+    
     fileprivate func pushPitchInfoViewController() {
         let orderExtraStoryboard = UIStoryboard(name: "OrderExtra", bundle: nil)
         guard let pitchInfoViewController =

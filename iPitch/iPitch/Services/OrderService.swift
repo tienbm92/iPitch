@@ -25,7 +25,7 @@ class OrderService: NSObject {
         var getQuery: FIRDatabaseQuery
         if let lastOrder = lastOrder {
             getQuery = ref.child("\(pitchId)/\(status)").queryEnding(
-                atValue: lastOrder.modifiedDate).queryOrdered(
+                atValue: lastOrder.modifiedDate?.timeIntervalSince1970).queryOrdered(
                 byChild: "modifiedDate").queryLimited(toLast: 10)
         } else {
             getQuery = ref.child("\(pitchId)/\(status)").queryOrdered(
@@ -38,9 +38,12 @@ class OrderService: NSObject {
                 var orderJSON = order.value as? [String: Any] {
                     orderJSON["id"] = order.key
                     if let order = Order(JSON: orderJSON) {
-                        orders.append(order)
+                        orders.insert(order, at: 0)
                     }
                 }
+            }
+            if (lastOrder != nil) && (!orders.isEmpty) {
+                orders.removeFirst()
             }
             DispatchQueue.main.async {
                 completion(orders)

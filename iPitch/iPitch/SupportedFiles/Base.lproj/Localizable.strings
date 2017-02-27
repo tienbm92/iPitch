@@ -26,12 +26,23 @@
 "Signout" = "Đăng xuất";
 "Detail" = "Chi tiết";
 "Direction" = "Dẫn đường";
-"PitchHasBeenRequested" = "Sân %@ được hỏi đặt"
-"PitchOrderHasBeenConfirmed" = "Sân %@ được đặt thành công"
-"PitchOrderHasBeenRejected" = "Sân %@ đã bị từ chối"
+"PitchHasBeenRequested" = "Sân %@ được hỏi đặt";
+"PitchOrderHasBeenConfirmed" = "Sân %@ được đặt thành công";
+"PitchOrderHasBeenRejected" = "Sân %@ đã bị từ chối";
+"pending" = "Đang chờ";
+"accept" = "Chấp nhận";
+"reject" = "Từ chối";
+"OrderPhone" = "SĐT: %@";
+"OrderTime" = "Từ: %@ - đến: %@";
+"PitchAddress" = "Địa chỉ: %@ - %@";
+"PitchActiveTime" = "Mở từ: %@ đến: %@";
+"Confirm" = "Xác nhận";
+"AcceptConfirm" = "Bạn có chắc chắn chấp nhận yêu cầu đặt sân này không?";
+"RejectConfirm" = "Bạn có chắc chắn từ chối yêu cầu đặt sân này không?";
 
 // MARK: - Error Strings
 
+"NoDataOrder" = "Không có đặt sân nào!";
 "NoData" = "Bạn chưa khởi tạo sân.\nVui lòng tạo sân mới để bắt đầu cho thuê.";
 "PitchNotFound" = "Không tìm thấy sân";
 "LocationNotFound" = "Không tìm thấy vị trí";
