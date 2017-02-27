@@ -4,4 +4,7 @@ target 'iPitch' do
   use_frameworks!
   pod 'Firebase/Core'
   pod 'GoogleMaps'	
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'ObjectMapper', '~> 2.2'
 end
