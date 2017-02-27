@@ -25,4 +25,8 @@ class ImageStore {
         cache.removeObject(forKey: key as NSString)
     }
     
+    func deleteAllCache() {
+        cache.removeAllObjects()
+    }
+    
 }
