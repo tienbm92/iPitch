@@ -32,12 +32,6 @@
 "PitchHasBeenRequested" = "Sân %@ được hỏi đặt";
 "PitchOrderHasBeenConfirmed" = "Sân %@ được đặt thành công";
 "PitchOrderHasBeenRejected" = "Sân %@ đã bị từ chối";
-"TotalDistance" = "Tổng quãng đường: ";
-"TotalDuration" = "Tổng thời gian: ";
-"TotalDistanceAndDuration" = "Tổng quãng đường và thời gian: ";
-
-// MARK: - Error Strings
-
 "pending" = "Đang chờ";
 "accept" = "Chấp nhận";
 "reject" = "Từ chối";
@@ -48,6 +42,9 @@
 "Confirm" = "Xác nhận";
 "AcceptConfirm" = "Bạn có chắc chắn chấp nhận yêu cầu đặt sân này không?";
 "RejectConfirm" = "Bạn có chắc chắn từ chối yêu cầu đặt sân này không?";
+"TotalDistance" = "Tổng quãng đường: ";
+"TotalDuration" = "Tổng thời gian: ";
+"TotalDistanceAndDuration" = "Tổng quãng đường và thời gian: ";
 
 // MARK: - Error Strings
 

@@ -32,16 +32,6 @@ class PitchDetailViewController: UIViewController {
             }
         }
     }
-
-    fileprivate func reloadData(orders: [Order]) {
-        if orders.count != 0 {
-            self.noOrderLabel.isHidden = true
-        } else {
-            self.noOrderLabel.text = "NoDataOrder".localized
-            self.noOrderLabel.isHidden = false
-        }
-        self.ordersListTableView.reloadData()
-    }
     
     fileprivate func fetchOrder() {
         guard let pitchId = self.pitch?.id else {
@@ -79,6 +69,16 @@ class PitchDetailViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    fileprivate func reloadData(orders: [Order]) {
+        if orders.count != 0 {
+            self.noOrderLabel.isHidden = true
+        } else {
+            self.noOrderLabel.text = "NoDataOrder".localized
+            self.noOrderLabel.isHidden = false
+        }
+        self.ordersListTableView.reloadData()
     }
     
     fileprivate func refreshOrder(status: OrderStatus...) {
@@ -149,6 +149,11 @@ class PitchDetailViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    @IBAction func refreshButtonTapped(_ sender: UIBarButtonItem) {
+        WindowManager.shared.showProgressView()
+        self.fetchOrder()
     }
     
 }

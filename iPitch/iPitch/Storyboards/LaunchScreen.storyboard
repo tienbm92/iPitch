@@ -22,10 +22,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPitch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="2gr-xw-whc">
-                                <rect key="frame" x="-293" y="-132" width="1000" height="1000"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="2gr-xw-whc">
+                                <rect key="frame" x="107" y="268" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="1000" id="0uU-Vq-oum"/>
+                                    <constraint firstAttribute="height" constant="200" id="0uU-Vq-oum"/>
                                     <constraint firstAttribute="width" secondItem="2gr-xw-whc" secondAttribute="height" multiplier="1:1" id="Ryu-Iw-blX"/>
                                 </constraints>
                             </imageView>
@@ -43,6 +43,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="iPitch_logo" width="2068" height="2068"/>
+        <image name="logo" width="2068" height="2068"/>
     </resources>
 </document>
