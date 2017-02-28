@@ -10,21 +10,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MarkerCustomView" customModule="iPitch" customModuleProvider="target">
-            <connections>
-                <outlet property="Address" destination="4YN-yH-f3x" id="se5-IQ-Wc7"/>
-                <outlet property="image" destination="igD-mS-GQY" id="ASh-fl-odQ"/>
-                <outlet property="name" destination="ayy-1y-M8Y" id="qNF-Gn-C4w"/>
-                <outlet property="phone" destination="32R-Y3-we0" id="MFT-Hc-LVD"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="MarkerCustomView" customModule="iPitch" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="224" height="132"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="igD-mS-GQY">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="igD-mS-GQY">
                     <rect key="frame" x="5" y="22" width="75" height="88"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayy-1y-M8Y">
@@ -44,6 +36,11 @@
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -65,6 +62,12 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="Address" destination="4YN-yH-f3x" id="klv-x3-mQW"/>
+                <outlet property="image" destination="igD-mS-GQY" id="HD6-7o-fb5"/>
+                <outlet property="name" destination="ayy-1y-M8Y" id="dAt-kH-VRf"/>
+                <outlet property="phone" destination="32R-Y3-we0" id="JS0-rK-R1O"/>
+            </connections>
             <point key="canvasLocation" x="37" y="85"/>
         </view>
     </objects>
