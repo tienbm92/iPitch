@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>1004167421123-9h98q6r3h3gmvl3qe9abnf378bd2pb45.apps.googleusercontent.com</string>
+	<string>1004167421123-g4k8hmj7slh3v5e34l679hrsubplg80q.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1004167421123-9h98q6r3h3gmvl3qe9abnf378bd2pb45</string>
+	<string>com.googleusercontent.apps.1004167421123-g4k8hmj7slh3v5e34l679hrsubplg80q</string>
 	<key>API_KEY</key>
 	<string>AIzaSyB22_LkBXyGoZYxCNjqy7ihPkJSlCO6c7g</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>framgia.iPitch</string>
+	<string>com.framgia.iPitch</string>
 	<key>PROJECT_ID</key>
 	<string>ipitch-a0800</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1004167421123:ios:8f154f2b5772e148</string>
+	<string>1:1004167421123:ios:8563ab54eaff2f95</string>
 	<key>DATABASE_URL</key>
 	<string>https://ipitch-a0800.firebaseio.com</string>
 </dict>
