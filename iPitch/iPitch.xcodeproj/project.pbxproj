@@ -9,16 +9,23 @@
 /* Begin PBXBuildFile section */
 		0872E7081E63E2FC0083E9F8 /* MapIPitch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0872E7071E63E2FC0083E9F8 /* MapIPitch.storyboard */; };
 		0872E70E1E63E4DC0083E9F8 /* MapIPitchControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0872E70D1E63E4DC0083E9F8 /* MapIPitchControllers.swift */; };
-		0872E7101E640C130083E9F8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0872E70F1E640C130083E9F8 /* GoogleService-Info.plist */; };
 		0872E71C1E6430A20083E9F8 /* MarkerCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0872E71A1E6430A20083E9F8 /* MarkerCustomView.xib */; };
 		0872E71E1E6430D20083E9F8 /* MarkerCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0872E71D1E6430D20083E9F8 /* MarkerCustomView.swift */; };
+		114416FE1E63F89800B95D18 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114416FD1E63F89800B95D18 /* DataService.swift */; };
+		114417001E640AFB00B95D18 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 114416FF1E640AFB00B95D18 /* GoogleService-Info.plist */; };
+		114417041E64206400B95D18 /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417031E64206400B95D18 /* District.swift */; };
+		114417061E6423A600B95D18 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417051E6423A600B95D18 /* Pitch.swift */; };
+		114417081E642B3800B95D18 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417071E642B3800B95D18 /* Order.swift */; };
+		1144170A1E6432BD00B95D18 /* PitchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417091E6432BD00B95D18 /* PitchService.swift */; };
+		1144170C1E64334700B95D18 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144170B1E64334700B95D18 /* OrderService.swift */; };
+		1144170E1E6435A000B95D18 /* PitchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144170D1E6435A000B95D18 /* PitchRequest.swift */; };
+		114417101E6435BA00B95D18 /* OrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144170F1E6435BA00B95D18 /* OrderRequest.swift */; };
 		11E3FCDF1E63B64400875339 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3FCDE1E63B64400875339 /* AppDelegate.swift */; };
 		11E3FCE61E63B64400875339 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11E3FCE51E63B64400875339 /* Assets.xcassets */; };
 		11E3FCFD1E63B8E700875339 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11E3FCF51E63B8E700875339 /* LaunchScreen.storyboard */; };
 		11E3FCFE1E63B8E700875339 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11E3FCF61E63B8E700875339 /* Main.storyboard */; };
 		11E3FD011E63B98E00875339 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3FD001E63B98E00875339 /* Constants.swift */; };
 		11E3FD071E63BA3B00875339 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3FD061E63BA3B00875339 /* UIView+Extension.swift */; };
-		11E3FD091E63BA4900875339 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3FD081E63BA4900875339 /* String+Localization.swift */; };
 		542D067EEB331F6BB8E2E1F3 /* Pods_iPitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32035D11ED8A0A1652AB1A1A /* Pods_iPitch.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +35,15 @@
 		0872E70F1E640C130083E9F8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0872E71A1E6430A20083E9F8 /* MarkerCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerCustomView.xib; sourceTree = "<group>"; };
 		0872E71D1E6430D20083E9F8 /* MarkerCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerCustomView.swift; sourceTree = "<group>"; };
+		114416FD1E63F89800B95D18 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		114416FF1E640AFB00B95D18 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		114417031E64206400B95D18 /* District.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = District.swift; sourceTree = "<group>"; };
+		114417051E6423A600B95D18 /* Pitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
+		114417071E642B3800B95D18 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		114417091E6432BD00B95D18 /* PitchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchService.swift; sourceTree = "<group>"; };
+		1144170B1E64334700B95D18 /* OrderService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
+		1144170D1E6435A000B95D18 /* PitchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchRequest.swift; sourceTree = "<group>"; };
+		1144170F1E6435BA00B95D18 /* OrderRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderRequest.swift; sourceTree = "<group>"; };
 		11E3FCDB1E63B64400875339 /* iPitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11E3FCDE1E63B64400875339 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11E3FCE51E63B64400875339 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -36,7 +52,6 @@
 		11E3FCF61E63B8E700875339 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		11E3FD001E63B98E00875339 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		11E3FD061E63BA3B00875339 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		11E3FD081E63BA4900875339 /* String+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		2E0E84E920B86790F5EDD666 /* Pods-iPitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPitch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPitch/Pods-iPitch.debug.xcconfig"; sourceTree = "<group>"; };
 		32035D11ED8A0A1652AB1A1A /* Pods_iPitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE7DE31520837DD485E60FD /* Pods-iPitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPitch.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPitch/Pods-iPitch.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,7 +99,7 @@
 				11E3FCDE1E63B64400875339 /* AppDelegate.swift */,
 				11E3FCE51E63B64400875339 /* Assets.xcassets */,
 				11E3FCEA1E63B64400875339 /* Info.plist */,
-				0872E70F1E640C130083E9F8 /* GoogleService-Info.plist */,
+				114416FF1E640AFB00B95D18 /* GoogleService-Info.plist */,
 			);
 			path = iPitch;
 			sourceTree = "<group>";
@@ -92,7 +107,6 @@
 		11E3FCF01E63B8E700875339 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				11E3FD081E63BA4900875339 /* String+Localization.swift */,
 				11E3FD061E63BA3B00875339 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
@@ -109,6 +123,11 @@
 		11E3FCF21E63B8E700875339 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				114417031E64206400B95D18 /* District.swift */,
+				114417051E6423A600B95D18 /* Pitch.swift */,
+				114417071E642B3800B95D18 /* Order.swift */,
+				1144170D1E6435A000B95D18 /* PitchRequest.swift */,
+				1144170F1E6435BA00B95D18 /* OrderRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -116,6 +135,9 @@
 		11E3FCF31E63B8E700875339 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				114416FD1E63F89800B95D18 /* DataService.swift */,
+				114417091E6432BD00B95D18 /* PitchService.swift */,
+				1144170B1E64334700B95D18 /* OrderService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -254,10 +276,10 @@
 			files = (
 				0872E7081E63E2FC0083E9F8 /* MapIPitch.storyboard in Resources */,
 				11E3FCFE1E63B8E700875339 /* Main.storyboard in Resources */,
-				0872E7101E640C130083E9F8 /* GoogleService-Info.plist in Resources */,
 				11E3FCE61E63B64400875339 /* Assets.xcassets in Resources */,
 				11E3FCFD1E63B8E700875339 /* LaunchScreen.storyboard in Resources */,
 				0872E71C1E6430A20083E9F8 /* MarkerCustomView.xib in Resources */,
+				114417001E640AFB00B95D18 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,12 +338,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1144170A1E6432BD00B95D18 /* PitchService.swift in Sources */,
 				11E3FD071E63BA3B00875339 /* UIView+Extension.swift in Sources */,
 				0872E71E1E6430D20083E9F8 /* MarkerCustomView.swift in Sources */,
 				11E3FCDF1E63B64400875339 /* AppDelegate.swift in Sources */,
+				114417081E642B3800B95D18 /* Order.swift in Sources */,
+				114417041E64206400B95D18 /* District.swift in Sources */,
+				1144170C1E64334700B95D18 /* OrderService.swift in Sources */,
+				114416FE1E63F89800B95D18 /* DataService.swift in Sources */,
+				1144170E1E6435A000B95D18 /* PitchRequest.swift in Sources */,
 				11E3FD011E63B98E00875339 /* Constants.swift in Sources */,
-				11E3FD091E63BA4900875339 /* String+Localization.swift in Sources */,
 				0872E70E1E63E4DC0083E9F8 /* MapIPitchControllers.swift in Sources */,
+				114417101E6435BA00B95D18 /* OrderRequest.swift in Sources */,
+				114417061E6423A600B95D18 /* Pitch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
