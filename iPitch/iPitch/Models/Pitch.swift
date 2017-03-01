@@ -12,15 +12,16 @@ import ObjectMapper
 class Pitch: Mappable {
     
     var id: String?
+    var ownerId: String?
     var name = ""
     var address = ""
     var phone = ""
     var latitude = 0.0
     var longitude = 0.0
-    var ownerId: String?
-    var districtId: String?
+    var district: District?
     var activeTimeFrom: Date?
     var activeTimeTo: Date?
+    var photoPath: String?
     
     required init?(map: Map) {
     }
@@ -32,10 +33,11 @@ class Pitch: Mappable {
         phone          <- map["phone"]
         latitude       <- map["latitude"]
         longitude      <- map["longitude"]
-        ownerId        <- map["owner_id"]
-        districtId     <- map["district_id"]
-        activeTimeFrom <- (map["active_time_from"], DateTransform())
-        activeTimeTo   <- (map["active_time_to"], DateTransform())
+        ownerId        <- map["ownerId"]
+        district       <- map["district"]
+        activeTimeFrom <- (map["activeTimeFrom"], DateTransform())
+        activeTimeTo   <- (map["activeTimeTo"], DateTransform())
+        photoPath      <- map["photoPath"]
     }
     
 }

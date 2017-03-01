@@ -26,10 +26,10 @@ class Order: Mappable {
         id       <- map["id"]
         name     <- map["name"]
         phone    <- map["phone"]
-        pitchId  <- map["pitch_id"]
-        timeFrom <- (map["time_from"], DateTransform())
-        timeTo   <- (map["time_to"], DateTransform())
-        isAccept <- map["is_accept"]
+        pitchId  <- map["pitchId"]
+        timeFrom <- (map["timeFrom"], DateTransform())
+        timeTo   <- (map["timeTo"], DateTransform())
+        isAccept <- map["isAccept"]
     }
     
 }
