@@ -12,9 +12,15 @@ import GoogleMaps
 class MapIPitchControllers: UIViewController {
     
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var lishStadium: UITableView!
     let locationManager = CLLocationManager()
+    let directionService = DirectionService()
     let zoomLevel: Float = 15.0
-
+    var originLatitude: Double = 0
+    var originLongtitude: Double = 0
+    var destinationLatitude: Double = 0
+    var destinationLongtitude: Double = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Initialize the location manager.
@@ -29,7 +35,42 @@ class MapIPitchControllers: UIViewController {
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
     }
-
+    
+    @IBAction func changeViewType(_ sender: Any) {
+        lishStadium.isHidden = mapView.isHidden
+        mapView.isHidden = !mapView.isHidden
+    }
+    
+    @IBAction func directionMap(_ sender: Any) {
+        directionUserStadium()
+    }
+    
+    // direction user - stadium
+    func directionUserStadium() {
+        let origin: String = "\(originLatitude),\(originLongtitude)"
+        let destination: String =
+            "\(destinationLatitude),\(destinationLongtitude)"
+        self.directionService.getDirections(origin: origin,
+            destination: destination,
+            travelMode: TravelModes.driving) { (status, success) in
+            if success {
+                self.drawRoute()
+            } else {
+                print(status ?? "")
+            }
+        }
+    }
+    
+    // Draw route
+    func drawRoute() {
+        if let route = directionService.overviewPolyline["points"] as? String ,
+            let path = GMSPath(fromEncodedPath: route) {
+            let routePolyline = GMSPolyline(path: path)
+            routePolyline.strokeColor = UIColor.red
+            routePolyline.strokeWidth = 3.0
+            routePolyline.map = mapView
+        }
+    }
 }
 
 extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate{
@@ -39,9 +80,13 @@ extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate{
         didUpdateLocations locations: [CLLocation]) {
         if let location: CLLocation = locations.last {
             print("Location: \(location)")
+            let locationLatitude = location.coordinate.latitude
+            let locationLongtitude = location.coordinate.longitude
+            self.originLatitude = locationLatitude
+            self.originLongtitude = locationLongtitude
             let camera = GMSCameraPosition.camera(
-                withLatitude: location.coordinate.latitude,
-                longitude: location.coordinate.longitude, zoom: zoomLevel)
+                withLatitude: locationLatitude,
+                longitude: locationLongtitude, zoom: zoomLevel)
             if mapView.isHidden {
                 mapView.isHidden = false
                 mapView.camera = camera
@@ -49,8 +94,8 @@ extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate{
                 mapView.animate(to: camera)
             }
             let marker = GMSMarker(position: CLLocationCoordinate2D(
-                latitude: location.coordinate.latitude,
-                longitude: location.coordinate.longitude))
+                latitude: locationLatitude,
+                longitude: locationLongtitude))
             marker.title = "Current location"
             marker.isFlat = true
             marker.map = self.mapView
@@ -85,8 +130,20 @@ extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView,
         didLongPressAt coordinate: CLLocationCoordinate2D) {
         let marker = GMSMarker(position: coordinate)
-        marker.title = "possion long press"
+        marker.title = "Name Stadium"
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "Stadium-icon.png"))
+        imageView.bounds.size = CGSize(width: 50, height: 50)
+        marker.iconView = imageView
         marker.map = self.mapView
     }
     
+    // Event tab marker
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        let markerLatitude = marker.position.latitude
+        let markerLongitude = marker.position.longitude
+        self.destinationLatitude = markerLatitude
+        self.destinationLongtitude = markerLongitude
+        print("tab marker\(markerLatitude), \(markerLongitude)")
+    }
+   
 }

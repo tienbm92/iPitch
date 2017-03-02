@@ -21,5 +21,5 @@ class District: Mappable {
         id   <- map["id"]
         name <- map["name"]
     }
-    
+        
 }
