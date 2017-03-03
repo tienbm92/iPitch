@@ -10,4 +10,5 @@ target 'iPitch' do
   pod 'GoogleMaps'	
   pod 'ObjectMapper', '~> 2.2'
   pod 'IQKeyboardManagerSwift'
+  pod 'MBProgressHUD', '~> 1.0.0' 
 end

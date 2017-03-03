@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +22,29 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4F-nn-jKZ">
+                                <rect key="frame" x="97" y="303.5" width="180" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="n4F-nn-jKZ" secondAttribute="height" multiplier="3:1" id="ZSX-CR-ffe"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jW-bO-nR2">
+                                <rect key="frame" x="97" y="393.5" width="180" height="60"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9jW-bO-nR2" firstAttribute="width" secondItem="n4F-nn-jKZ" secondAttribute="width" id="3DB-eb-hWx"/>
+                            <constraint firstItem="n4F-nn-jKZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7AG-qv-gha"/>
+                            <constraint firstItem="n4F-nn-jKZ" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="180:375" id="9rW-0M-isP"/>
+                            <constraint firstItem="9jW-bO-nR2" firstAttribute="top" secondItem="n4F-nn-jKZ" secondAttribute="bottom" constant="30" id="CKd-0P-1WU"/>
+                            <constraint firstItem="n4F-nn-jKZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dt2-4U-KsW"/>
+                            <constraint firstItem="9jW-bO-nR2" firstAttribute="height" secondItem="n4F-nn-jKZ" secondAttribute="height" id="jKF-oh-zQB"/>
+                            <constraint firstItem="9jW-bO-nR2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mcY-WI-VW6"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
