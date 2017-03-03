@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08362CA91E6D33F100FDB83F /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08362CA81E6D33F100FDB83F /* ImageStore.swift */; };
+		08362CAD1E6D38B800FDB83F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08362CAC1E6D38B800FDB83F /* InfoPlist.strings */; };
+		08362CAF1E6D3DFD00FDB83F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08362CAE1E6D3DFD00FDB83F /* UIImageView+Extension.swift */; };
 		0838B1E31E6555190053335D /* DirectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0838B1E21E6555190053335D /* DirectionService.swift */; };
-		114417001E640AFB00B95D18 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 114416FF1E640AFB00B95D18 /* GoogleService-Info.plist */; };
+		08F5A8A61E6D5C9300878E22 /* MapIPitchControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F5A8A41E6D5C9300878E22 /* MapIPitchControllers.swift */; };
+		08F5A8A71E6D5C9300878E22 /* StadiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F5A8A51E6D5C9300878E22 /* StadiumCell.swift */; };
+		08F5A8A81E6D5E6900878E22 /* MapIPitch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55FA97CB1E6578610052C22C /* MapIPitch.storyboard */; };
+		08F5A8A91E6D5FEF00878E22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 114416FF1E640AFB00B95D18 /* GoogleService-Info.plist */; };
 		114417041E64206400B95D18 /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417031E64206400B95D18 /* District.swift */; };
 		1144170A1E6432BD00B95D18 /* PitchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417091E6432BD00B95D18 /* PitchService.swift */; };
 		1144170C1E64334700B95D18 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144170B1E64334700B95D18 /* OrderService.swift */; };
@@ -27,20 +33,20 @@
 		55422AC61E63F7A0005AA6C8 /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55422AC51E63F7A0005AA6C8 /* Manager.storyboard */; };
 		555C42F71E69563500DB9183 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555F33871E64262400E6851F /* LoginViewController.swift */; };
 		555C42F81E69563A00DB9183 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555F33891E64265F00E6851F /* RegisterViewController.swift */; };
-		555C42FA1E6983D900DB9183 /* MapIPitch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55FA97CB1E6578610052C22C /* MapIPitch.storyboard */; };
 		558390AC1E69026700EBBE21 /* PitchListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558390AB1E69026700EBBE21 /* PitchListTableViewController.swift */; };
 		558390AF1E6902CD00EBBE21 /* PitchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558390AD1E6902CD00EBBE21 /* PitchListCell.swift */; };
 		558390B01E6902CD00EBBE21 /* PitchListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 558390AE1E6902CD00EBBE21 /* PitchListCell.xib */; };
-		55890AEC1E6828F000BC7E75 /* btnShowLish.png in Resources */ = {isa = PBXBuildFile; fileRef = 55890AEA1E6828F000BC7E75 /* btnShowLish.png */; };
-		55890AED1E6828F000BC7E75 /* Stadium-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 55890AEB1E6828F000BC7E75 /* Stadium-icon.png */; };
 		55A125C61E67BC0600456844 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A125C51E67BC0600456844 /* User.swift */; };
-		55BCB3731E6950A400D8B7E7 /* MarkerCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55BCB3721E6950A400D8B7E7 /* MarkerCustomView.xib */; };
-		55C58FCA1E6984FB00736674 /* MapIPitchControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FA97CE1E6578860052C22C /* MapIPitchControllers.swift */; };
 		55C58FCC1E69880C00736674 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C58FCB1E69880C00736674 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08362CA81E6D33F100FDB83F /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
+		08362CAC1E6D38B800FDB83F /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		08362CAE1E6D3DFD00FDB83F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		0838B1E21E6555190053335D /* DirectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionService.swift; sourceTree = "<group>"; };
+		08F5A8A41E6D5C9300878E22 /* MapIPitchControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapIPitchControllers.swift; sourceTree = "<group>"; };
+		08F5A8A51E6D5C9300878E22 /* StadiumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StadiumCell.swift; sourceTree = "<group>"; };
 		114416FF1E640AFB00B95D18 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		114417031E64206400B95D18 /* District.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = District.swift; sourceTree = "<group>"; };
 		114417091E6432BD00B95D18 /* PitchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchService.swift; sourceTree = "<group>"; };
@@ -66,13 +72,9 @@
 		558390AB1E69026700EBBE21 /* PitchListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchListTableViewController.swift; sourceTree = "<group>"; };
 		558390AD1E6902CD00EBBE21 /* PitchListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchListCell.swift; sourceTree = "<group>"; };
 		558390AE1E6902CD00EBBE21 /* PitchListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PitchListCell.xib; sourceTree = "<group>"; };
-		55890AEA1E6828F000BC7E75 /* btnShowLish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnShowLish.png; sourceTree = "<group>"; };
-		55890AEB1E6828F000BC7E75 /* Stadium-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stadium-icon.png"; sourceTree = "<group>"; };
 		55A125C51E67BC0600456844 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		55BCB3721E6950A400D8B7E7 /* MarkerCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerCustomView.xib; sourceTree = "<group>"; };
 		55C58FCB1E69880C00736674 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		55FA97CB1E6578610052C22C /* MapIPitch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapIPitch.storyboard; sourceTree = "<group>"; };
-		55FA97CE1E6578860052C22C /* MapIPitchControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapIPitchControllers.swift; sourceTree = "<group>"; };
 		AAE7DE31520837DD485E60FD /* Pods-iPitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPitch.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPitch/Pods-iPitch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08362CA31E6D312F00FDB83F /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				08362CA81E6D33F100FDB83F /* ImageStore.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
 		11E3FCD21E63B64400875339 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 		11E3FCDD1E63B64400875339 /* iPitch */ = {
 			isa = PBXGroup;
 			children = (
+				08362CA31E6D312F00FDB83F /* DataStore */,
 				11E3FCF01E63B8E700875339 /* Extensions */,
 				11E3FCF11E63B8E700875339 /* Helpers */,
 				11E3FCF21E63B8E700875339 /* Models */,
@@ -127,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				11E3FD061E63BA3B00875339 /* UIView+Extension.swift */,
+				08362CAE1E6D3DFD00FDB83F /* UIImageView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -136,6 +148,7 @@
 			children = (
 				55125A8C1E66D7E500A3D373 /* WindowManager.swift */,
 				11E3FD001E63B98E00875339 /* Constants.swift */,
+				08362CAC1E6D38B800FDB83F /* InfoPlist.strings */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -168,7 +181,6 @@
 			children = (
 				11E3FCF51E63B8E700875339 /* LaunchScreen.storyboard */,
 				11E3FCF61E63B8E700875339 /* Main.storyboard */,
-				55BCB3711E6950A400D8B7E7 /* UserFlow */,
 				55FA97CB1E6578610052C22C /* MapIPitch.storyboard */,
 				55422AC51E63F7A0005AA6C8 /* Manager.storyboard */,
 			);
@@ -188,9 +200,8 @@
 		11E3FCFB1E63B8E700875339 /* UserFlow */ = {
 			isa = PBXGroup;
 			children = (
-				55890AEA1E6828F000BC7E75 /* btnShowLish.png */,
-				55890AEB1E6828F000BC7E75 /* Stadium-icon.png */,
-				55FA97CE1E6578860052C22C /* MapIPitchControllers.swift */,
+				08F5A8A41E6D5C9300878E22 /* MapIPitchControllers.swift */,
+				08F5A8A51E6D5C9300878E22 /* StadiumCell.swift */,
 			);
 			path = UserFlow;
 			sourceTree = "<group>";
@@ -205,14 +216,6 @@
 				558390AE1E6902CD00EBBE21 /* PitchListCell.xib */,
 			);
 			path = ManagerFlow;
-			sourceTree = "<group>";
-		};
-		55BCB3711E6950A400D8B7E7 /* UserFlow */ = {
-			isa = PBXGroup;
-			children = (
-				55BCB3721E6950A400D8B7E7 /* MarkerCustomView.xib */,
-			);
-			path = UserFlow;
 			sourceTree = "<group>";
 		};
 		68F2230D5DDBEC6A237A9795 /* Frameworks */ = {
@@ -295,14 +298,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				555C42FA1E6983D900DB9183 /* MapIPitch.storyboard in Resources */,
+				08F5A8A91E6D5FEF00878E22 /* GoogleService-Info.plist in Resources */,
+				08F5A8A81E6D5E6900878E22 /* MapIPitch.storyboard in Resources */,
 				11E3FCFE1E63B8E700875339 /* Main.storyboard in Resources */,
-				55BCB3731E6950A400D8B7E7 /* MarkerCustomView.xib in Resources */,
+				08362CAD1E6D38B800FDB83F /* InfoPlist.strings in Resources */,
 				11E3FCE61E63B64400875339 /* Assets.xcassets in Resources */,
-				55890AED1E6828F000BC7E75 /* Stadium-icon.png in Resources */,
 				11E3FCFD1E63B8E700875339 /* LaunchScreen.storyboard in Resources */,
-				55890AEC1E6828F000BC7E75 /* btnShowLish.png in Resources */,
-				114417001E640AFB00B95D18 /* GoogleService-Info.plist in Resources */,
 				558390B01E6902CD00EBBE21 /* PitchListCell.xib in Resources */,
 				55422AC61E63F7A0005AA6C8 /* Manager.storyboard in Resources */,
 			);
@@ -364,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1144170A1E6432BD00B95D18 /* PitchService.swift in Sources */,
+				08F5A8A61E6D5C9300878E22 /* MapIPitchControllers.swift in Sources */,
 				11E3FD071E63BA3B00875339 /* UIView+Extension.swift in Sources */,
 				11E3FCDF1E63B64400875339 /* AppDelegate.swift in Sources */,
 				11A359CC1E665F4200ABEF43 /* Order.swift in Sources */,
@@ -372,16 +374,18 @@
 				558390AC1E69026700EBBE21 /* PitchListTableViewController.swift in Sources */,
 				558390AF1E6902CD00EBBE21 /* PitchListCell.swift in Sources */,
 				55125A8D1E66D7E500A3D373 /* WindowManager.swift in Sources */,
-				55C58FCA1E6984FB00736674 /* MapIPitchControllers.swift in Sources */,
 				114417041E64206400B95D18 /* District.swift in Sources */,
 				11A359CD1E665F4200ABEF43 /* Pitch.swift in Sources */,
 				11A359D11E66809500ABEF43 /* StorageService.swift in Sources */,
+				08362CAF1E6D3DFD00FDB83F /* UIImageView+Extension.swift in Sources */,
 				1144170C1E64334700B95D18 /* OrderService.swift in Sources */,
 				555C42F71E69563500DB9183 /* LoginViewController.swift in Sources */,
 				555C42F81E69563A00DB9183 /* RegisterViewController.swift in Sources */,
 				11E3FD011E63B98E00875339 /* Constants.swift in Sources */,
 				11A359CF1E66754200ABEF43 /* DistrictService.swift in Sources */,
 				55A125C61E67BC0600456844 /* User.swift in Sources */,
+				08362CA91E6D33F100FDB83F /* ImageStore.swift in Sources */,
+				08F5A8A71E6D5C9300878E22 /* StadiumCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
