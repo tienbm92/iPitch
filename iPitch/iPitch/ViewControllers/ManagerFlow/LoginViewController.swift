@@ -18,7 +18,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        IQKeyboardManagerConfiguration.shared.configKeyboard()
     }
     
     fileprivate func login() {
@@ -32,9 +31,22 @@ class LoginViewController: UIViewController {
         FIRAuth.auth()?.signIn(withEmail: user.email, password: user.password) {
             [weak self] (user, error) in
             WindowManager.shared.hideProgressView()
-            if let error = error {
-                WindowManager.shared.showMessage(message: error.localizedDescription, title: nil, completion: nil)
+            guard user != nil else {
+                if let error = error?.localizedDescription {
+                    WindowManager.shared.showMessage(message: error, title: nil, completion: nil)
+                }
+                return
             }
+            self?.redirectToPitchList()
+        }
+    }
+    
+    private func redirectToPitchList() {
+        let storyboard = UIStoryboard(name: "Manager", bundle: nil)
+        let pitchManagerNavController = storyboard.instantiateViewController(
+            withIdentifier: "ManagerNavControllerId")
+        self.present(pitchManagerNavController, animated: true) {
+            UIApplication.shared.keyWindow?.rootViewController = pitchManagerNavController
         }
     }
     

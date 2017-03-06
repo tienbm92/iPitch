@@ -66,4 +66,7 @@ fastlane/test_output
 
 /iPitch/Pods/*
 /iPitch/iPitch.xcworkspace
-*.DS_Store
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
