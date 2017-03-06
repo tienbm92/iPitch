@@ -11,7 +11,7 @@ import ObjectMapper
 
 class District: Mappable {
     
-    var id: String?
+    var id: Int?
     var name = ""
     
     required init?(map: Map) {

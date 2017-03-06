@@ -23,6 +23,9 @@ class Pitch: Mappable {
     var activeTimeTo: Date?
     var photoPath: String?
     
+    init() {
+    }
+    
     required init?(map: Map) {
     }
     

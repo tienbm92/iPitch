@@ -15,13 +15,19 @@
 		08F5A8A71E6D5C9300878E22 /* StadiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F5A8A51E6D5C9300878E22 /* StadiumCell.swift */; };
 		08F5A8A81E6D5E6900878E22 /* MapIPitch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55FA97CB1E6578610052C22C /* MapIPitch.storyboard */; };
 		08F5A8A91E6D5FEF00878E22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 114416FF1E640AFB00B95D18 /* GoogleService-Info.plist */; };
+		1128A2561E6D2FB2000DDBC0 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128A2551E6D2FB2000DDBC0 /* Date+Extension.swift */; };
+		1128A2581E6D2FC0000DDBC0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128A2571E6D2FC0000DDBC0 /* String+Extension.swift */; };
+		1128A25C1E6D4B8E000DDBC0 /* BigMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128A25B1E6D4B8E000DDBC0 /* BigMapViewController.swift */; };
+		113207281E691AEE008110C3 /* EditPitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113207271E691AEE008110C3 /* EditPitchViewController.swift */; };
 		114417041E64206400B95D18 /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417031E64206400B95D18 /* District.swift */; };
 		1144170A1E6432BD00B95D18 /* PitchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417091E6432BD00B95D18 /* PitchService.swift */; };
 		1144170C1E64334700B95D18 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144170B1E64334700B95D18 /* OrderService.swift */; };
+		1187459E1E6922E600BC8664 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1187459D1E6922E600BC8664 /* PickerViewController.swift */; };
 		11A359CC1E665F4200ABEF43 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A359CA1E665F4200ABEF43 /* Order.swift */; };
 		11A359CD1E665F4200ABEF43 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A359CB1E665F4200ABEF43 /* Pitch.swift */; };
 		11A359CF1E66754200ABEF43 /* DistrictService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A359CE1E66754200ABEF43 /* DistrictService.swift */; };
 		11A359D11E66809500ABEF43 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A359D01E66809500ABEF43 /* StorageService.swift */; };
+		11C60E1C1E68FBB2001D8CC8 /* PitchExtra.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C60E1B1E68FBB2001D8CC8 /* PitchExtra.storyboard */; };
 		11E3FCDF1E63B64400875339 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3FCDE1E63B64400875339 /* AppDelegate.swift */; };
 		11E3FCE61E63B64400875339 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11E3FCE51E63B64400875339 /* Assets.xcassets */; };
 		11E3FCFD1E63B8E700875339 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11E3FCF51E63B8E700875339 /* LaunchScreen.storyboard */; };
@@ -47,14 +53,20 @@
 		0838B1E21E6555190053335D /* DirectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionService.swift; sourceTree = "<group>"; };
 		08F5A8A41E6D5C9300878E22 /* MapIPitchControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapIPitchControllers.swift; sourceTree = "<group>"; };
 		08F5A8A51E6D5C9300878E22 /* StadiumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StadiumCell.swift; sourceTree = "<group>"; };
+		1128A2551E6D2FB2000DDBC0 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		1128A2571E6D2FC0000DDBC0 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		1128A25B1E6D4B8E000DDBC0 /* BigMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigMapViewController.swift; sourceTree = "<group>"; };
+		113207271E691AEE008110C3 /* EditPitchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPitchViewController.swift; sourceTree = "<group>"; };
 		114416FF1E640AFB00B95D18 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		114417031E64206400B95D18 /* District.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = District.swift; sourceTree = "<group>"; };
 		114417091E6432BD00B95D18 /* PitchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchService.swift; sourceTree = "<group>"; };
 		1144170B1E64334700B95D18 /* OrderService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
+		1187459D1E6922E600BC8664 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		11A359CA1E665F4200ABEF43 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		11A359CB1E665F4200ABEF43 /* Pitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
 		11A359CE1E66754200ABEF43 /* DistrictService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistrictService.swift; sourceTree = "<group>"; };
 		11A359D01E66809500ABEF43 /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		11C60E1B1E68FBB2001D8CC8 /* PitchExtra.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PitchExtra.storyboard; sourceTree = "<group>"; };
 		11E3FCDB1E63B64400875339 /* iPitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11E3FCDE1E63B64400875339 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11E3FCE51E63B64400875339 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,6 +151,8 @@
 			children = (
 				11E3FD061E63BA3B00875339 /* UIView+Extension.swift */,
 				08362CAE1E6D3DFD00FDB83F /* UIImageView+Extension.swift */,
+				1128A2551E6D2FB2000DDBC0 /* Date+Extension.swift */,
+				1128A2571E6D2FC0000DDBC0 /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -183,6 +197,7 @@
 				11E3FCF61E63B8E700875339 /* Main.storyboard */,
 				55FA97CB1E6578610052C22C /* MapIPitch.storyboard */,
 				55422AC51E63F7A0005AA6C8 /* Manager.storyboard */,
+				11C60E1B1E68FBB2001D8CC8 /* PitchExtra.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -214,6 +229,9 @@
 				558390AB1E69026700EBBE21 /* PitchListTableViewController.swift */,
 				558390AD1E6902CD00EBBE21 /* PitchListCell.swift */,
 				558390AE1E6902CD00EBBE21 /* PitchListCell.xib */,
+				113207271E691AEE008110C3 /* EditPitchViewController.swift */,
+				1187459D1E6922E600BC8664 /* PickerViewController.swift */,
+				1128A25B1E6D4B8E000DDBC0 /* BigMapViewController.swift */,
 			);
 			path = ManagerFlow;
 			sourceTree = "<group>";
@@ -270,8 +288,8 @@
 				TargetAttributes = {
 					11E3FCDA1E63B64400875339 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = HG9LP32JL6;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = K6ZTG96ZCP;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -305,6 +323,7 @@
 				11E3FCE61E63B64400875339 /* Assets.xcassets in Resources */,
 				11E3FCFD1E63B8E700875339 /* LaunchScreen.storyboard in Resources */,
 				558390B01E6902CD00EBBE21 /* PitchListCell.xib in Resources */,
+				11C60E1C1E68FBB2001D8CC8 /* PitchExtra.storyboard in Resources */,
 				55422AC61E63F7A0005AA6C8 /* Manager.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,8 +385,11 @@
 			files = (
 				1144170A1E6432BD00B95D18 /* PitchService.swift in Sources */,
 				08F5A8A61E6D5C9300878E22 /* MapIPitchControllers.swift in Sources */,
+				1128A2581E6D2FC0000DDBC0 /* String+Extension.swift in Sources */,
 				11E3FD071E63BA3B00875339 /* UIView+Extension.swift in Sources */,
+				113207281E691AEE008110C3 /* EditPitchViewController.swift in Sources */,
 				11E3FCDF1E63B64400875339 /* AppDelegate.swift in Sources */,
+				1128A2561E6D2FB2000DDBC0 /* Date+Extension.swift in Sources */,
 				11A359CC1E665F4200ABEF43 /* Order.swift in Sources */,
 				0838B1E31E6555190053335D /* DirectionService.swift in Sources */,
 				55C58FCC1E69880C00736674 /* MainViewController.swift in Sources */,
@@ -378,10 +400,12 @@
 				11A359CD1E665F4200ABEF43 /* Pitch.swift in Sources */,
 				11A359D11E66809500ABEF43 /* StorageService.swift in Sources */,
 				08362CAF1E6D3DFD00FDB83F /* UIImageView+Extension.swift in Sources */,
+				1128A25C1E6D4B8E000DDBC0 /* BigMapViewController.swift in Sources */,
 				1144170C1E64334700B95D18 /* OrderService.swift in Sources */,
 				555C42F71E69563500DB9183 /* LoginViewController.swift in Sources */,
 				555C42F81E69563A00DB9183 /* RegisterViewController.swift in Sources */,
 				11E3FD011E63B98E00875339 /* Constants.swift in Sources */,
+				1187459E1E6922E600BC8664 /* PickerViewController.swift in Sources */,
 				11A359CF1E66754200ABEF43 /* DistrictService.swift in Sources */,
 				55A125C61E67BC0600456844 /* User.swift in Sources */,
 				08362CA91E6D33F100FDB83F /* ImageStore.swift in Sources */,
@@ -489,14 +513,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = HG9LP32JL6;
+				DEVELOPMENT_TEAM = K6ZTG96ZCP;
 				INFOPLIST_FILE = iPitch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.framgia.tinh.iPitch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.framgia.iPitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "dde48af0-e8f1-44bb-a8c2-7608e645341e";
+				PROVISIONING_PROFILE_SPECIFIER = iPitchDev;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -506,15 +530,15 @@
 			baseConfigurationReference = AAE7DE31520837DD485E60FD /* Pods-iPitch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = HG9LP32JL6;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = K6ZTG96ZCP;
 				INFOPLIST_FILE = iPitch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.framgia.tinh.iPitch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.framgia.iPitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "500504c9-852b-4553-8bb5-6318076e8215";
+				PROVISIONING_PROFILE_SPECIFIER = iPitchDis;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
