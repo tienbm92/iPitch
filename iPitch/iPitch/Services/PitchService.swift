@@ -27,7 +27,7 @@ class PitchService: NSObject {
         }
     }
     
-    func getPitch(radius: Double?, districtId: String?, timeFrom: Date?,
+    func getPitch(radius: Double?, districtId: Int?, timeFrom: Date?,
                   timeTo: Date?, completion: @escaping ([Pitch]) -> Void) {
         getAllPitches { (pitches) in
             let pitchesFilter = pitches.filter({
@@ -63,7 +63,8 @@ class PitchService: NSObject {
         }
     }
 
-    func create(pitch: Pitch, photo: UIImage?, completion: @escaping (Error?) -> Void) {
+    func create(pitch: Pitch, photo: UIImage?,
+        completion: @escaping (Error?) -> Void) {
         if let userId = FIRAuth.auth()?.currentUser?.uid {
             var json = pitch.toJSON()
             if json["id"] != nil {
@@ -75,7 +76,7 @@ class PitchService: NSObject {
             json["ownerId"] = userId
             ref.childByAutoId().setValue(json, withCompletionBlock: {
                 (error, ref) in
-                if error != nil, let photo = photo {
+                if error == nil, let photo = photo {
                     let photoPath = "images/pitches/\(ref.key).jpg"
                     StorageService.shared.uploadImage(image: photo,
                         path: photoPath, completion: {
@@ -103,7 +104,8 @@ class PitchService: NSObject {
         }
     }
     
-    func update(pitch: Pitch, completion: @escaping (Error?) -> Void) {
+    func update(pitch: Pitch, photo: UIImage?,
+        completion: @escaping (Error?) -> Void) {
         if let pitchId = pitch.id {
             var json = pitch.toJSON()
             if json["id"] != nil {
@@ -111,9 +113,35 @@ class PitchService: NSObject {
             }
             ref.child(pitchId).setValue(json, withCompletionBlock: {
                 (error, ref) in
+                if error == nil, let photo = photo {
+                    let photoPath = "images/pitches/\(pitchId).jpg"
+                    StorageService.shared.uploadImage(image: photo,
+                        path: photoPath, completion: { (error, url) in
+                        OperationQueue.main.addOperation {
+                            completion(error)
+                        }
+                    })
+                } else {
+                    OperationQueue.main.addOperation {
+                        completion(error)
+                    }
+                }
+            })
+        }
+    }
+    
+    func delete(pitch: Pitch, completion: @escaping (Error?) -> Void) {
+        if let pitchId = pitch.id {
+            ref.child(pitchId).removeValue(completionBlock: { (error, ref) in
                 OperationQueue.main.addOperation {
                     completion(error)
                 }
+            })
+        }
+        if let photoPath = pitch.photoPath {
+            StorageService.shared.deleteImage(path: photoPath,
+                completion: { (error) in
+                //
             })
         }
     }
@@ -139,11 +167,13 @@ class PitchService: NSObject {
 
 extension PitchService: CLLocationManagerDelegate {
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager,
+        didUpdateLocations locations: [CLLocation]) {
         manager.stopUpdatingLocation()
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager,
+        didChangeAuthorization status: CLAuthorizationStatus) {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             manager.startUpdatingLocation()
         }

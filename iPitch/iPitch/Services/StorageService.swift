@@ -50,4 +50,11 @@ class StorageService {
         }
     }
     
+    func deleteImage(path: String, completion: @escaping (Error?) -> Void) {
+        let deleteRef = FIRStorage.storage().reference(forURL: path)
+        deleteRef.delete { (error) in
+            completion(error)
+        }
+    }
+    
 }
