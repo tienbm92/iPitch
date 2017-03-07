@@ -12,14 +12,16 @@ import GoogleMaps
 class MapIPitchControllers: UIViewController {
     
     @IBOutlet weak var mapView: GMSMapView!
-    @IBOutlet weak var lishStadium: UITableView!
+    @IBOutlet weak var listStadium: UITableView!
     let locationManager = CLLocationManager()
     let directionService = DirectionService()
+    let dictPitch = [String:Any]()
     let zoomLevel: Float = 15.0
     var originLatitude: Double = 0
     var originLongtitude: Double = 0
     var destinationLatitude: Double = 0
     var destinationLongtitude: Double = 0
+    var pitches = [Pitch]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,36 +36,40 @@ class MapIPitchControllers: UIViewController {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
+        // Setting table view
+        listStadium.dataSource = self
+        listStadium.delegate = self
+        // loading data
+        getData()
     }
     
     @IBAction func changeViewType(_ sender: Any) {
-        lishStadium.isHidden = mapView.isHidden
+        listStadium.isHidden = mapView.isHidden
         mapView.isHidden = !mapView.isHidden
     }
     
-    @IBAction func directionMap(_ sender: Any) {
-        directionUserStadium()
-    }
-    
     // direction user - stadium
-    func directionUserStadium() {
+    fileprivate func directionUserStadium() {
         let origin: String = "\(originLatitude),\(originLongtitude)"
         let destination: String =
             "\(destinationLatitude),\(destinationLongtitude)"
+        WindowManager.shared.showProgressView()
         self.directionService.getDirections(origin: origin,
             destination: destination,
-            travelMode: TravelModes.driving) { (status, success) in
+            travelMode: TravelModes.driving) { [weak self] (status, success) in
             if success {
-                self.drawRoute()
+                self?.drawRoute()
+                WindowManager.shared.hideProgressView()
             } else {
                 print(status ?? "")
+                // TODO
             }
         }
     }
     
     // Draw route
-    func drawRoute() {
-        if let route = directionService.overviewPolyline["points"] as? String ,
+    fileprivate func drawRoute() {
+        if let route = directionService.overviewPolyline["points"] as? String,
             let path = GMSPath(fromEncodedPath: route) {
             let routePolyline = GMSPolyline(path: path)
             routePolyline.strokeColor = UIColor.red
@@ -71,9 +77,83 @@ class MapIPitchControllers: UIViewController {
             routePolyline.map = mapView
         }
     }
+    
+    fileprivate func getData() -> Void {
+        WindowManager.shared.showProgressView()
+        PitchService.shared.getPitch(radius: nil,
+        districtId: nil, timeFrom: nil, timeTo: nil) { [weak self] (pitches) in
+            WindowManager.shared.hideProgressView()
+            self?.pitches = pitches
+            self?.listStadium.reloadData()
+            // show stadium
+            for pitch in pitches {
+                let location = CLLocationCoordinate2D(latitude:
+                    pitch.latitude, longitude: pitch.longitude)
+                let markerStadium = GMSMarker(position: location)
+                markerStadium.title = pitch.name
+                markerStadium.snippet = pitch.address
+                markerStadium.map = self?.mapView
+            }
+        }
+    }
+    
+    fileprivate func reloadMapView() {
+        mapView.clear()
+        // show current location
+        let currentLocation = CLLocationCoordinate2D(
+            latitude: originLatitude, longitude: originLongtitude)
+        let camera = GMSCameraPosition.camera(withTarget:
+            currentLocation, zoom: zoomLevel)
+        mapView.animate(to: camera)
+        let marker = GMSMarker(position: currentLocation)
+        marker.map = self.mapView
+        // show stadium 
+        for pitch in pitches {
+            let location = CLLocationCoordinate2D(latitude:
+                pitch.latitude, longitude: pitch.longitude)
+            let markerStadium = GMSMarker(position: location)
+            markerStadium.title = pitch.name
+            markerStadium.snippet = pitch.address
+            markerStadium.map = self.mapView
+        }
+    }
+    
+    fileprivate func showAlertMapView(message: String, title: String,
+        completion: ((UIAlertAction) -> Void)?) {
+        WindowManager.shared.alertWindow.windowLevel =
+            WindowManager.shared.getCurrentWindowLevel() + 0.1
+        let alertController = UIAlertController(
+            title: title, message: message, preferredStyle: .alert)
+        let diretionAction = UIAlertAction(title: "Direction", style: .default)
+            { [weak self] (action) in
+            WindowManager.shared.alertWindow.isHidden = true
+            if let completion = completion {
+                completion(action)
+            }
+            self?.reloadMapView()
+            self?.directionUserStadium()
+        }
+        let detailAction = UIAlertAction(title: "Deatil", style: .default)
+            { [weak self] (action) in
+            WindowManager.shared.alertWindow.isHidden = true
+            if let completion = completion {
+                completion(action)
+            }
+            // TODO
+        }
+        alertController.addAction(diretionAction)
+        alertController.addAction(detailAction)
+        DispatchQueue.main.async {
+            WindowManager.shared.alertWindow.isHidden = false
+            WindowManager.shared.alertWindow.rootViewController?.present(
+                alertController, animated: true, completion: nil)
+        }
+    }
+    
 }
 
-extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate{
+extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate,
+    UITableViewDataSource, UITableViewDelegate {
     
     //Handle incoming location events.
     func locationManager(_ manager: CLLocationManager,
@@ -96,7 +176,6 @@ extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate{
             let marker = GMSMarker(position: CLLocationCoordinate2D(
                 latitude: locationLatitude,
                 longitude: locationLongtitude))
-            marker.title = "Current location"
             marker.isFlat = true
             marker.map = self.mapView
         }
@@ -127,16 +206,6 @@ extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate{
         print("Error: \(error)")
     }
     
-    func mapView(_ mapView: GMSMapView,
-        didLongPressAt coordinate: CLLocationCoordinate2D) {
-        let marker = GMSMarker(position: coordinate)
-        marker.title = "Name Stadium"
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "Stadium-icon.png"))
-        imageView.bounds.size = CGSize(width: 50, height: 50)
-        marker.iconView = imageView
-        marker.map = self.mapView
-    }
-    
     // Event tab marker
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         let markerLatitude = marker.position.latitude
@@ -144,6 +213,29 @@ extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate{
         self.destinationLatitude = markerLatitude
         self.destinationLongtitude = markerLongitude
         print("tab marker\(markerLatitude), \(markerLongitude)")
+        self.showAlertMapView(message: "Direction or Detail Stadium",
+            title: "what do you want?", completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView,
+        numberOfRowsInSection section: Int) -> Int {
+        return pitches.count
+    }
+    
+    func tableView(_ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = self.listStadium.dequeueReusableCell(
+            withIdentifier: "stadiumCell", for: indexPath)
+            as? StadiumCell  else {
+            return UITableViewCell()
+        }
+        cell.pitch = pitches[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath) {
+        
     }
    
 }
