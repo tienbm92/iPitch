@@ -21,7 +21,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    func signUp() {
+    fileprivate func signUp() {
         guard let user = User(registerWithEmail: self.emailTextField.text,
             password: self.passwordTextField.text,
             retypePassword: self.retypePasswordTextField.text,

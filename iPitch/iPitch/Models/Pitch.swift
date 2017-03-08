@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class Pitch: Mappable {
+struct Pitch: Mappable {
     
     var id: String?
     var ownerId: String?
@@ -26,10 +26,10 @@ class Pitch: Mappable {
     init() {
     }
     
-    required init?(map: Map) {
+    init?(map: Map) {
     }
     
-    func mapping(map: Map) {
+    mutating func mapping(map: Map) {
         id             <- map["id"]
         name           <- map["name"]
         address        <- map["address"]

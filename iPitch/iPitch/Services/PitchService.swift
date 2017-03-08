@@ -28,7 +28,7 @@ class PitchService: NSObject {
     }
     
     func getPitch(radius: Double?, districtId: Int?, timeFrom: Date?,
-                  timeTo: Date?, completion: @escaping ([Pitch]) -> Void) {
+        timeTo: Date?, completion: @escaping ([Pitch]) -> Void) {
         getAllPitches { (pitches) in
             let pitchesFilter = pitches.filter({
                 [weak self] (pitch) -> Bool in
@@ -61,6 +61,25 @@ class PitchService: NSObject {
                 completion(pitchesFilter)
             }
         }
+    }
+    
+    func getPitchForManager(completion: @escaping ([Pitch]) -> Void) {
+        ref.queryEqual(toValue: FIRAuth.auth()?.currentUser?.uid).queryOrdered(
+            byChild: "ownerId").observeSingleEvent(of: .value, with: { 
+            (snapshot) in
+            var pitches = [Pitch]()
+            if let pitchesJSON = snapshot.value as? [String: Any] {
+                for (key, value) in pitchesJSON {
+                    if var pitchJSON = value as? [String: Any] {
+                        pitchJSON["id"] = key
+                        if let pitch = Pitch(JSON: pitchJSON) {
+                            pitches.append(pitch)
+                        }
+                    }
+                }
+            }
+            completion(pitches)
+        })
     }
 
     func create(pitch: Pitch, photo: UIImage?,

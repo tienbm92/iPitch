@@ -25,7 +25,7 @@ class BigMapViewController: UIViewController {
                 longitude: location.coordinate.longitude, zoom: 15.0)
             setNewMapMarker(withCoordinate: location.coordinate)
         } else {
-            WindowManager.shared.showMessage(message: kLocationNotFound,
+            WindowManager.shared.showMessage(message: "LocationNotFound".localized,
                 title: nil, completion: { (action) in
                 if let navigationController = self.navigationController {
                     navigationController.popViewController(animated: true)

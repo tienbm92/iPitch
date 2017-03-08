@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class Order: Mappable {
+struct Order: Mappable {
     
     var id: String?
     var name: String?
@@ -19,10 +19,10 @@ class Order: Mappable {
     var timeTo: Date?
     var isAccept = false
     
-    required init?(map: Map) {
+    init?(map: Map) {
     }
     
-    func mapping(map: Map) {
+    mutating func mapping(map: Map) {
         id       <- map["id"]
         name     <- map["name"]
         phone    <- map["phone"]

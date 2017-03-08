@@ -38,12 +38,12 @@ class EditPitchViewController: UIViewController {
         super.viewDidLoad()
         switch type {
         case .update:
-            title = kEditing
+            title = "Editing".localized
             updateButton.isHidden = false
             deleteButton.isHidden = false
             addButton.isHidden = true
             guard let pitch = pitch else {
-                WindowManager.shared.showMessage(message: kPitchNotFound,
+                WindowManager.shared.showMessage(message: "PitchNotFound".localized,
                     title: nil, completion: { [weak self] (action) in
                     if let navigationController = self?.navigationController {
                         navigationController.popViewController(animated: true)
@@ -72,7 +72,7 @@ class EditPitchViewController: UIViewController {
                 })
             }
         case .create:
-            title = kAddPitch
+            title = "AddPitch".localized
             updateButton.isHidden = true
             deleteButton.isHidden = true
             addButton.isHidden = false
@@ -90,26 +90,26 @@ class EditPitchViewController: UIViewController {
     // MARK: - Button event handling
     
     @IBAction func onAvatarPressed(_ sender: Any) {
-        let actionSheet = UIAlertController(title: kEdittingAvatar,
+        let actionSheet = UIAlertController(title: "EdittingAvatar".localized,
             message: nil, preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: kPreviewPhoto, style: .default,
+        actionSheet.addAction(UIAlertAction(title: "PreviewPhoto".localized, style: .default,
             handler: { [weak self] (action) in
             self?.previewImage()
         }))
-        actionSheet.addAction(UIAlertAction(title: kTakePhoto,
+        actionSheet.addAction(UIAlertAction(title: "TakePhoto".localized,
             style: .default, handler: { [weak self] (action) in
             self?.openImagePicker(withCamera: true)
         }))
-        actionSheet.addAction(UIAlertAction(title: kOpenLibrary,
+        actionSheet.addAction(UIAlertAction(title: "OpenLibrary".localized,
             style: .default, handler: { [weak self] (action) in
             self?.openImagePicker(withCamera: false)
         }))
-        actionSheet.addAction(UIAlertAction(title: kDeletePhoto,
+        actionSheet.addAction(UIAlertAction(title: "DeletePhoto".localized,
             style: .destructive, handler: { [weak self] (action) in
             self?.avatarButton.setBackgroundImage(#imageLiteral(resourceName: "img_placeholder"),
                 for: .normal)
         }))
-        actionSheet.addAction(UIAlertAction(title: kCancel, style: .cancel,
+        actionSheet.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel,
             handler: nil))
         present(actionSheet, animated: true, completion: nil)
     }
@@ -157,7 +157,7 @@ class EditPitchViewController: UIViewController {
             if let error = error {
                 WindowManager.shared.showMessage(
                     message: error.localizedDescription,
-                    title: kCreatePitchError, completion: nil)
+                    title: "CreatePitchError".localized, completion: nil)
             } else {
                 _ = self?.navigationController?.popViewController(animated: true)
             }
@@ -173,7 +173,7 @@ class EditPitchViewController: UIViewController {
         PitchService.shared.delete(pitch: pitch) { [weak self] (error) in
             WindowManager.shared.hideProgressView()
             if let error = error {
-                WindowManager.shared.showMessage(message: kDeletePitchError,
+                WindowManager.shared.showMessage(message: "DeletePitchError".localized,
                     title: error.localizedDescription, completion: nil)
             } else {
                 _ = self?.navigationController?.popViewController(animated: true)
@@ -189,8 +189,9 @@ class EditPitchViewController: UIViewController {
         PitchService.shared.update(pitch: pitch,
             photo: self.avatarButton.backgroundImage(for: .normal)) {
             [weak self] (error) in
+            WindowManager.shared.hideProgressView()
             if let error = error {
-                WindowManager.shared.showMessage(message: kUpdatePitchError,
+                WindowManager.shared.showMessage(message: "UpdatePitchError".localized,
                     title: error.localizedDescription, completion: nil)
             } else {
                 _ = self?.navigationController?.popViewController(animated: true)
@@ -212,7 +213,7 @@ class EditPitchViewController: UIViewController {
                 imagePicker.allowsEditing = true
             } else {
                 WindowManager.shared.showMessage(
-                    message: kCameraNotFound,
+                    message: "CameraNotFound".localized,
                     title: nil, completion: nil)
                 return
             }
@@ -221,7 +222,7 @@ class EditPitchViewController: UIViewController {
                 imagePicker.sourceType = .photoLibrary
             } else {
                 WindowManager.shared.showMessage(
-                    message: kLibraryNotFound,
+                    message: "LibraryNotFound".localized,
                     title: nil, completion: nil)
                 return
             }
@@ -301,7 +302,7 @@ extension EditPitchViewController: PickerViewControllerDelegate {
                             print(openTime.time)
                             if time.time <= openTime.time {
                                 WindowManager.shared.showMessage(
-                                    message: kInvalidCloseTime,
+                                    message: "InvalidCloseTime".localized,
                                     title: nil, completion: nil)
                                 return
                             }
@@ -324,7 +325,7 @@ extension EditPitchViewController: UINavigationControllerDelegate,
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             avatarButton.setBackgroundImage(image, for: .normal)
         } else {
-            WindowManager.shared.showMessage(message: kPhotoError, title: nil,
+            WindowManager.shared.showMessage(message: "PhotoError".localized, title: nil,
                 completion: nil)
         }
         picker.presentingViewController?.dismiss(animated: true, completion: nil)

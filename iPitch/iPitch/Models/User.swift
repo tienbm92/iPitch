@@ -16,19 +16,19 @@ class User {
     init?(registerWithEmail: String?, password: String?, retypePassword: String?,
         error: (String) -> Void) {
         guard let email = registerWithEmail, !email.isEmpty else {
-            error("Email can't be empty!")
+            error("Email can't be empty!".localized)
             return nil
         }
         guard let password = password, !password.isEmpty else {
-            error("Password can't be empty!")
+            error("Password can't be empty!".localized)
             return nil
         }
         guard let retypePassword = retypePassword, !retypePassword.isEmpty else {
-            error("Re-type password can't be empty!")
+            error("Re-type password can't be empty!".localized)
             return nil
         }
         if retypePassword != password {
-            error("Re-type password and password must be same!")
+            error("Re-type password and password must be same!".localized)
             return nil
         }
         self.email = email
@@ -37,11 +37,11 @@ class User {
     
     init?(loginWithEmail: String?, password: String?, error: (String) -> Void) {
         guard let email = loginWithEmail, !email.isEmpty else {
-            error("Email can't be empty!")
+            error("Email can't be empty!".localized)
             return nil
         }
         guard let password = password, !password.isEmpty else {
-            error("Password can't be empty!")
+            error("Password can't be empty!".localized)
             return nil
         }
         self.email = email
