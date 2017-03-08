@@ -23,11 +23,11 @@ class PitchDetailViewController: UIViewController {
             return
         }
         if let pitchId = pitch.id {
-            WindowManager.shared.showProgressView()
-            OrderService.shared.getOrder(pitchId: pitchId) { [weak self] (orders) in
-                WindowManager.shared.hideProgressView()
-                self?.orders = orders
-            }
+//            WindowManager.shared.showProgressView()
+//            OrderService.shared.getOrder(pitchId: pitchId) { [weak self] (orders) in
+//                WindowManager.shared.hideProgressView()
+//                self?.orders = orders
+//            }
         }
     }
     

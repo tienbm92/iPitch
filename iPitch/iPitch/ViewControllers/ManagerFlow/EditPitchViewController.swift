@@ -45,13 +45,7 @@ class EditPitchViewController: UIViewController {
             guard let pitch = pitch else {
                 WindowManager.shared.showMessage(message: "PitchNotFound".localized,
                     title: nil, completion: { [weak self] (action) in
-                    if let navigationController = self?.navigationController {
-                        navigationController.popViewController(animated: true)
-                    } else if let presentingViewController =
-                        self?.presentingViewController {
-                        presentingViewController.dismiss(animated: true,
-                            completion: nil)
-                    }
+                    self?.back()
                 })
                 return
             }
@@ -134,13 +128,13 @@ class EditPitchViewController: UIViewController {
             withIdentifier: String(describing: BigMapViewController.self)) as?
             BigMapViewController,
             let position = mapView.selectedMarker?.position {
-            bigMapViewController.location =
-                CLLocation.init(latitude: position.latitude,
+            bigMapViewController.coordinate =
+                CLLocationCoordinate2D(latitude: position.latitude,
                 longitude: position.longitude)
             navigationController?.pushViewController(bigMapViewController,
                 animated: true)
             bigMapViewController.callback = { [weak self] (coordinate) in
-                self?.setNewMapMarker(withCoordinate: coordinate)
+                self?.mapView.refreshMarker(toCoordinate: coordinate)
             }
         }
     }
@@ -149,20 +143,26 @@ class EditPitchViewController: UIViewController {
         guard let pitch = pitch else {
             return
         }
-        WindowManager.shared.showProgressView()
-        PitchService.shared.create(pitch: pitch,
-            photo: self.avatarButton.backgroundImage(for: .normal)) {
-            [weak self] (error) in
-            WindowManager.shared.hideProgressView()
-            if let error = error {
-                WindowManager.shared.showMessage(
-                    message: error.localizedDescription,
-                    title: "CreatePitchError".localized, completion: nil)
-            } else {
-                _ = self?.navigationController?.popViewController(animated: true)
+        if let errorString = pitch.validate() {
+            WindowManager.shared.showMessage(message: errorString,
+                title: nil, completion:nil)
+        } else {
+            WindowManager.shared.showProgressView()
+            PitchService.shared.create(pitch: pitch,
+                photo: self.avatarButton.backgroundImage(for: .normal)) {
+                [weak self] (error) in
+                WindowManager.shared.hideProgressView()
+                if let error = error {
+                    WindowManager.shared.showMessage(
+                        message: error.localizedDescription,
+                        title: "CreatePitchError".localized,
+                        completion: nil)
+                } else {
+                    _ = self?.navigationController?.popViewController(
+                        animated: true)
+                }
             }
         }
-
     }
     
     @IBAction func onDeletePressed(_ sender: Any) {
@@ -176,7 +176,7 @@ class EditPitchViewController: UIViewController {
                 WindowManager.shared.showMessage(message: "DeletePitchError".localized,
                     title: error.localizedDescription, completion: nil)
             } else {
-                _ = self?.navigationController?.popViewController(animated: true)
+                self?.back()
             }
         }
     }
@@ -185,16 +185,21 @@ class EditPitchViewController: UIViewController {
         guard let pitch = pitch else {
             return
         }
-        WindowManager.shared.showProgressView()
-        PitchService.shared.update(pitch: pitch,
-            photo: self.avatarButton.backgroundImage(for: .normal)) {
-            [weak self] (error) in
-            WindowManager.shared.hideProgressView()
-            if let error = error {
-                WindowManager.shared.showMessage(message: "UpdatePitchError".localized,
-                    title: error.localizedDescription, completion: nil)
-            } else {
-                _ = self?.navigationController?.popViewController(animated: true)
+        if let errorString = pitch.validate() {
+            WindowManager.shared.showMessage(message: errorString,
+                title: nil, completion: nil)
+        } else {
+            WindowManager.shared.showProgressView()
+            PitchService.shared.update(pitch: pitch,
+                photo: self.avatarButton.backgroundImage(for: .normal)) {
+                [weak self] (error) in
+                if let error = error {
+                    WindowManager.shared.showMessage(
+                        message: "UpdatePitchError".localized,
+                        title: error.localizedDescription, completion: nil)
+                } else {
+                    self?.back()
+                }
             }
         }
     }
@@ -263,19 +268,7 @@ class EditPitchViewController: UIViewController {
             present(pickerViewController, animated: true, completion: nil)
         }
     }
-    
-    fileprivate func setNewMapMarker(
-        withCoordinate coordinate: CLLocationCoordinate2D) {
-        mapView.camera = GMSCameraPosition.camera(
-            withLatitude: coordinate.latitude, longitude: coordinate.longitude,
-            zoom: 15.0)
-        mapView.clear()
-        let marker = GMSMarker(position: coordinate)
-        marker.map = mapView
-        mapView.selectedMarker = marker
-        pitch?.latitude = coordinate.latitude
-        pitch?.longitude = coordinate.longitude
-    }
+
 }
 
 extension EditPitchViewController: PickerViewControllerDelegate {
@@ -291,22 +284,9 @@ extension EditPitchViewController: PickerViewControllerDelegate {
                 }
             case .time:
                 if let time = result as? Date {
-                    print(time.debugDescription)
                     if editingTextField === openTimeTextField {
                         pitch?.activeTimeFrom = time
                     } else if editingTextField === closeTimeTextField {
-                        if let openTime = pitch?.activeTimeFrom {
-                            print(time.debugDescription)
-                            print(openTime.debugDescription)
-                            print(time.time)
-                            print(openTime.time)
-                            if time.time <= openTime.time {
-                                WindowManager.shared.showMessage(
-                                    message: "InvalidCloseTime".localized,
-                                    title: nil, completion: nil)
-                                return
-                            }
-                        }
                         pitch?.activeTimeTo = time
                     }
                     editingTextField.text = time.toTimeString()
@@ -368,7 +348,10 @@ extension EditPitchViewController: CLLocationManagerDelegate {
                 location = CLLocation(latitude: pitch.latitude,
                     longitude: pitch.longitude)
             }
-            setNewMapMarker(withCoordinate: location.coordinate)
+            mapView.camera = GMSCameraPosition.camera(
+                withLatitude: location.coordinate.latitude,
+                longitude: location.coordinate.longitude, zoom: 15.0)
+            mapView.refreshMarker(toCoordinate: location.coordinate)
         }
     }
     

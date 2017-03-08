@@ -21,12 +21,18 @@
 		114417041E64206400B95D18 /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417031E64206400B95D18 /* District.swift */; };
 		1144170A1E6432BD00B95D18 /* PitchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417091E6432BD00B95D18 /* PitchService.swift */; };
 		1144170C1E64334700B95D18 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144170B1E64334700B95D18 /* OrderService.swift */; };
+		117E30AA1E6E6F0C0050335F /* OrderExtra.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 117E30A91E6E6F0C0050335F /* OrderExtra.storyboard */; };
+		117E30AC1E6E70BD0050335F /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117E30AB1E6E70BD0050335F /* OrderViewController.swift */; };
 		1187459E1E6922E600BC8664 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1187459D1E6922E600BC8664 /* PickerViewController.swift */; };
 		11A359CC1E665F4200ABEF43 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A359CA1E665F4200ABEF43 /* Order.swift */; };
 		11A359CD1E665F4200ABEF43 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A359CB1E665F4200ABEF43 /* Pitch.swift */; };
 		11A359CF1E66754200ABEF43 /* DistrictService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A359CE1E66754200ABEF43 /* DistrictService.swift */; };
 		11A359D11E66809500ABEF43 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A359D01E66809500ABEF43 /* StorageService.swift */; };
 		11C60E1C1E68FBB2001D8CC8 /* PitchExtra.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C60E1B1E68FBB2001D8CC8 /* PitchExtra.storyboard */; };
+		11DEF7B11E6FB122002D7E81 /* PitchInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DEF7B01E6FB122002D7E81 /* PitchInfoViewController.swift */; };
+		11DEF7B31E6FBADE002D7E81 /* GMSMapView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DEF7B21E6FBADE002D7E81 /* GMSMapView+Extension.swift */; };
+		11DEF7B51E6FDF79002D7E81 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DEF7B41E6FDF79002D7E81 /* UIViewController+Extension.swift */; };
+		11DEF7B71E6FE65B002D7E81 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DEF7B61E6FE65B002D7E81 /* UIStoryboard+Extension.swift */; };
 		11E3FCDF1E63B64400875339 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3FCDE1E63B64400875339 /* AppDelegate.swift */; };
 		11E3FCE61E63B64400875339 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11E3FCE51E63B64400875339 /* Assets.xcassets */; };
 		11E3FCFD1E63B8E700875339 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11E3FCF51E63B8E700875339 /* LaunchScreen.storyboard */; };
@@ -42,7 +48,6 @@
 		558390AC1E69026700EBBE21 /* PitchListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558390AB1E69026700EBBE21 /* PitchListTableViewController.swift */; };
 		558390AF1E6902CD00EBBE21 /* PitchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558390AD1E6902CD00EBBE21 /* PitchListCell.swift */; };
 		558390B01E6902CD00EBBE21 /* PitchListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 558390AE1E6902CD00EBBE21 /* PitchListCell.xib */; };
-		55961AC51E6FB63F0032DFD6 /* UIStoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55961AC41E6FB63F0032DFD6 /* UIStoryboardExtension.swift */; };
 		55961AD51E6FE2020032DFD6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55961AD01E6FE2020032DFD6 /* InfoPlist.strings */; };
 		55961AD91E6FE22F0032DFD6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55961AD71E6FE22F0032DFD6 /* Localizable.strings */; };
 		55A125C61E67BC0600456844 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A125C51E67BC0600456844 /* User.swift */; };
@@ -63,12 +68,18 @@
 		114417031E64206400B95D18 /* District.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = District.swift; sourceTree = "<group>"; };
 		114417091E6432BD00B95D18 /* PitchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchService.swift; sourceTree = "<group>"; };
 		1144170B1E64334700B95D18 /* OrderService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
+		117E30A91E6E6F0C0050335F /* OrderExtra.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderExtra.storyboard; sourceTree = "<group>"; };
+		117E30AB1E6E70BD0050335F /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		1187459D1E6922E600BC8664 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		11A359CA1E665F4200ABEF43 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		11A359CB1E665F4200ABEF43 /* Pitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
 		11A359CE1E66754200ABEF43 /* DistrictService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistrictService.swift; sourceTree = "<group>"; };
 		11A359D01E66809500ABEF43 /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		11C60E1B1E68FBB2001D8CC8 /* PitchExtra.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PitchExtra.storyboard; sourceTree = "<group>"; };
+		11DEF7B01E6FB122002D7E81 /* PitchInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchInfoViewController.swift; sourceTree = "<group>"; };
+		11DEF7B21E6FBADE002D7E81 /* GMSMapView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GMSMapView+Extension.swift"; sourceTree = "<group>"; };
+		11DEF7B41E6FDF79002D7E81 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		11DEF7B61E6FE65B002D7E81 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		11E3FCDB1E63B64400875339 /* iPitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11E3FCDE1E63B64400875339 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11E3FCE51E63B64400875339 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,7 +98,6 @@
 		558390AB1E69026700EBBE21 /* PitchListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchListTableViewController.swift; sourceTree = "<group>"; };
 		558390AD1E6902CD00EBBE21 /* PitchListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchListCell.swift; sourceTree = "<group>"; };
 		558390AE1E6902CD00EBBE21 /* PitchListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PitchListCell.xib; sourceTree = "<group>"; };
-		55961AC41E6FB63F0032DFD6 /* UIStoryboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtension.swift; sourceTree = "<group>"; };
 		55961AD01E6FE2020032DFD6 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		55961AD81E6FE22F0032DFD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		55961ADA1E6FE2370032DFD6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -161,7 +171,9 @@
 				08362CAE1E6D3DFD00FDB83F /* UIImageView+Extension.swift */,
 				1128A2551E6D2FB2000DDBC0 /* Date+Extension.swift */,
 				1128A2571E6D2FC0000DDBC0 /* String+Extension.swift */,
-				55961AC41E6FB63F0032DFD6 /* UIStoryboardExtension.swift */,
+				11DEF7B21E6FBADE002D7E81 /* GMSMapView+Extension.swift */,
+				11DEF7B41E6FDF79002D7E81 /* UIViewController+Extension.swift */,
+				11DEF7B61E6FE65B002D7E81 /* UIStoryboard+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -206,6 +218,7 @@
 				55FA97CB1E6578610052C22C /* MapIPitch.storyboard */,
 				11C60E1B1E68FBB2001D8CC8 /* PitchExtra.storyboard */,
 				550C11991E6E6CCC008F3C51 /* Manager.storyboard */,
+				117E30A91E6E6F0C0050335F /* OrderExtra.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -250,6 +263,8 @@
 				113207271E691AEE008110C3 /* EditPitchViewController.swift */,
 				1187459D1E6922E600BC8664 /* PickerViewController.swift */,
 				1128A25B1E6D4B8E000DDBC0 /* BigMapViewController.swift */,
+				11DEF7B01E6FB122002D7E81 /* PitchInfoViewController.swift */,
+				117E30AB1E6E70BD0050335F /* OrderViewController.swift */,
 			);
 			path = ManagerFlow;
 			sourceTree = "<group>";
@@ -341,6 +356,7 @@
 				11E3FCE61E63B64400875339 /* Assets.xcassets in Resources */,
 				11E3FCFD1E63B8E700875339 /* LaunchScreen.storyboard in Resources */,
 				55961AD91E6FE22F0032DFD6 /* Localizable.strings in Resources */,
+				117E30AA1E6E6F0C0050335F /* OrderExtra.storyboard in Resources */,
 				11C60E1C1E68FBB2001D8CC8 /* PitchExtra.storyboard in Resources */,
 				558390B01E6902CD00EBBE21 /* PitchListCell.xib in Resources */,
 				550C119A1E6E6CCC008F3C51 /* Manager.storyboard in Resources */,
@@ -406,19 +422,23 @@
 				1144170A1E6432BD00B95D18 /* PitchService.swift in Sources */,
 				08F5A8A61E6D5C9300878E22 /* MapIPitchControllers.swift in Sources */,
 				1128A2581E6D2FC0000DDBC0 /* String+Extension.swift in Sources */,
+				117E30AC1E6E70BD0050335F /* OrderViewController.swift in Sources */,
 				11E3FD071E63BA3B00875339 /* UIView+Extension.swift in Sources */,
-				55961AC51E6FB63F0032DFD6 /* UIStoryboardExtension.swift in Sources */,
 				113207281E691AEE008110C3 /* EditPitchViewController.swift in Sources */,
+				11DEF7B71E6FE65B002D7E81 /* UIStoryboard+Extension.swift in Sources */,
 				11E3FCDF1E63B64400875339 /* AppDelegate.swift in Sources */,
 				1128A2561E6D2FB2000DDBC0 /* Date+Extension.swift in Sources */,
 				5547D2271E6E5D6B00231BE2 /* PitchDetailViewController.swift in Sources */,
 				11A359CC1E665F4200ABEF43 /* Order.swift in Sources */,
 				0838B1E31E6555190053335D /* DirectionService.swift in Sources */,
 				55C58FCC1E69880C00736674 /* MainViewController.swift in Sources */,
+				11DEF7B51E6FDF79002D7E81 /* UIViewController+Extension.swift in Sources */,
 				558390AC1E69026700EBBE21 /* PitchListTableViewController.swift in Sources */,
 				558390AF1E6902CD00EBBE21 /* PitchListCell.swift in Sources */,
+				11DEF7B31E6FBADE002D7E81 /* GMSMapView+Extension.swift in Sources */,
 				55125A8D1E66D7E500A3D373 /* WindowManager.swift in Sources */,
 				114417041E64206400B95D18 /* District.swift in Sources */,
+				11DEF7B11E6FB122002D7E81 /* PitchInfoViewController.swift in Sources */,
 				11A359CD1E665F4200ABEF43 /* Pitch.swift in Sources */,
 				11A359D11E66809500ABEF43 /* StorageService.swift in Sources */,
 				08362CAF1E6D3DFD00FDB83F /* UIImageView+Extension.swift in Sources */,

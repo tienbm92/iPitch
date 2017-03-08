@@ -18,7 +18,7 @@ protocol PickerViewControllerDelegate {
         didCloseWith result: Any?)
 }
 
-class PickerViewController: UIViewController, UITableViewDelegate {
+class PickerViewController: UIViewController {
     
     @IBOutlet weak var datePickerView: UIDatePicker!
     @IBOutlet weak var pickerView: UIPickerView!
