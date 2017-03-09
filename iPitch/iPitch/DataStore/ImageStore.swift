@@ -12,7 +12,7 @@ class ImageStore {
     
     static let shared = ImageStore()
     let cache = NSCache<NSString, UIImage>()
-    
+
     func setImage(_ image: UIImage, forKey key: String) {
         cache.setObject(image, forKey: key as NSString)
     }

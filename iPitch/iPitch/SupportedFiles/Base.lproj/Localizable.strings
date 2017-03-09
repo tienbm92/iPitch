@@ -42,3 +42,11 @@
 "Password can't be empty!" = "Mật khẩu không thể để trống!";
 "Re-type password can't be empty!" = "Nhập lại mật khẩu không thể để trống!";
 "Re-type password and password must be same!" = "Nhập lại mật khẩu không trùng!";
+"InvalidName" = "Tên không hợp lệ";
+"InvalidPhone" = "Số điện thoại không hợp lệ";
+"InvalidTimeFrom" = "Thời gian bắt đầu không hợp lệ";
+"InvalidTimeTo" = "Thời gian kết thúc không hợp lệ";
+"InvalidTimeFromAndTo" = "Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc";
+"InvalidAddress" = "Địa chỉ không hợp lệ";
+"InvalidDistrict" = "Quận không hợp lệ";
+

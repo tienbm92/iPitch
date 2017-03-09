@@ -38,22 +38,22 @@ class StorageService {
         downloadRef.data(withMaxSize: Int64.max) { (data, error) in
             if let data = data {
                 if let photo = UIImage(data: data) {
-                    OperationQueue.main.addOperation {
+                    DispatchQueue.main.async {
                         completion(error, photo)
                     }
                 }
             } else {
-                OperationQueue.main.addOperation {
+                DispatchQueue.main.async {
                     completion(error, nil)
                 }
             }
         }
     }
     
-    func deleteImage(path: String, completion: @escaping (Error?) -> Void) {
+    func deleteImage(path: String, completion: ((Error?) -> Void)?) {
         let deleteRef = FIRStorage.storage().reference(forURL: path)
         deleteRef.delete { (error) in
-            completion(error)
+            completion?(error)
         }
     }
     

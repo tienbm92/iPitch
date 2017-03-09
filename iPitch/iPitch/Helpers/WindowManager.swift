@@ -75,7 +75,7 @@ class WindowManager: NSObject {
         let okAction = UIAlertAction(title: "OK".localized, style: .default) { (action) in
             self.alertWindow.isHidden = true
             if let completion = completion {
-                OperationQueue.main.addOperation {
+                DispatchQueue.main.async {
                     completion(action)
                 }
             }

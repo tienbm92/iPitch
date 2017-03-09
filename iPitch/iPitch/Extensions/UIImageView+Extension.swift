@@ -24,18 +24,21 @@ extension UIImageView {
     func fetchImage(for url: String?, id: String?,
         completion: ((ImageResult) -> Void)?) {
         guard let id = id else {
+            self.image = #imageLiteral(resourceName: "img_placeholder")
             completion?(.failure(ImageRequestError.errorGettingPitchId))
             return
         }
         let imageKey = "path\(id)"
         if let image = ImageStore.shared.image(forKey: imageKey) {
-            OperationQueue.main.addOperation {
+            self.image = image
+            DispatchQueue.main.async {
                 self.image = image
                 completion?(.success(image))
             }
             return
         }
         guard let photoPath = url else {
+            self.image = #imageLiteral(resourceName: "img_placeholder")
             completion?(.failure(ImageRequestError.errorGettingImageURL))
             return
         }
@@ -47,7 +50,7 @@ extension UIImageView {
                 if let photo = photo {
                     self?.image = photo
                     ImageStore.shared.setImage(photo, forKey: imageKey)
-                    OperationQueue.main.addOperation {
+                    DispatchQueue.main.async {
                         completion?(.success(photo))
                     }
                 }

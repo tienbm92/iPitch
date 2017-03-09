@@ -25,7 +25,7 @@ class DistrictService {
                     }
                 }
             }
-            OperationQueue.main.addOperation {
+            DispatchQueue.main.async {
                 completion(districts)
             }
         })
