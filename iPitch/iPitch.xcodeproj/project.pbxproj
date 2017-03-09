@@ -11,6 +11,16 @@
 		08362CAF1E6D3DFD00FDB83F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08362CAE1E6D3DFD00FDB83F /* UIImageView+Extension.swift */; };
 		0838B1E31E6555190053335D /* DirectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0838B1E21E6555190053335D /* DirectionService.swift */; };
 		086E09261E6FD39C00BBF924 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086E09251E6FD39C00BBF924 /* SearchViewController.swift */; };
+		0887881B1E764D270015049C /* DirectionOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0887881A1E764D270015049C /* DirectionOverview.swift */; };
+		0887881D1E764E4B0015049C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55961AD71E6FE22F0032DFD6 /* Localizable.strings */; };
+		0887881F1E7652830015049C /* GeocodedWaypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0887881E1E7652830015049C /* GeocodedWaypoint.swift */; };
+		088788211E7655ED0015049C /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088788201E7655ED0015049C /* Route.swift */; };
+		088788251E7657C60015049C /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088788241E7657C60015049C /* Leg.swift */; };
+		088788291E7658E30015049C /* GoogleMapValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088788281E7658E30015049C /* GoogleMapValue.swift */; };
+		0887882B1E76594A0015049C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0887882A1E76594A0015049C /* Location.swift */; };
+		088788311E76696A0015049C /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088788301E76696A0015049C /* Step.swift */; };
+		088788331E766EB60015049C /* Bounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088788321E766EB60015049C /* Bounds.swift */; };
+		088788351E766F3F0015049C /* Polyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088788341E766F3F0015049C /* Polyline.swift */; };
 		08DE10321E71471600F3CF3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08DE10311E71471600F3CF3C /* Assets.xcassets */; };
 		08F5A8A61E6D5C9300878E22 /* MapIPitchControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F5A8A41E6D5C9300878E22 /* MapIPitchControllers.swift */; };
 		08F5A8A71E6D5C9300878E22 /* StadiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F5A8A51E6D5C9300878E22 /* StadiumCell.swift */; };
@@ -64,6 +74,16 @@
 		08362CAE1E6D3DFD00FDB83F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		0838B1E21E6555190053335D /* DirectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionService.swift; sourceTree = "<group>"; };
 		086E09251E6FD39C00BBF924 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		0887881A1E764D270015049C /* DirectionOverview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionOverview.swift; sourceTree = "<group>"; };
+		0887881C1E764DEA0015049C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0887881E1E7652830015049C /* GeocodedWaypoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodedWaypoint.swift; sourceTree = "<group>"; };
+		088788201E7655ED0015049C /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		088788241E7657C60015049C /* Leg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
+		088788281E7658E30015049C /* GoogleMapValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapValue.swift; sourceTree = "<group>"; };
+		0887882A1E76594A0015049C /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		088788301E76696A0015049C /* Step.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		088788321E766EB60015049C /* Bounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bounds.swift; sourceTree = "<group>"; };
+		088788341E766F3F0015049C /* Polyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polyline.swift; sourceTree = "<group>"; };
 		08DE10311E71471600F3CF3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08F5A8A41E6D5C9300878E22 /* MapIPitchControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapIPitchControllers.swift; sourceTree = "<group>"; };
 		08F5A8A51E6D5C9300878E22 /* StadiumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StadiumCell.swift; sourceTree = "<group>"; };
@@ -139,6 +159,22 @@
 			path = DataStore;
 			sourceTree = "<group>";
 		};
+		088788191E764C450015049C /* DirectionModels */ = {
+			isa = PBXGroup;
+			children = (
+				0887881A1E764D270015049C /* DirectionOverview.swift */,
+				0887881E1E7652830015049C /* GeocodedWaypoint.swift */,
+				088788201E7655ED0015049C /* Route.swift */,
+				088788241E7657C60015049C /* Leg.swift */,
+				088788281E7658E30015049C /* GoogleMapValue.swift */,
+				0887882A1E76594A0015049C /* Location.swift */,
+				088788301E76696A0015049C /* Step.swift */,
+				088788321E766EB60015049C /* Bounds.swift */,
+				088788341E766F3F0015049C /* Polyline.swift */,
+			);
+			path = DirectionModels;
+			sourceTree = "<group>";
+		};
 		11E3FCD21E63B64400875339 = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +239,7 @@
 		11E3FCF21E63B8E700875339 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				088788191E764C450015049C /* DirectionModels */,
 				11A359CA1E665F4200ABEF43 /* Order.swift */,
 				11A359CB1E665F4200ABEF43 /* Pitch.swift */,
 				114417031E64206400B95D18 /* District.swift */,
@@ -456,21 +493,30 @@
 				117E30AC1E6E70BD0050335F /* OrderViewController.swift in Sources */,
 				11E3FD071E63BA3B00875339 /* UIView+Extension.swift in Sources */,
 				55361D601E7243FB0090E50B /* PitchListCell.swift in Sources */,
+				088788311E76696A0015049C /* Step.swift in Sources */,
+				088788331E766EB60015049C /* Bounds.swift in Sources */,
 				113207281E691AEE008110C3 /* EditPitchViewController.swift in Sources */,
 				11DEF7B71E6FE65B002D7E81 /* UIStoryboard+Extension.swift in Sources */,
 				11E3FCDF1E63B64400875339 /* AppDelegate.swift in Sources */,
 				1128A2561E6D2FB2000DDBC0 /* Date+Extension.swift in Sources */,
 				5547D2271E6E5D6B00231BE2 /* PitchDetailViewController.swift in Sources */,
 				55361D5A1E7243000090E50B /* PitchService.swift in Sources */,
+				0887881F1E7652830015049C /* GeocodedWaypoint.swift in Sources */,
 				11A359CC1E665F4200ABEF43 /* Order.swift in Sources */,
 				0838B1E31E6555190053335D /* DirectionService.swift in Sources */,
 				55C58FCC1E69880C00736674 /* MainViewController.swift in Sources */,
 				11DEF7B51E6FDF79002D7E81 /* UIViewController+Extension.swift in Sources */,
 				558390AC1E69026700EBBE21 /* PitchListTableViewController.swift in Sources */,
+				0887882B1E76594A0015049C /* Location.swift in Sources */,
 				114250221E728A3F00DCB6A2 /* NotificationRequest.swift in Sources */,
+				088788211E7655ED0015049C /* Route.swift in Sources */,
+				558390AF1E6902CD00EBBE21 /* PitchListCell.swift in Sources */,
 				11DEF7B31E6FBADE002D7E81 /* GMSMapView+Extension.swift in Sources */,
+				0887881B1E764D270015049C /* DirectionOverview.swift in Sources */,
+				088788291E7658E30015049C /* GoogleMapValue.swift in Sources */,
 				55125A8D1E66D7E500A3D373 /* WindowManager.swift in Sources */,
 				114417041E64206400B95D18 /* District.swift in Sources */,
+				088788251E7657C60015049C /* Leg.swift in Sources */,
 				11DEF7B11E6FB122002D7E81 /* PitchInfoViewController.swift in Sources */,
 				11A359CD1E665F4200ABEF43 /* Pitch.swift in Sources */,
 				114250241E728B4700DCB6A2 /* NotificationContent.swift in Sources */,
@@ -479,6 +525,7 @@
 				1128A25C1E6D4B8E000DDBC0 /* BigMapViewController.swift in Sources */,
 				1144170C1E64334700B95D18 /* OrderService.swift in Sources */,
 				555C42F71E69563500DB9183 /* LoginViewController.swift in Sources */,
+				088788351E766F3F0015049C /* Polyline.swift in Sources */,
 				555C42F81E69563A00DB9183 /* RegisterViewController.swift in Sources */,
 				11E3FD011E63B98E00875339 /* Constants.swift in Sources */,
 				1187459E1E6922E600BC8664 /* PickerViewController.swift in Sources */,
@@ -499,6 +546,7 @@
 			children = (
 				55961AD81E6FE22F0032DFD6 /* Base */,
 				55961ADA1E6FE2370032DFD6 /* vi */,
+				0887881C1E764DEA0015049C /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

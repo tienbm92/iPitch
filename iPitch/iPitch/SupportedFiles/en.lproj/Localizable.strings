@@ -31,7 +31,7 @@
 "PitchOrderHasBeenRejected" = "Sân %@ đã bị từ chối";
 "TotalDistance" = "Tổng quãng đường: ";
 "TotalDuration" = "Tổng thời gian: ";
-"TotalDistanceAndDuration" = "Tổng quãng đường và thời gian: ";
+"TotalDistanceAndDuration" = "Tổng quãng đường và thời gian";
 
 // MARK: - Error Strings
 
