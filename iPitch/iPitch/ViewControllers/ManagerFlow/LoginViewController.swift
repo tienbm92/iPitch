@@ -9,6 +9,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import FirebaseAuth
+import FirebaseInstanceID
 
 class LoginViewController: UIViewController {
     
@@ -29,14 +30,17 @@ class LoginViewController: UIViewController {
         }
         WindowManager.shared.showProgressView()
         FIRAuth.auth()?.signIn(withEmail: user.email, password: user.password) {
-            [weak self] (user, error) in
+            (user, error) in
             WindowManager.shared.hideProgressView()
-            guard user != nil else {
+            guard let user = user else {
                 if let error = error?.localizedDescription {
-                    WindowManager.shared.showMessage(message: error, title: nil, completion: nil)
+                    WindowManager.shared.showMessage(message: error, title: nil,
+                        completion: nil)
                 }
                 return
             }
+            PushNotificationService.shared.set(token: FIRInstanceID.instanceID().token(),
+                forUserId: user.uid, completion: nil)
             WindowManager.shared.directToPitchList()
         }
     }

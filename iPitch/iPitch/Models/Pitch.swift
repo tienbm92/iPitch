@@ -48,16 +48,16 @@ struct Pitch: Mappable {
     }
     
     func validate() -> String? {
-        guard name == "" else {
+        guard name != "" else {
             return "InvalidName".localized
         }
-        guard address == "" else {
+        guard address != "" else {
             return "InvalidAddress".localized
         }
-        guard phone == "" else {
+        guard phone != "" else {
             return "InvalidPhone".localized
         }
-        guard district == nil else {
+        guard district != nil else {
             return "InvalidDistrict".localized
         }
         guard let activeTimeFrom = activeTimeFrom else {

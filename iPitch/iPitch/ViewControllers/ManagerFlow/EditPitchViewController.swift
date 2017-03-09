@@ -18,18 +18,18 @@ enum EditPitchType {
 
 class EditPitchViewController: UIViewController {
 
+    @IBOutlet weak var closeTimeButton: UIButton!
+    @IBOutlet weak var openTimeButton: UIButton!
+    @IBOutlet weak var districtButton: UIButton!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var updateButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var districtTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
-    @IBOutlet weak var openTimeTextField: UITextField!
-    @IBOutlet weak var closeTimeTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
-    fileprivate var editingTextField: UITextField?
+    fileprivate var editingButton: UIButton?
     var pitch: Pitch?
     var type: EditPitchType = .create;
     private let locationManager = CLLocationManager()
@@ -50,10 +50,12 @@ class EditPitchViewController: UIViewController {
                 return
             }
             nameTextField.text = pitch.name
-            districtTextField.text = pitch.district?.name
+            districtButton.setTitle(pitch.district?.name, for: .normal)
             addressTextField.text = pitch.address
-            openTimeTextField.text = pitch.activeTimeFrom?.toTimeString()
-            closeTimeTextField.text = pitch.activeTimeTo?.toTimeString()
+            openTimeButton.setTitle(pitch.activeTimeFrom?.toTimeString(),
+                for: .normal)
+            closeTimeButton.setTitle(pitch.activeTimeTo?.toTimeString(),
+                for: .normal)
             if let photoPath = pitch.photoPath {
                 StorageService.shared.downloadImage(path: photoPath,
                     completion: { [weak self] (error, image) in
@@ -109,17 +111,17 @@ class EditPitchViewController: UIViewController {
     }
     
     @IBAction func onDistrictPressed(_ sender: UIButton) {
-        editingTextField = districtTextField
+        editingButton = sender
         openPicker(withType: .district)
     }
     
     @IBAction func onOpenTimePressed(_ sender: UIButton) {
-        editingTextField = openTimeTextField
+        editingButton = sender
         openPicker(withType: .time)
     }
     
     @IBAction func onCloseTimePressed(_ sender: UIButton) {
-        editingTextField = closeTimeTextField
+        editingButton = sender
         openPicker(withType: .time)
     }
     
@@ -275,21 +277,21 @@ extension EditPitchViewController: PickerViewControllerDelegate {
     
     func pickerViewController(_ pickerViewController: PickerViewController,
         didCloseWith result: Any?) {
-        if let editingTextField = editingTextField {
+        if let editingButton = editingButton {
             switch pickerViewController.type {
             case .district:
                 if let district = result as? District {
-                    editingTextField.text = district.name
+                    editingButton.setTitle(district.name, for: .normal)
                     pitch?.district = district
                 }
             case .time:
                 if let time = result as? Date {
-                    if editingTextField === openTimeTextField {
+                    if editingButton === openTimeButton {
                         pitch?.activeTimeFrom = time
-                    } else if editingTextField === closeTimeTextField {
+                    } else if editingButton === closeTimeButton {
                         pitch?.activeTimeTo = time
                     }
-                    editingTextField.text = time.toTimeString()
+                    editingButton.setTitle(time.toTimeString(), for: .normal)
                 }
             }
         }

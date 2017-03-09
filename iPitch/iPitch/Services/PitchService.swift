@@ -31,8 +31,8 @@ class PitchService: NSObject {
         }
     }
     
-    func getPitch(searchText: String?, radius: Double?, districtId: Int?, timeFrom: Date?,
-        timeTo: Date?, completion: @escaping ([Pitch]) -> Void) {
+    func getPitch(searchText: String?, radius: Double?, districtId: Int?,
+        timeFrom: Date?, timeTo: Date?, completion: @escaping ([Pitch]) -> Void) {
         getAllPitches { (pitches) in
             let pitchesFilter = pitches.filter({
                 [unowned self] (pitch) -> Bool in
@@ -91,7 +91,12 @@ class PitchService: NSObject {
     }
     
     func getPitchForManager(completion: @escaping ([Pitch]) -> Void) {
-        ref.queryEqual(toValue: FIRAuth.auth()?.currentUser?.uid).queryOrdered(
+        guard let userId = FIRAuth.auth()?.currentUser?.uid else {
+            completion([Pitch]())
+            return
+        }
+        ref.child(userId).queryEqual(
+            toValue: FIRAuth.auth()?.currentUser?.uid).queryOrdered(
             byChild: "ownerId").observeSingleEvent(of: .value, with: { 
             (snapshot) in
             var pitches = [Pitch]()
@@ -133,7 +138,7 @@ class PitchService: NSObject {
                     path: photoPath, completion: {
                     [weak self] (error, url) in
                     if let url = url {
-                        self?.ref.child("\(ref.key)/photoPath").setValue(
+                        self?.ref.child("\(userId)/\(ref.key)/photoPath").setValue(
                             url.absoluteString, withCompletionBlock: {
                             (error, ref) in
                             DispatchQueue.main.async {
@@ -175,7 +180,7 @@ class PitchService: NSObject {
                         path: photoPath, completion: {
                         [weak self] (error, url) in
                         if let url = url {
-                            self?.ref.child("\(ref.key)/photoPath").setValue(
+                            self?.ref.child("\(userId)/\(ref.key)/photoPath").setValue(
                                 url.absoluteString, withCompletionBlock: {
                                 (error, ref) in
                                 DispatchQueue.main.async {
@@ -221,17 +226,16 @@ class PitchService: NSObject {
     private func getAllPitches(completion: @escaping ([Pitch]) -> Void) {
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             var pitches = [Pitch]()
-            if let usersJSON = snapshot.value as? [String: Any] {
-                for (_, value) in usersJSON {
-                    guard let pitchesJSON = value as? [String: Any] else {
-                        continue
-                    }
-                    for (key, value) in pitchesJSON {
-                        if var pitchJSON = value as? [String: Any] {
-                            pitchJSON["id"] = key
-                            if let pitch = Pitch(JSON: pitchJSON) {
-                                pitches.append(pitch)
-                            }
+            for child in snapshot.children {
+                guard let pitchesByUser = child as? FIRDataSnapshot,
+                    let pitchesJSON = pitchesByUser.value as? [String: Any] else {
+                    continue
+                }
+                for (key, value) in pitchesJSON {
+                    if var pitchJSON = value as? [String: Any] {
+                        pitchJSON["id"] = key
+                        if let pitch = Pitch(JSON: pitchJSON) {
+                            pitches.append(pitch)
                         }
                     }
                 }

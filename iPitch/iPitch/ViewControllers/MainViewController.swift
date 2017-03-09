@@ -11,6 +11,10 @@ import Firebase
 
 class MainViewController: UIViewController {
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     @IBAction func userFlowButton(_ sender: UIButton) {
         WindowManager.shared.directToUserFlow()
     }

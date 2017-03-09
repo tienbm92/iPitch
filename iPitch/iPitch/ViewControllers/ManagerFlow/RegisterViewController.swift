@@ -9,6 +9,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import FirebaseAuth
+import FirebaseInstanceID
 
 class RegisterViewController: UIViewController {
     
@@ -39,9 +40,12 @@ class RegisterViewController: UIViewController {
                 WindowManager.shared.showMessage(message: error.localizedDescription,
                     title: nil, completion: nil)
             }
-            if user != nil {
+            guard let user = user else {
                 _ = self?.navigationController?.popViewController(animated: true)
+                return
             }
+            PushNotificationService.shared.set(token: FIRInstanceID.instanceID().token(),
+                forUserId: user.uid, completion: nil)
         }
     }
     

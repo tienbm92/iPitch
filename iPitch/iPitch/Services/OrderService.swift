@@ -8,12 +8,14 @@
 
 import Foundation
 import FirebaseDatabase
-
-enum OrderServiceError: Error {
-    case invalidOrder
-}
+import FirebaseInstanceID
 
 class OrderService: NSObject {
+    
+    enum OrderServiceError: Error {
+        case invalidOrder
+        case invalidPitch
+    }
     
     static let shared = OrderService()
     private let ref = FIRDatabase.database().reference().child("orders")
@@ -22,22 +24,21 @@ class OrderService: NSObject {
         completion: @escaping ([Order]) -> Void) {
         var getQuery: FIRDatabaseQuery
         if let lastOrder = lastOrder {
-            getQuery = ref.child("\(pitchId)/\(status)").queryStarting(
-                atValue: lastOrder.modifiedDate?.timeIntervalSince1970).queryOrdered(
-                byChild: "modifiedDate").queryLimited(toFirst: 5)
+            getQuery = ref.child("\(pitchId)/\(status)").queryEnding(
+                atValue: lastOrder.modifiedDate).queryOrdered(
+                byChild: "modifiedDate").queryLimited(toLast: 10)
         } else {
             getQuery = ref.child("\(pitchId)/\(status)").queryOrdered(
-                byChild: "modifiedDate").queryLimited(toFirst: 5)
+            byChild: "modifiedDate").queryLimited(toLast: 10)
         }
         getQuery.observeSingleEvent(of: .value, with: { (snapshot) in
             var orders = [Order]()
-            if let ordersJSON = snapshot.value as? [String: Any] {
-                for (key, value) in ordersJSON {
-                    if var orderJSON = value as? [String: Any] {
-                        orderJSON["id"] = key
-                        if let order = Order(JSON: orderJSON) {
-                            orders.append(order)
-                        }
+            for child in snapshot.children {
+                if let order = child as? FIRDataSnapshot,
+                var orderJSON = order.value as? [String: Any] {
+                    orderJSON["id"] = order.key
+                    if let order = Order(JSON: orderJSON) {
+                        orders.append(order)
                     }
                 }
             }
@@ -47,8 +48,9 @@ class OrderService: NSObject {
         })
     }
     
-    func create(order: Order, completion: @escaping (Error?) -> Void) {
+    func create(order: Order, pitch: Pitch, completion: @escaping (Error?) -> Void) {
         var order = order
+        order.tokenId = FIRInstanceID.instanceID().token()
         order.modifiedDate = Date()
         if let pitchId = order.pitchId {
             var json = order.toJSON()
@@ -57,9 +59,17 @@ class OrderService: NSObject {
             }
             ref.child("\(pitchId)/pending").childByAutoId().setValue(json) {
                 (error, ref) in
-                DispatchQueue.main.async {
-                    completion(error)
+                guard let pitchOwnerId = pitch.ownerId else {
+                    completion(OrderServiceError.invalidPitch)
+                    return
                 }
+                PushNotificationService.shared.pushNotification(
+                    message: String(format: "PitchHasBeenRequested".localized, pitch.name),
+                    toUserId: pitchOwnerId, completion: { (error) in
+                    DispatchQueue.main.async {
+                        completion(error)
+                    }
+                })
             }
         } else {
             DispatchQueue.main.async {
@@ -68,9 +78,8 @@ class OrderService: NSObject {
         }
     }
     
-    func accept(order: Order, completion: @escaping (Error?) -> Void) {
+    func accept(order: Order, pitch: Pitch, completion: @escaping (Error?) -> Void) {
         var order = order
-        order.modifiedDate = Date()
         if let orderId = order.id,
             let pitchId = order.pitchId {
             order.status = .accept
@@ -82,9 +91,17 @@ class OrderService: NSObject {
                 withCompletionBlock: { [unowned self] (error, ref) in
                 self.ref.child("\(pitchId)/pending/\(orderId)").removeValue(
                     completionBlock: { (error, ref) in
-                    DispatchQueue.main.async {
-                        completion(error)
+                    guard let tokenId = order.tokenId else {
+                        completion(OrderServiceError.invalidOrder)
+                        return
                     }
+                    PushNotificationService.shared.pushNotification(
+                        message: String(format: "PitchOrderHasBeenConfirmed".localized, pitch.name),
+                        toUserId: tokenId, completion: { (error) in
+                        DispatchQueue.main.async {
+                            completion(error)
+                        }
+                    })
                 })
             })
         } else {
@@ -94,9 +111,8 @@ class OrderService: NSObject {
         }
     }
     
-    func reject(order: inout Order, completion: @escaping (Error?) -> Void) {
+    func reject(order: Order, pitch: Pitch, completion: @escaping (Error?) -> Void) {
         var order = order
-        order.modifiedDate = Date()
         if let orderId = order.id,
             let pitchId = order.pitchId {
             let oldStatus = order.status
@@ -109,9 +125,17 @@ class OrderService: NSObject {
                 withCompletionBlock: { [unowned self] (error, ref) in
                 self.ref.child("\(pitchId)/\(oldStatus)/\(orderId)").removeValue(
                     completionBlock: { (error, ref) in
-                    DispatchQueue.main.async {
-                        completion(error)
+                    guard let tokenId = order.tokenId else {
+                        completion(OrderServiceError.invalidOrder)
+                        return
                     }
+                    PushNotificationService.shared.pushNotification(
+                        message: String(format: "PitchOrderHasBeenRejected".localized, pitch.name),
+                        toUserId: tokenId, completion: { (error) in
+                        DispatchQueue.main.async {
+                            completion(error)
+                        }
+                    })
                 })
             })
         } else {
