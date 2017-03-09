@@ -24,6 +24,8 @@
 "Editing" = "Chỉnh sửa";
 "Loading" = "Đang tải...";
 "Signout" = "Đăng xuất";
+"Detail" = "Chi tiết";
+"Direction" = "Dẫn đường";
 
 // MARK: - Error Strings
 
@@ -49,4 +51,7 @@
 "InvalidTimeFromAndTo" = "Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc";
 "InvalidAddress" = "Địa chỉ không hợp lệ";
 "InvalidDistrict" = "Quận không hợp lệ";
-
+"DirectionOrDetail" = "Dẫn đường hoặc chi tiết sân";
+"TitleDirection" = "Bạn đang muốn làm gì";
+"TitleFilter" = "Thất Bại";
+"FilterFalse" = "Không tìm thấy kết quả!";

@@ -116,7 +116,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.083573915377540414" green="0.36085249352331605" blue="0.11933209957194821" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.084986992180347443" green="0.36110067367553711" blue="0.11848822981119156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="2V3-nb-exN" firstAttribute="trailing" secondItem="uC0-vX-AIJ" secondAttribute="trailing" id="4FX-cL-ZZK"/>
