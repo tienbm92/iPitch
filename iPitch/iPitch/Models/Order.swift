@@ -33,6 +33,7 @@ struct Order: Mappable {
     }
     
     mutating func mapping(map: Map) {
+        id           <- map["id"]
         name         <- map["name"]
         phone        <- map["phone"]
         pitchId      <- map["pitchId"]

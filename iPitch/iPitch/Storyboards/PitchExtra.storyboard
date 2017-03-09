@@ -419,17 +419,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uYP-4x-64c">
-                                <rect key="frame" x="67" y="231.66666666666663" width="280" height="273"/>
+                                <rect key="frame" x="67" y="232" width="280" height="273"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u0g-xm-2vy">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="187.00000000000003"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="187"/>
                                         <connections>
                                             <outlet property="dataSource" destination="18M-kd-QTf" id="ykd-Q0-GkW"/>
                                             <outlet property="delegate" destination="18M-kd-QTf" id="xtz-Zk-mDr"/>
                                         </connections>
                                     </pickerView>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Mac-z2-3b8">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="187.00000000000003"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="187"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Mac-z2-3b8" secondAttribute="height" multiplier="3:2" id="X6a-xy-1x9"/>
                                             <constraint firstAttribute="width" constant="280" id="YuI-TJ-J7E"/>
@@ -445,7 +445,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20V-ra-7TU">
-                                        <rect key="frame" x="30" y="207.00000000000003" width="220" height="46"/>
+                                        <rect key="frame" x="30" y="207" width="220" height="46"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="Icx-7C-Axd"/>
@@ -485,7 +485,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTH-YK-d5p">
-                                <rect key="frame" x="332" y="216.66666666666666" width="30" height="30"/>
+                                <rect key="frame" x="332" y="217" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="cat-58-E1F"/>
                                     <constraint firstAttribute="width" secondItem="LTH-YK-d5p" secondAttribute="height" multiplier="1:1" id="jCH-kd-sPd"/>

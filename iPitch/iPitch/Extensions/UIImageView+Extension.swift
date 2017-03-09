@@ -45,6 +45,7 @@ extension UIImageView {
         StorageService.shared.downloadImage(path: photoPath)
         { [weak self] (error, photo) in
             if error != nil {
+                print(error?.localizedDescription)
                 completion?(.failure(ImageRequestError.errorCreatingImage))
             } else {
                 if let photo = photo {

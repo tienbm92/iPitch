@@ -9,10 +9,16 @@
 import UIKit
 import GoogleMaps
 
+enum modeReload: Int {
+    case reloadFilter
+    case reloadMap
+}
+
 class MapIPitchControllers: UIViewController {
     
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var listStadium: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     let locationManager = CLLocationManager()
     let directionService = DirectionService()
     let dictPitch = [String:Any]()
@@ -22,6 +28,7 @@ class MapIPitchControllers: UIViewController {
     var destinationLatitude: Double = 0
     var destinationLongtitude: Double = 0
     var pitches = [Pitch]()
+    var filterPitch = [Pitch]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,31 +80,34 @@ class MapIPitchControllers: UIViewController {
             let path = GMSPath(fromEncodedPath: route) {
             let routePolyline = GMSPolyline(path: path)
             routePolyline.strokeColor = UIColor.red
-            routePolyline.strokeWidth = 3.0
+            routePolyline.strokeWidth = 2.0
             routePolyline.map = mapView
         }
     }
     
     fileprivate func getData() -> Void {
         WindowManager.shared.showProgressView()
-        PitchService.shared.getPitch(radius: nil,
+        PitchService.shared.getPitch(searchText: nil, radius: nil,
         districtId: nil, timeFrom: nil, timeTo: nil) { [weak self] (pitches) in
-            WindowManager.shared.hideProgressView()
-            self?.pitches = pitches
-            self?.listStadium.reloadData()
-            // show stadium
-            for pitch in pitches {
-                let location = CLLocationCoordinate2D(latitude:
-                    pitch.latitude, longitude: pitch.longitude)
-                let markerStadium = GMSMarker(position: location)
-                markerStadium.title = pitch.name
-                markerStadium.snippet = pitch.address
-                markerStadium.map = self?.mapView
+        WindowManager.shared.hideProgressView()
+        self?.pitches = pitches
+        self?.listStadium.reloadData()
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "ic_stadium"))
+        imageView.bounds.size = CGSize(width: 30, height: 30)
+        // show stadium
+        for pitch in pitches {
+            let location = CLLocationCoordinate2D(latitude:
+                pitch.latitude, longitude: pitch.longitude)
+            let markerStadium = GMSMarker(position: location)
+            markerStadium.title = pitch.name
+            markerStadium.snippet = pitch.address
+            markerStadium.map = self?.mapView
+            markerStadium.iconView = imageView
             }
         }
     }
     
-    fileprivate func reloadMapView() {
+    fileprivate func reloadMapView(mode: modeReload) {
         mapView.clear()
         // show current location
         let currentLocation = CLLocationCoordinate2D(
@@ -105,18 +115,24 @@ class MapIPitchControllers: UIViewController {
         let camera = GMSCameraPosition.camera(withTarget:
             currentLocation, zoom: zoomLevel)
         mapView.animate(to: camera)
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "ic_stadium"))
+        imageView.bounds.size = CGSize(width: 30, height: 30)
         let marker = GMSMarker(position: currentLocation)
         marker.map = self.mapView
-        // show stadium 
-        for pitch in pitches {
+        // show stadium
+        let array = (mode == .reloadFilter && filterPitch.count > 0) ?
+            filterPitch : pitches
+        for pitch in array {
             let location = CLLocationCoordinate2D(latitude:
                 pitch.latitude, longitude: pitch.longitude)
             let markerStadium = GMSMarker(position: location)
             markerStadium.title = pitch.name
             markerStadium.snippet = pitch.address
+            markerStadium.iconView = imageView
             markerStadium.map = self.mapView
         }
     }
+
     
     fileprivate func showAlertMapView(message: String, title: String,
         completion: ((UIAlertAction) -> Void)?) {
@@ -124,16 +140,18 @@ class MapIPitchControllers: UIViewController {
             WindowManager.shared.getCurrentWindowLevel() + 0.1
         let alertController = UIAlertController(
             title: title, message: message, preferredStyle: .alert)
-        let diretionAction = UIAlertAction(title: "Direction", style: .default)
+        let diretionAction = UIAlertAction(title: "Direction".localized,
+                                           style: .default)
             { [weak self] (action) in
             WindowManager.shared.alertWindow.isHidden = true
             if let completion = completion {
                 completion(action)
             }
-            self?.reloadMapView()
+            self?.reloadMapView(mode: .reloadMap)
             self?.directionUserStadium()
         }
-        let detailAction = UIAlertAction(title: "Deatil", style: .default)
+        let detailAction = UIAlertAction(title: "Detail".localized,
+                                         style: .default)
             { [weak self] (action) in
             WindowManager.shared.alertWindow.isHidden = true
             if let completion = completion {
@@ -150,10 +168,20 @@ class MapIPitchControllers: UIViewController {
         }
     }
     
+    @IBAction func actionOptionSearch(_ sender: UIButton) {
+//        let mapPitchStoryboard = UIStoryboard(name: "MapIPitch", bundle: nil)
+        guard let searchViewController =
+            storyboard?.instantiateViewController(
+            withIdentifier: String(describing: SearchViewController.self))
+            as? SearchViewController else {
+            return
+        }
+        searchViewController.delegate = self
+        present(searchViewController, animated: true, completion: nil)
+    }
 }
 
-extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate,
-    UITableViewDataSource, UITableViewDelegate {
+extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate {
     
     //Handle incoming location events.
     func locationManager(_ manager: CLLocationManager,
@@ -213,21 +241,32 @@ extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate,
         self.destinationLatitude = markerLatitude
         self.destinationLongtitude = markerLongitude
         print("tab marker\(markerLatitude), \(markerLongitude)")
-        self.showAlertMapView(message: "Direction or Detail Stadium",
-            title: "what do you want?", completion: nil)
+        self.showAlertMapView(message: "DirectionOrDetail".localized,
+            title: "TitleDirection".localized, completion: nil)
     }
+   
+}
+
+extension MapIPitchControllers: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
-        numberOfRowsInSection section: Int) -> Int {
+                   numberOfRowsInSection section: Int) -> Int {
+        if filterPitch.count > 0 {
+            return filterPitch.count
+        }
         return pitches.count
     }
     
     func tableView(_ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.listStadium.dequeueReusableCell(
             withIdentifier: "stadiumCell", for: indexPath)
             as? StadiumCell  else {
-            return UITableViewCell()
+                return UITableViewCell()
+        }
+        if filterPitch.count > 0 {
+            cell.pitch = filterPitch[indexPath.row]
+            return cell
         }
         cell.pitch = pitches[indexPath.row]
         return cell
@@ -235,7 +274,65 @@ extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate,
     
     func tableView(_ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath) {
-        
+        //TODO
     }
-   
+    
 }
+
+extension MapIPitchControllers: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+
+}
+
+extension MapIPitchControllers: searchViewControllerDelegate {
+    
+    func searchViewController(_ searchViewController: SearchViewController,
+        didCloseWith result: Any?) {
+        var radius: Double?
+        var timeFrom: Date?
+        var timeTo: Date?
+        var districtID: Int?
+        var searchText: String?
+        guard let resultDict = result as? [String:Any] else {
+            return
+        }
+        if let radiusDouble = resultDict["radius"] as? Double {
+            radius = radiusDouble
+        }
+        if let timeFromDict = resultDict["timeFrom"] as? Date {
+            timeFrom = timeFromDict
+        }
+        if let timeToDict = resultDict["timeTo"] as? Date {
+            timeTo = timeToDict
+        }
+        if let districtIDDict = resultDict["districtID"] as? Int {
+            districtID = districtIDDict
+        }
+        if let searchTextDict = self.searchBar.text {
+            searchText = searchTextDict
+        }
+        PitchService.shared.getPitch(searchText: searchText, radius: radius, districtId: districtID,
+            timeFrom: timeFrom, timeTo: timeTo) { [weak self] (pitches) in
+            self?.filterPitch = pitches
+            if let filterCount = self?.filterPitch.count, filterCount > 0 {
+                self?.reloadMapView(mode: .reloadFilter)
+                self?.listStadium.reloadData()
+            } else {
+                WindowManager.shared.showMessage(
+                    message: "FilterFalse".localized,
+                    title: "TitleFilter".localized, completion: nil)
+            }
+        }
+    }
+    
+}
+

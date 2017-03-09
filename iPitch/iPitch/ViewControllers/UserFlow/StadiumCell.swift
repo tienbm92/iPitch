@@ -26,7 +26,7 @@ class StadiumCell: UITableViewCell {
             }
             nameStadium.text = pitch.name
             addressStadium.text = pitch.address
-            imageStadium.image = #imageLiteral(resourceName: "ic_stadium")
+            imageStadium.image = #imageLiteral(resourceName: "img_placeholder")
             imageStadium.fetchImage(
                 for: pitch.photoPath, id: pitch.id, completion: nil)
         }

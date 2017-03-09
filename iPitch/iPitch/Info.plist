@@ -32,7 +32,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>LocationUsageDescription</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>NSPhotoLibraryUsageDescription</string>
+	<string>PhotoLibraryUsageDescription</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

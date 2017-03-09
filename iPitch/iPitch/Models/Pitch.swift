@@ -34,6 +34,7 @@ struct Pitch: Mappable {
     }
     
     mutating func mapping(map: Map) {
+        id             <- map["id"]
         name           <- map["name"]
         address        <- map["address"]
         phone          <- map["phone"]
