@@ -51,7 +51,6 @@ class MapIPitchControllers: UIViewController {
         listStadium.delegate = self
         // loading data
         getData()
-        segmentedChangeView.titleForSegment(at: 0)
     }
     
     @IBAction func changeViewType(_ sender: UISegmentedControl) {
@@ -88,6 +87,8 @@ class MapIPitchControllers: UIViewController {
                             completion: { (action) in
                             self?.directionService.totalDistanceInMeters = 0
                             self?.directionService.totalDurationInSeconds = 0
+                            self?.directionService.selectLegs.removeAll()
+                            self?.directionService.selectSteps.removeAll()
                         })
                     }
                 }
@@ -106,12 +107,13 @@ class MapIPitchControllers: UIViewController {
                 let path = GMSPath(fromEncodedPath: step.polyline.points)
                 let routePolyline = GMSPolyline(path: path)
                 routePolyline.strokeColor = UIColor.red
-                routePolyline.strokeWidth = 2.0
+                routePolyline.strokeWidth = 3.0
                 routePolyline.map = mapView
             } else {
                 return
             }
         }
+        
     }
     
     fileprivate func getData() -> Void {
@@ -231,7 +233,7 @@ class MapIPitchControllers: UIViewController {
  
 }
 
-extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate {
+extension MapIPitchControllers: CLLocationManagerDelegate {
     
     //Handle incoming location events.
     func locationManager(_ manager: CLLocationManager,
@@ -268,6 +270,10 @@ extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate {
         locationManager.stopUpdatingLocation()
         print("Error: \(error)")
     }
+   
+}
+
+extension MapIPitchControllers: GMSMapViewDelegate {
     
     // Event tab marker
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
@@ -283,9 +289,9 @@ extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate {
             }
         }
         self.showAlertMapView(message: "DirectionOrDetail".localized,
-            title: "TitleDirection".localized, completion: nil)
+                              title: "TitleDirection".localized, completion: nil)
     }
-   
+    
 }
 
 extension MapIPitchControllers: UITableViewDataSource, UITableViewDelegate {
