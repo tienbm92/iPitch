@@ -40,16 +40,16 @@ class OrderViewController: UIViewController {
                 title: nil, completion: nil)
         } else {
             WindowManager.shared.showProgressView()
-            OrderService.shared.create(order: order, completion: {
-                [weak self] (error) in
-                if let error = error {
-                    WindowManager.shared.showMessage(
-                        message: error.localizedDescription,
-                        title: nil, completion: nil)
-                } else {
-                    self?.back()
-                }
-            })
+//            OrderService.shared.create(order: order, completion: {
+//                [weak self] (error) in
+//                if let error = error {
+//                    WindowManager.shared.showMessage(
+//                        message: error.localizedDescription,
+//                        title: nil, completion: nil)
+//                } else {
+//                    self?.back()
+//                }
+//            })
         }
     }
 

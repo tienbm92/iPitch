@@ -18,7 +18,8 @@ class MapIPitchControllers: UIViewController {
     
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var listStadium: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UITextField!
+    @IBOutlet weak var segmentedChangeView: UISegmentedControl!
     let locationManager = CLLocationManager()
     let directionService = DirectionService()
     let dictPitch = [String:Any]()
@@ -29,12 +30,13 @@ class MapIPitchControllers: UIViewController {
     var destinationLongtitude: Double = 0
     var pitches = [Pitch]()
     var filterPitch = [Pitch]()
+    var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Initialize the location manager.
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
         locationManager.distanceFilter = 50
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
@@ -48,11 +50,20 @@ class MapIPitchControllers: UIViewController {
         listStadium.delegate = self
         // loading data
         getData()
+        segmentedChangeView.titleForSegment(at: 0)
     }
     
-    @IBAction func changeViewType(_ sender: Any) {
-        listStadium.isHidden = mapView.isHidden
-        mapView.isHidden = !mapView.isHidden
+    @IBAction func changeViewType(_ sender: UISegmentedControl) {
+        switch segmentedChangeView.selectedSegmentIndex {
+        case 0:
+            listStadium.isHidden = true
+            mapView.isHidden = false
+        case 1:
+            listStadium.isHidden = false
+            mapView.isHidden = true
+        default:
+            break
+        }
     }
     
     // direction user - stadium
@@ -130,9 +141,9 @@ class MapIPitchControllers: UIViewController {
             markerStadium.snippet = pitch.address
             markerStadium.iconView = imageView
             markerStadium.map = self.mapView
+            markerStadium.index(ofAccessibilityElement: pitch)
         }
     }
-
     
     fileprivate func showAlertMapView(message: String, title: String,
         completion: ((UIAlertAction) -> Void)?) {
@@ -157,7 +168,7 @@ class MapIPitchControllers: UIViewController {
             if let completion = completion {
                 completion(action)
             }
-            // TODO
+            self?.pushPitchInfoViewController()
         }
         alertController.addAction(diretionAction)
         alertController.addAction(detailAction)
@@ -169,7 +180,6 @@ class MapIPitchControllers: UIViewController {
     }
     
     @IBAction func actionOptionSearch(_ sender: UIButton) {
-//        let mapPitchStoryboard = UIStoryboard(name: "MapIPitch", bundle: nil)
         guard let searchViewController =
             storyboard?.instantiateViewController(
             withIdentifier: String(describing: SearchViewController.self))
@@ -179,6 +189,27 @@ class MapIPitchControllers: UIViewController {
         searchViewController.delegate = self
         present(searchViewController, animated: true, completion: nil)
     }
+    
+    @IBAction func buttonReload(_ sender: UIBarButtonItem) {
+        reloadMapView(mode: .reloadMap)
+        filterPitch.removeAll()
+        listStadium.reloadData()
+    }
+    
+    fileprivate func pushPitchInfoViewController() {
+        let orderExtraStoryboard = UIStoryboard(name: "OrderExtra", bundle: nil)
+        guard let pitchInfoViewController =
+            orderExtraStoryboard.instantiateViewController(withIdentifier:
+            String(describing: PitchInfoViewController.self))
+            as? PitchInfoViewController else {
+            return
+        }
+        let array = (filterPitch.count > 0) ? filterPitch : pitches
+        pitchInfoViewController.pitch = array[index]
+        self.navigationController?.pushViewController(pitchInfoViewController,
+                                                      animated: true)
+    }
+ 
 }
 
 extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate {
@@ -186,8 +217,8 @@ extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate {
     //Handle incoming location events.
     func locationManager(_ manager: CLLocationManager,
         didUpdateLocations locations: [CLLocation]) {
+        manager.stopUpdatingLocation()
         if let location: CLLocation = locations.last {
-            print("Location: \(location)")
             let locationLatitude = location.coordinate.latitude
             let locationLongtitude = location.coordinate.longitude
             self.originLatitude = locationLatitude
@@ -240,7 +271,13 @@ extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate {
         let markerLongitude = marker.position.longitude
         self.destinationLatitude = markerLatitude
         self.destinationLongtitude = markerLongitude
-        print("tab marker\(markerLatitude), \(markerLongitude)")
+        let array = (self.filterPitch.count > 0)
+            ? self.filterPitch : self.pitches
+        for i in 0..<array.count {
+            if markerLatitude == array[i].latitude {
+                self.index = i
+            }
+        }
         self.showAlertMapView(message: "DirectionOrDetail".localized,
             title: "TitleDirection".localized, completion: nil)
     }
@@ -274,23 +311,10 @@ extension MapIPitchControllers: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath) {
-        //TODO
+        self.index = indexPath.row
+        self.pushPitchInfoViewController()
     }
     
-}
-
-extension MapIPitchControllers: UISearchBarDelegate {
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.searchBar.showsCancelButton = true
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
-    }
-
 }
 
 extension MapIPitchControllers: searchViewControllerDelegate {
@@ -317,11 +341,11 @@ extension MapIPitchControllers: searchViewControllerDelegate {
         if let districtIDDict = resultDict["districtID"] as? Int {
             districtID = districtIDDict
         }
-        if let searchTextDict = self.searchBar.text {
-            searchText = searchTextDict
-        }
-        PitchService.shared.getPitch(searchText: searchText, radius: radius, districtId: districtID,
-            timeFrom: timeFrom, timeTo: timeTo) { [weak self] (pitches) in
+        searchText = (self.searchBar.text == "") ? nil : self.searchBar.text
+        PitchService.shared.getPitch(searchText: searchText,
+                                     radius: radius, districtId: districtID,
+                                     timeFrom: timeFrom, timeTo: timeTo)
+        { [weak self] (pitches) in
             self?.filterPitch = pitches
             if let filterCount = self?.filterPitch.count, filterCount > 0 {
                 self?.reloadMapView(mode: .reloadFilter)

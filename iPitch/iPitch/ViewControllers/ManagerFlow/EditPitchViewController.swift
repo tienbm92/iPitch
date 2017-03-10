@@ -304,7 +304,7 @@ extension EditPitchViewController: UINavigationControllerDelegate,
     
     func imagePickerController(_ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             avatarButton.setBackgroundImage(image, for: .normal)
         } else {
             WindowManager.shared.showMessage(message: "PhotoError".localized, title: nil,
