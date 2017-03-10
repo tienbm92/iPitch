@@ -11,7 +11,6 @@
 		08362CAF1E6D3DFD00FDB83F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08362CAE1E6D3DFD00FDB83F /* UIImageView+Extension.swift */; };
 		0838B1E31E6555190053335D /* DirectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0838B1E21E6555190053335D /* DirectionService.swift */; };
 		086E09261E6FD39C00BBF924 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086E09251E6FD39C00BBF924 /* SearchViewController.swift */; };
-		08DE10301E7146CD00F3CF3C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55961AD71E6FE22F0032DFD6 /* Localizable.strings */; };
 		08DE10321E71471600F3CF3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08DE10311E71471600F3CF3C /* Assets.xcassets */; };
 		08F5A8A61E6D5C9300878E22 /* MapIPitchControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F5A8A41E6D5C9300878E22 /* MapIPitchControllers.swift */; };
 		08F5A8A71E6D5C9300878E22 /* StadiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F5A8A51E6D5C9300878E22 /* StadiumCell.swift */; };
@@ -21,6 +20,9 @@
 		1128A2581E6D2FC0000DDBC0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128A2571E6D2FC0000DDBC0 /* String+Extension.swift */; };
 		1128A25C1E6D4B8E000DDBC0 /* BigMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128A25B1E6D4B8E000DDBC0 /* BigMapViewController.swift */; };
 		113207281E691AEE008110C3 /* EditPitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113207271E691AEE008110C3 /* EditPitchViewController.swift */; };
+		1142501E1E72866500DCB6A2 /* PushNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1142501D1E72866500DCB6A2 /* PushNotificationService.swift */; };
+		114250221E728A3F00DCB6A2 /* NotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114250211E728A3F00DCB6A2 /* NotificationRequest.swift */; };
+		114250241E728B4700DCB6A2 /* NotificationContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114250231E728B4700DCB6A2 /* NotificationContent.swift */; };
 		114417041E64206400B95D18 /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417031E64206400B95D18 /* District.swift */; };
 		1144170A1E6432BD00B95D18 /* PitchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417091E6432BD00B95D18 /* PitchService.swift */; };
 		1144170C1E64334700B95D18 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144170B1E64334700B95D18 /* OrderService.swift */; };
@@ -67,6 +69,10 @@
 		1128A2571E6D2FC0000DDBC0 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1128A25B1E6D4B8E000DDBC0 /* BigMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigMapViewController.swift; sourceTree = "<group>"; };
 		113207271E691AEE008110C3 /* EditPitchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPitchViewController.swift; sourceTree = "<group>"; };
+		1142501A1E72710C00DCB6A2 /* iPitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPitch.entitlements; sourceTree = "<group>"; };
+		1142501D1E72866500DCB6A2 /* PushNotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationService.swift; sourceTree = "<group>"; };
+		114250211E728A3F00DCB6A2 /* NotificationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationRequest.swift; sourceTree = "<group>"; };
+		114250231E728B4700DCB6A2 /* NotificationContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationContent.swift; sourceTree = "<group>"; };
 		114416FF1E640AFB00B95D18 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		114417031E64206400B95D18 /* District.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = District.swift; sourceTree = "<group>"; };
 		114417091E6432BD00B95D18 /* PitchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchService.swift; sourceTree = "<group>"; };
@@ -150,6 +156,7 @@
 		11E3FCDD1E63B64400875339 /* iPitch */ = {
 			isa = PBXGroup;
 			children = (
+				1142501A1E72710C00DCB6A2 /* iPitch.entitlements */,
 				08362CA31E6D312F00FDB83F /* DataStore */,
 				11E3FCF01E63B8E700875339 /* Extensions */,
 				11E3FCF11E63B8E700875339 /* Helpers */,
@@ -196,6 +203,8 @@
 				11A359CB1E665F4200ABEF43 /* Pitch.swift */,
 				114417031E64206400B95D18 /* District.swift */,
 				55A125C51E67BC0600456844 /* User.swift */,
+				114250211E728A3F00DCB6A2 /* NotificationRequest.swift */,
+				114250231E728B4700DCB6A2 /* NotificationContent.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,6 +217,7 @@
 				1144170B1E64334700B95D18 /* OrderService.swift */,
 				11A359CE1E66754200ABEF43 /* DistrictService.swift */,
 				0838B1E21E6555190053335D /* DirectionService.swift */,
+				1142501D1E72866500DCB6A2 /* PushNotificationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -326,6 +336,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = K6ZTG96ZCP;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -357,7 +372,6 @@
 				08F5A8A81E6D5E6900878E22 /* MapIPitch.storyboard in Resources */,
 				11E3FCFE1E63B8E700875339 /* Main.storyboard in Resources */,
 				11E3FCFD1E63B8E700875339 /* LaunchScreen.storyboard in Resources */,
-				55961AD91E6FE22F0032DFD6 /* Localizable.strings in Resources */,
 				117E30AA1E6E6F0C0050335F /* OrderExtra.storyboard in Resources */,
 				08DE10321E71471600F3CF3C /* Assets.xcassets in Resources */,
 				11C60E1C1E68FBB2001D8CC8 /* PitchExtra.storyboard in Resources */,
@@ -437,12 +451,14 @@
 				55C58FCC1E69880C00736674 /* MainViewController.swift in Sources */,
 				11DEF7B51E6FDF79002D7E81 /* UIViewController+Extension.swift in Sources */,
 				558390AC1E69026700EBBE21 /* PitchListTableViewController.swift in Sources */,
+				114250221E728A3F00DCB6A2 /* NotificationRequest.swift in Sources */,
 				558390AF1E6902CD00EBBE21 /* PitchListCell.swift in Sources */,
 				11DEF7B31E6FBADE002D7E81 /* GMSMapView+Extension.swift in Sources */,
 				55125A8D1E66D7E500A3D373 /* WindowManager.swift in Sources */,
 				114417041E64206400B95D18 /* District.swift in Sources */,
 				11DEF7B11E6FB122002D7E81 /* PitchInfoViewController.swift in Sources */,
 				11A359CD1E665F4200ABEF43 /* Pitch.swift in Sources */,
+				114250241E728B4700DCB6A2 /* NotificationContent.swift in Sources */,
 				11A359D11E66809500ABEF43 /* StorageService.swift in Sources */,
 				08362CAF1E6D3DFD00FDB83F /* UIImageView+Extension.swift in Sources */,
 				1128A25C1E6D4B8E000DDBC0 /* BigMapViewController.swift in Sources */,
@@ -453,6 +469,7 @@
 				1187459E1E6922E600BC8664 /* PickerViewController.swift in Sources */,
 				11A359CF1E66754200ABEF43 /* DistrictService.swift in Sources */,
 				55A125C61E67BC0600456844 /* User.swift in Sources */,
+				1142501E1E72866500DCB6A2 /* PushNotificationService.swift in Sources */,
 				08362CA91E6D33F100FDB83F /* ImageStore.swift in Sources */,
 				08F5A8A71E6D5C9300878E22 /* StadiumCell.swift in Sources */,
 				086E09261E6FD39C00BBF924 /* SearchViewController.swift in Sources */,
@@ -572,6 +589,7 @@
 			baseConfigurationReference = 2E0E84E920B86790F5EDD666 /* Pods-iPitch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iPitch/iPitch.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = K6ZTG96ZCP;
 				INFOPLIST_FILE = iPitch/Info.plist;
@@ -579,8 +597,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.framgia.iPitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "dde48af0-e8f1-44bb-a8c2-7608e645341e";
-				PROVISIONING_PROFILE_SPECIFIER = iPitchDev;
+				PROVISIONING_PROFILE = "5091c4a0-7ff0-4689-a472-6a3e59971fcb";
+				PROVISIONING_PROFILE_SPECIFIER = iPitchDevNew;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -590,6 +608,7 @@
 			baseConfigurationReference = AAE7DE31520837DD485E60FD /* Pods-iPitch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iPitch/iPitch.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = K6ZTG96ZCP;
 				INFOPLIST_FILE = iPitch/Info.plist;
@@ -597,8 +616,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.framgia.iPitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "500504c9-852b-4553-8bb5-6318076e8215";
-				PROVISIONING_PROFILE_SPECIFIER = iPitchDis;
+				PROVISIONING_PROFILE = "4d64e27d-9720-4c05-b855-5fe27c59ef9a";
+				PROVISIONING_PROFILE_SPECIFIER = iPitchDisNew;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

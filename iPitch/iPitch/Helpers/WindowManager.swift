@@ -145,6 +145,7 @@ class WindowManager: NSObject {
             return
         }
         let userFlowNavController = UIStoryboard.mapIPitch.instantiateInitialViewController()
+        window.rootViewController = userFlowNavController
         UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromTop, animations: { 
             window.rootViewController = userFlowNavController
         }, completion: nil)

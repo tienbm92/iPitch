@@ -29,7 +29,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4F-nn-jKZ">
                                 <rect key="frame" x="112.5" y="253.5" width="150" height="50"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="n4F-nn-jKZ" secondAttribute="height" multiplier="3:1" id="ZSX-CR-ffe"/>
                                 </constraints>
@@ -42,7 +42,7 @@
                                         <real key="value" value="0.80000000000000004"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.85828579949999995" green="0.40646168869999999" blue="0.26848529809999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.08235294118" green="0.36078431370000003" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="5"/>
@@ -50,24 +50,23 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="userFlowButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pgr-gl-5VV"/>
-                                    <segue destination="IaT-8E-kjm" kind="presentation" id="UX7-cf-1bk"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bạn cần thuê sân bóng?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75w-wF-1yD">
                                 <rect key="frame" x="12.5" y="203" width="350" height="26.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bạn là chủ sân bóng?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xd6-YK-5Z3">
                                 <rect key="frame" x="12.5" y="363.5" width="350" height="26.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jW-bO-nR2">
                                 <rect key="frame" x="112.5" y="414" width="150" height="50"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                 <state key="normal" title="Cho thuê sân!">
                                     <color key="titleColor" red="6.5512070507497538e-05" green="0.34076103159618865" blue="0.19562493804164138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,12 +79,11 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.85828579949999995" green="0.40646168869999999" blue="0.26848529809999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.08235294118" green="0.36078431370000003" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="managerFlowButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZTC-fi-nH4"/>
-                                    <segue destination="XnX-8j-mYB" kind="presentation" id="Z0r-OD-BxS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -114,22 +112,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="24.800000000000001" y="35.532233883058474"/>
-        </scene>
-        <!--MapIPitch-->
-        <scene sceneID="6d1-3v-47r">
-            <objects>
-                <viewControllerPlaceholder storyboardName="MapIPitch" id="IaT-8E-kjm" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kGt-Mu-Nrn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="674" y="101"/>
-        </scene>
-        <!--Manager-->
-        <scene sceneID="cQp-8w-Jff">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Manager" id="XnX-8j-mYB" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AbU-Rj-J3t" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="666" y="144"/>
         </scene>
     </scenes>
     <resources>

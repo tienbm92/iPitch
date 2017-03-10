@@ -26,6 +26,9 @@
 "Signout" = "Đăng xuất";
 "Detail" = "Chi tiết";
 "Direction" = "Dẫn đường";
+"PitchHasBeenRequested" = "Sân %@ được hỏi đặt"
+"PitchOrderHasBeenConfirmed" = "Sân %@ được đặt thành công"
+"PitchOrderHasBeenRejected" = "Sân %@ đã bị từ chối"
 
 // MARK: - Error Strings
 

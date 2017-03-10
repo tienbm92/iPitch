@@ -80,18 +80,22 @@
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r9m-PJ-ybx">
-                                                <rect key="frame" x="85" y="227" width="314" height="30"/>
-                                                <gestureRecognizers/>
-                                                <color key="textColor" red="0.08235294118" green="0.36078431370000003" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="2TA-cP-Mdx" id="ofg-y9-yg1"/>
-                                                </connections>
-                                            </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPj-ik-vpe">
                                                 <rect key="frame" x="85" y="227" width="314" height="30"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" red="0.08235294118" green="0.36078431370000003" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="onDistrictPressed:" destination="2TA-cP-Mdx" eventType="touchUpInside" id="VI5-a2-I1K"/>
                                                 </connections>
@@ -117,17 +121,22 @@
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AWC-hG-Oyo">
-                                                <rect key="frame" x="85" y="309" width="112" height="30"/>
-                                                <color key="textColor" red="0.08235294118" green="0.36078431370000003" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="2TA-cP-Mdx" id="bJt-Kl-WSG"/>
-                                                </connections>
-                                            </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdr-Qx-QLc">
                                                 <rect key="frame" x="85" y="309" width="112" height="30"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" red="0.08235294118" green="0.36078431370000003" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="onOpenTimePressed:" destination="2TA-cP-Mdx" eventType="touchUpInside" id="IsB-7X-atj"/>
                                                 </connections>
@@ -138,17 +147,22 @@
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cyq-3h-keY">
-                                                <rect key="frame" x="292" y="309" width="107" height="30"/>
-                                                <color key="textColor" red="0.08235294118" green="0.36078431370000003" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="2TA-cP-Mdx" id="cjb-jq-90g"/>
-                                                </connections>
-                                            </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbe-bH-MVC">
                                                 <rect key="frame" x="292" y="309" width="107" height="30"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" red="0.08235294118" green="0.36078431370000003" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="onCloseTimePressed:" destination="2TA-cP-Mdx" eventType="touchUpInside" id="8ax-Pg-gyQ"/>
                                                 </connections>
@@ -203,61 +217,52 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Iba-jT-ByC" firstAttribute="centerY" secondItem="H7j-jt-cXg" secondAttribute="centerY" id="0Ae-gq-Ci5"/>
+                                            <constraint firstItem="2Lq-2B-FB5" firstAttribute="trailing" secondItem="vbe-bH-MVC" secondAttribute="trailing" id="0rc-P2-Tmc"/>
+                                            <constraint firstItem="EPj-ik-vpe" firstAttribute="leading" secondItem="hDQ-Xz-Ndm" secondAttribute="leading" id="0y9-TI-Dft"/>
                                             <constraint firstItem="meE-i1-Hlj" firstAttribute="trailing" secondItem="3u6-c0-hmR" secondAttribute="trailing" id="138-B1-795"/>
                                             <constraint firstItem="3u6-c0-hmR" firstAttribute="centerX" secondItem="LsW-MJ-0vA" secondAttribute="centerX" id="1Oe-Bj-ROW"/>
-                                            <constraint firstItem="pdr-Qx-QLc" firstAttribute="leading" secondItem="AWC-hG-Oyo" secondAttribute="leading" id="2F9-tf-JwT"/>
                                             <constraint firstItem="NZ7-Uq-7PG" firstAttribute="leading" secondItem="LsW-MJ-0vA" secondAttribute="leading" constant="15" id="2j4-93-eIB"/>
                                             <constraint firstItem="2Lq-2B-FB5" firstAttribute="centerY" secondItem="3EA-ZE-ZJm" secondAttribute="centerY" id="3mk-ef-BVr"/>
                                             <constraint firstItem="e6k-Kq-2kA" firstAttribute="leading" secondItem="H7j-jt-cXg" secondAttribute="leading" id="4Nz-is-qGI"/>
                                             <constraint firstItem="NZ7-Uq-7PG" firstAttribute="top" secondItem="DMj-lZ-9CF" secondAttribute="bottom" constant="20" id="4rO-CN-Rpp"/>
-                                            <constraint firstItem="Iba-jT-ByC" firstAttribute="leading" secondItem="r9m-PJ-ybx" secondAttribute="leading" id="52o-Ag-fJf"/>
                                             <constraint firstItem="nBX-kt-CtT" firstAttribute="centerY" secondItem="DMj-lZ-9CF" secondAttribute="centerY" id="5Ag-Jz-VRk"/>
+                                            <constraint firstItem="pdr-Qx-QLc" firstAttribute="height" secondItem="EPj-ik-vpe" secondAttribute="height" id="6JI-XV-ekw"/>
                                             <constraint firstItem="3u6-c0-hmR" firstAttribute="leading" secondItem="js3-Hs-B6k" secondAttribute="leading" id="8w2-OR-oe0"/>
                                             <constraint firstItem="3EA-ZE-ZJm" firstAttribute="top" secondItem="e6k-Kq-2kA" secondAttribute="bottom" constant="20" id="9GX-7t-7Uk"/>
                                             <constraint firstItem="hDQ-Xz-Ndm" firstAttribute="centerY" secondItem="NZ7-Uq-7PG" secondAttribute="centerY" id="Bfc-12-q5o"/>
-                                            <constraint firstItem="vbe-bH-MVC" firstAttribute="bottom" secondItem="Cyq-3h-keY" secondAttribute="bottom" id="EXe-RE-bfg"/>
-                                            <constraint firstItem="EPj-ik-vpe" firstAttribute="trailing" secondItem="r9m-PJ-ybx" secondAttribute="trailing" id="F4G-Wj-5tu"/>
+                                            <constraint firstItem="vbe-bH-MVC" firstAttribute="height" secondItem="pdr-Qx-QLc" secondAttribute="height" id="Cwa-29-6ll"/>
                                             <constraint firstItem="2Lq-2B-FB5" firstAttribute="leading" secondItem="3EA-ZE-ZJm" secondAttribute="trailing" constant="10" id="F6C-La-vaX"/>
-                                            <constraint firstItem="AWC-hG-Oyo" firstAttribute="leading" secondItem="Iba-jT-ByC" secondAttribute="leading" id="GOQ-8r-NQg"/>
                                             <constraint firstItem="Yjq-qp-6aG" firstAttribute="top" secondItem="NZ7-Uq-7PG" secondAttribute="bottom" constant="20" id="GhW-z0-xRh"/>
                                             <constraint firstItem="meE-i1-Hlj" firstAttribute="bottom" secondItem="3u6-c0-hmR" secondAttribute="bottom" id="GiR-V3-ZTs"/>
-                                            <constraint firstItem="r9m-PJ-ybx" firstAttribute="leading" secondItem="hDQ-Xz-Ndm" secondAttribute="leading" id="Gxf-yt-Scm"/>
-                                            <constraint firstItem="Cyq-3h-keY" firstAttribute="trailing" secondItem="Iba-jT-ByC" secondAttribute="trailing" id="IeI-lT-HYW"/>
-                                            <constraint firstItem="AWC-hG-Oyo" firstAttribute="centerY" secondItem="e6k-Kq-2kA" secondAttribute="centerY" id="JvH-4c-LRq"/>
+                                            <constraint firstItem="EPj-ik-vpe" firstAttribute="height" secondItem="hDQ-Xz-Ndm" secondAttribute="height" id="IOC-1T-ljZ"/>
                                             <constraint firstItem="meE-i1-Hlj" firstAttribute="top" secondItem="3u6-c0-hmR" secondAttribute="top" id="LIQ-uL-uy7"/>
-                                            <constraint firstItem="pdr-Qx-QLc" firstAttribute="trailing" secondItem="AWC-hG-Oyo" secondAttribute="trailing" id="Lkp-6r-0ZJ"/>
-                                            <constraint firstItem="pdr-Qx-QLc" firstAttribute="bottom" secondItem="AWC-hG-Oyo" secondAttribute="bottom" id="Lpf-rV-1qy"/>
-                                            <constraint firstItem="Iba-jT-ByC" firstAttribute="trailing" secondItem="r9m-PJ-ybx" secondAttribute="trailing" id="M5x-Fb-oIS"/>
+                                            <constraint firstItem="Iba-jT-ByC" firstAttribute="leading" secondItem="pdr-Qx-QLc" secondAttribute="leading" id="Lgz-nT-eJQ"/>
+                                            <constraint firstItem="EPj-ik-vpe" firstAttribute="centerY" secondItem="Yjq-qp-6aG" secondAttribute="centerY" id="MQo-pp-gE9"/>
                                             <constraint firstAttribute="bottom" secondItem="3u6-c0-hmR" secondAttribute="bottom" id="MoH-ac-wvl"/>
                                             <constraint firstItem="meE-i1-Hlj" firstAttribute="leading" secondItem="3u6-c0-hmR" secondAttribute="leading" id="Myx-Za-vqg"/>
                                             <constraint firstItem="Yjq-qp-6aG" firstAttribute="leading" secondItem="NZ7-Uq-7PG" secondAttribute="leading" id="NSY-NJ-wNn"/>
-                                            <constraint firstItem="2Lq-2B-FB5" firstAttribute="trailing" secondItem="Cyq-3h-keY" secondAttribute="trailing" id="O7m-WP-ikz"/>
+                                            <constraint firstItem="EPj-ik-vpe" firstAttribute="trailing" secondItem="hDQ-Xz-Ndm" secondAttribute="trailing" id="PpT-Yu-C1p"/>
                                             <constraint firstItem="H7j-jt-cXg" firstAttribute="top" secondItem="Yjq-qp-6aG" secondAttribute="bottom" constant="20" id="QiA-fF-dEJ"/>
-                                            <constraint firstItem="EPj-ik-vpe" firstAttribute="top" secondItem="r9m-PJ-ybx" secondAttribute="top" id="Ric-gQ-EWF"/>
+                                            <constraint firstItem="DfK-uy-Vi4" firstAttribute="leading" secondItem="pdr-Qx-QLc" secondAttribute="trailing" constant="10" id="Rkq-cN-YQj"/>
                                             <constraint firstItem="DfK-uy-Vi4" firstAttribute="leading" secondItem="LsW-MJ-0vA" secondAttribute="centerX" id="T5f-4K-epO"/>
+                                            <constraint firstItem="pdr-Qx-QLc" firstAttribute="leading" secondItem="e6k-Kq-2kA" secondAttribute="trailing" constant="10" id="TfR-KN-rUT"/>
                                             <constraint firstItem="e6k-Kq-2kA" firstAttribute="top" secondItem="H7j-jt-cXg" secondAttribute="bottom" constant="20" id="Uhz-MF-3L9"/>
                                             <constraint firstItem="DMj-lZ-9CF" firstAttribute="top" secondItem="LsW-MJ-0vA" secondAttribute="top" constant="20" id="V4F-CT-wWf"/>
                                             <constraint firstItem="3u6-c0-hmR" firstAttribute="top" secondItem="js3-Hs-B6k" secondAttribute="bottom" constant="20" id="X80-xa-9uO"/>
+                                            <constraint firstItem="hDQ-Xz-Ndm" firstAttribute="leading" secondItem="Iba-jT-ByC" secondAttribute="leading" id="XNY-z5-Ntu"/>
                                             <constraint firstAttribute="trailing" secondItem="hDQ-Xz-Ndm" secondAttribute="trailing" constant="15" id="Y8k-8Z-ljB"/>
-                                            <constraint firstItem="AWC-hG-Oyo" firstAttribute="trailing" secondItem="LsW-MJ-0vA" secondAttribute="centerX" constant="-10" id="YTM-za-aD7"/>
+                                            <constraint firstItem="pdr-Qx-QLc" firstAttribute="centerY" secondItem="e6k-Kq-2kA" secondAttribute="centerY" id="Yc1-FA-Ozk"/>
+                                            <constraint firstItem="vbe-bH-MVC" firstAttribute="centerY" secondItem="DfK-uy-Vi4" secondAttribute="centerY" id="Z2T-gM-xrQ"/>
                                             <constraint firstItem="js3-Hs-B6k" firstAttribute="leading" secondItem="e6k-Kq-2kA" secondAttribute="leading" id="a7i-Rg-aTl"/>
-                                            <constraint firstItem="r9m-PJ-ybx" firstAttribute="trailing" secondItem="hDQ-Xz-Ndm" secondAttribute="trailing" id="amf-2r-cS3"/>
                                             <constraint firstItem="DfK-uy-Vi4" firstAttribute="centerY" secondItem="e6k-Kq-2kA" secondAttribute="centerY" id="cDs-dd-X5g"/>
+                                            <constraint firstItem="Iba-jT-ByC" firstAttribute="trailing" secondItem="hDQ-Xz-Ndm" secondAttribute="trailing" id="cJN-Oe-hgV"/>
+                                            <constraint firstItem="vbe-bH-MVC" firstAttribute="leading" secondItem="DfK-uy-Vi4" secondAttribute="trailing" constant="10" id="dQt-Kg-r3F"/>
                                             <constraint firstItem="3EA-ZE-ZJm" firstAttribute="leading" secondItem="e6k-Kq-2kA" secondAttribute="leading" id="dZS-vf-nV0"/>
-                                            <constraint firstItem="pdr-Qx-QLc" firstAttribute="top" secondItem="AWC-hG-Oyo" secondAttribute="top" id="fb3-Ok-3Eb"/>
-                                            <constraint firstItem="Cyq-3h-keY" firstAttribute="centerY" secondItem="DfK-uy-Vi4" secondAttribute="centerY" id="i66-sr-F27"/>
                                             <constraint firstItem="nBX-kt-CtT" firstAttribute="trailing" secondItem="DMj-lZ-9CF" secondAttribute="trailing" constant="-10" id="if7-k9-4Vn"/>
-                                            <constraint firstItem="vbe-bH-MVC" firstAttribute="top" secondItem="Cyq-3h-keY" secondAttribute="top" id="kiP-cf-2OS"/>
                                             <constraint firstItem="H7j-jt-cXg" firstAttribute="leading" secondItem="Yjq-qp-6aG" secondAttribute="leading" id="md5-mj-4Dr"/>
                                             <constraint firstItem="js3-Hs-B6k" firstAttribute="top" secondItem="3EA-ZE-ZJm" secondAttribute="bottom" constant="20" id="npA-dJ-kaO"/>
                                             <constraint firstItem="DMj-lZ-9CF" firstAttribute="centerX" secondItem="LsW-MJ-0vA" secondAttribute="centerX" id="r5O-UB-PyM"/>
-                                            <constraint firstItem="EPj-ik-vpe" firstAttribute="leading" secondItem="r9m-PJ-ybx" secondAttribute="leading" id="rud-KA-N5i"/>
-                                            <constraint firstItem="AWC-hG-Oyo" firstAttribute="leading" secondItem="e6k-Kq-2kA" secondAttribute="trailing" constant="10" id="uFO-LK-sAv"/>
-                                            <constraint firstItem="EPj-ik-vpe" firstAttribute="bottom" secondItem="r9m-PJ-ybx" secondAttribute="bottom" id="vvu-eM-I7u"/>
-                                            <constraint firstItem="Cyq-3h-keY" firstAttribute="leading" secondItem="DfK-uy-Vi4" secondAttribute="trailing" constant="10" id="wrV-vR-fZj"/>
-                                            <constraint firstItem="vbe-bH-MVC" firstAttribute="trailing" secondItem="Cyq-3h-keY" secondAttribute="trailing" id="xmZ-Gt-dOS"/>
-                                            <constraint firstItem="r9m-PJ-ybx" firstAttribute="centerY" secondItem="Yjq-qp-6aG" secondAttribute="centerY" id="xtT-6I-Fa6"/>
-                                            <constraint firstItem="vbe-bH-MVC" firstAttribute="leading" secondItem="Cyq-3h-keY" secondAttribute="leading" id="ycI-6U-y3q"/>
+                                            <constraint firstItem="vbe-bH-MVC" firstAttribute="trailing" secondItem="Iba-jT-ByC" secondAttribute="trailing" id="ueM-qM-mG9"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -359,12 +364,12 @@
                         <outlet property="addButton" destination="6Jf-rx-0tx" id="Fzh-wC-Q2V"/>
                         <outlet property="addressTextField" destination="Iba-jT-ByC" id="73i-s4-ShS"/>
                         <outlet property="avatarButton" destination="DMj-lZ-9CF" id="IQT-Se-7tY"/>
-                        <outlet property="closeTimeTextField" destination="Cyq-3h-keY" id="lTG-hB-Efi"/>
+                        <outlet property="closeTimeButton" destination="vbe-bH-MVC" id="clj-ov-vf8"/>
                         <outlet property="deleteButton" destination="QfY-WQ-9ae" id="LuX-oE-ljQ"/>
-                        <outlet property="districtTextField" destination="r9m-PJ-ybx" id="79u-B4-ysu"/>
+                        <outlet property="districtButton" destination="EPj-ik-vpe" id="o9T-RL-x2M"/>
                         <outlet property="mapView" destination="3u6-c0-hmR" id="4d7-G0-1yw"/>
                         <outlet property="nameTextField" destination="hDQ-Xz-Ndm" id="n1r-RY-K4I"/>
-                        <outlet property="openTimeTextField" destination="AWC-hG-Oyo" id="n5G-n8-CsL"/>
+                        <outlet property="openTimeButton" destination="pdr-Qx-QLc" id="5rr-AL-tju"/>
                         <outlet property="phoneTextField" destination="2Lq-2B-FB5" id="kcL-K6-YWs"/>
                         <outlet property="updateButton" destination="LOc-nf-fH2" id="mfX-1H-5zH"/>
                     </connections>

@@ -25,6 +25,7 @@ struct Order: Mappable {
     var timeTo: Date?
     var status: OrderStatus = .pending
     var modifiedDate: Date?
+    var tokenId: String?
     
     init() {
     }
@@ -41,13 +42,14 @@ struct Order: Mappable {
         timeTo       <- (map["timeTo"], DateTransform())
         status       <- map["status"]
         modifiedDate <- (map["modifiedDate"], DateTransform())
+        tokenId      <- map["tokenId"]
     }
     
     func validate() -> String? {
-        guard name == "" else {
+        guard name != "" else {
             return "InvalidName".localized
         }
-        guard phone == "" else {
+        guard phone != "" else {
             return "InvalidPhone".localized
         }
         guard let timeFrom = timeFrom else {
