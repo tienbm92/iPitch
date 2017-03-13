@@ -10,13 +10,13 @@ import UIKit
 
 class OrderViewController: UIViewController {
     
-    @IBOutlet weak var endTimeTextField: UITextField!
-    @IBOutlet weak var startTimeTextField: UITextField!
+    @IBOutlet weak var endTimeButton: UIButton!
+    @IBOutlet weak var startTimeButton: UIButton!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var orderNameTextField: UITextField!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
-    fileprivate var editingTextField: UITextField?
+    fileprivate var editingButton: UIButton?
     var pitch: Pitch?
     var order = Order()
     
@@ -34,30 +34,39 @@ class OrderViewController: UIViewController {
             completion: nil)
     }
 
+    @IBAction func onAvatarPressed(_ sender: Any) {
+        self.previewImage(avatarImageView.image)
+    }
+    
     @IBAction func onConfirmPressed(_ sender: Any) {
         if let errorString = order.validate() {
             WindowManager.shared.showMessage(message: errorString,
                 title: nil, completion: nil)
         } else {
-            WindowManager.shared.showProgressView()
-//            OrderService.shared.create(order: order, completion: {
-//                [weak self] (error) in
-//                if let error = error {
-//                    WindowManager.shared.showMessage(
-//                        message: error.localizedDescription,
-//                        title: nil, completion: nil)
-//                } else {
-//                    self?.back()
-//                }
-//            })
+            if let pitch = pitch {
+                WindowManager.shared.showProgressView()
+                OrderService.shared.create(order: order, pitch: pitch,
+                    completion: { [weak self] (error) in
+                    WindowManager.shared.hideProgressView()
+                    if let error = error {
+                        WindowManager.shared.showMessage(
+                            message: error.localizedDescription,
+                            title: nil, completion: nil)
+                    } else {
+                        self?.back()
+                    }
+                })
+            }
         }
     }
 
-    @IBAction func onStartTimePressed(_ sender: Any) {
+    @IBAction func onStartTimePressed(_ sender: UIButton) {
+        editingButton = sender
         self.callPicker()
     }
     
-    @IBAction func onEndTimePressed(_ sender: Any) {
+    @IBAction func onEndTimePressed(_ sender: UIButton) {
+        editingButton = sender
         self.callPicker()
     }
     
@@ -81,15 +90,26 @@ extension OrderViewController: PickerViewControllerDelegate {
         didCloseWith result: Any?) {
         if pickerViewController.type == .time {
             if let time = result as? Date,
-                let editingTextField = editingTextField {
-                editingTextField.text = time.toTimeString()
-                if editingTextField === startTimeTextField {
+                let editingButton = editingButton {
+                editingButton.setTitle(time.toTimeString(), for: .normal)
+                if editingButton === startTimeButton {
                     order.timeFrom = time
-                } else if editingTextField === endTimeTextField {
+                } else if editingButton === endTimeButton {
                     order.timeTo = time
                 }
-                editingTextField.text = time.toTimeString()
             }
+        }
+    }
+    
+}
+
+extension OrderViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField === orderNameTextField {
+            order.name = textField.text ?? ""
+        } else if textField === phoneTextField {
+            order.phone = textField.text ?? ""
         }
     }
     

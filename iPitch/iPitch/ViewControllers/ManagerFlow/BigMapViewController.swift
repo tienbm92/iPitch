@@ -15,6 +15,7 @@ class BigMapViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
     var coordinate: CLLocationCoordinate2D?
     var callback: ((CLLocationCoordinate2D) -> Void)?
+    var allowEditing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +39,11 @@ extension BigMapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView,
         didTapAt coordinate: CLLocationCoordinate2D) {
-        mapView.refreshMarker(toCoordinate: coordinate)
-        if let callback = callback {
-            callback(coordinate)
+        if allowEditing {
+            mapView.refreshMarker(toCoordinate: coordinate)
+            if let callback = callback {
+                callback(coordinate)
+            }
         }
     }
     

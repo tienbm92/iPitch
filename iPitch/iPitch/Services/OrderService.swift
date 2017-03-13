@@ -55,7 +55,8 @@ class OrderService: NSObject {
         var order = order
         order.tokenId = FIRInstanceID.instanceID().token()
         order.modifiedDate = Date()
-        if let pitchId = order.pitchId {
+        if let pitchId = pitch.id {
+            order.pitchId = pitchId
             var json = order.toJSON()
             if json["id"] != nil {
                 json.removeValue(forKey: "id")
@@ -64,6 +65,10 @@ class OrderService: NSObject {
                 (error, ref) in
                 guard let pitchOwnerId = pitch.ownerId else {
                     completion(OrderServiceError.invalidPitch)
+                    return
+                }
+                guard error == nil else {
+                    completion(error)
                     return
                 }
                 PushNotificationService.shared.pushNotification(

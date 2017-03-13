@@ -196,15 +196,15 @@ class WindowManager: NSObject {
             return
         }
         UIView.transition(with: window, duration: 0.5, options: .transitionCurlUp, animations: {
-            if FIRAuth.auth()?.currentUser != nil {
-                let pitchManagerNavController = UIStoryboard.manager.instantiateViewController(
-                    withIdentifier: "ManagerNavControllerId")
-                window.rootViewController = pitchManagerNavController
-            } else {
+//            if FIRAuth.auth()?.currentUser != nil {
+//                let pitchManagerNavController = UIStoryboard.manager.instantiateViewController(
+//                    withIdentifier: "ManagerNavControllerId")
+//                window.rootViewController = pitchManagerNavController
+//            } else {
                 let loginNavController = UIStoryboard.manager.instantiateViewController(
                     withIdentifier: "LoginNavControllerId")
                 window.rootViewController = loginNavController
-            }
+//            }
         }, completion: nil)
     }
         

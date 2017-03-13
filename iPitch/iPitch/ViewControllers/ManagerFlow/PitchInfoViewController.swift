@@ -32,6 +32,7 @@ class PitchInfoViewController: UIViewController {
         nameLabel.text = pitch.name
         addressLabel.text = pitch.address
         phoneLabel.text = pitch.phone
+        districtLabel.text = pitch.district?.name
         avatarImageView.fetchImage(for: pitch.photoPath, id: pitch.id,
             completion: nil)
         mapView.camera = GMSCameraPosition.camera(withTarget: pitch.coordinate,
@@ -58,6 +59,10 @@ class PitchInfoViewController: UIViewController {
                 animated: true)
         }
         
+    }
+    
+    @IBAction func onAvatarPressed(_ sender: Any) {
+        self.previewImage(avatarImageView.image)
     }
     
 }

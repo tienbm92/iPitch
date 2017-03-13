@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IDMPhotoBrowser
 
 extension UIViewController {
     
@@ -15,6 +16,17 @@ extension UIViewController {
             navigationController.popViewController(animated: true)
         } else if let presentingViewController = self.presentingViewController {
             presentingViewController.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func previewImage(_ image: UIImage?) {
+        if let browser = IDMPhotoBrowser(photos: [IDMPhoto(
+            image: image)]) {
+            browser.displayActionButton = false;
+            browser.displayArrowButton = false;
+            browser.usePopAnimation = true;
+            browser.forceHideStatusBar = true;
+            present(browser, animated: true, completion: nil)
         }
     }
     
