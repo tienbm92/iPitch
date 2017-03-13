@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import IDMPhotoBrowser
 import GoogleMaps
 import CoreLocation
 
@@ -90,7 +89,7 @@ class EditPitchViewController: UIViewController {
             message: nil, preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "PreviewPhoto".localized, style: .default,
             handler: { [weak self] (action) in
-            self?.previewImage()
+            self?.previewImage(self?.avatarButton.image(for: .normal))
         }))
         actionSheet.addAction(UIAlertAction(title: "TakePhoto".localized,
             style: .default, handler: { [weak self] (action) in
@@ -130,6 +129,7 @@ class EditPitchViewController: UIViewController {
             withIdentifier: String(describing: BigMapViewController.self)) as?
             BigMapViewController,
             let position = mapView.selectedMarker?.position {
+            bigMapViewController.allowEditing = true
             bigMapViewController.coordinate =
                 CLLocationCoordinate2D(latitude: position.latitude,
                 longitude: position.longitude)
@@ -137,6 +137,8 @@ class EditPitchViewController: UIViewController {
                 animated: true)
             bigMapViewController.callback = { [weak self] (coordinate) in
                 self?.mapView.refreshMarker(toCoordinate: coordinate)
+                self?.pitch?.latitude = coordinate.latitude
+                self?.pitch?.longitude = coordinate.longitude
             }
         }
     }
@@ -237,18 +239,7 @@ class EditPitchViewController: UIViewController {
         }
         present(imagePicker, animated: true, completion: nil)
     }
-    
-    private func previewImage() {
-        if let browser = IDMPhotoBrowser(photos: [IDMPhoto(
-            image: avatarButton.backgroundImage(for: .normal))]) {
-            browser.displayActionButton = false;
-            browser.displayArrowButton = false;
-            browser.usePopAnimation = true;
-            browser.forceHideStatusBar = true;
-            present(browser, animated: true, completion: nil)
-        }
-    }
-    
+        
     fileprivate func openPicker(withType type: PickerViewType) {
         guard let pickerViewController =
             storyboard?.instantiateViewController(
