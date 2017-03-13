@@ -30,7 +30,6 @@ extension UIImageView {
         }
         let imageKey = "path\(id)"
         if let image = ImageStore.shared.image(forKey: imageKey) {
-            self.image = image
             DispatchQueue.main.async {
                 self.image = image
                 completion?(.success(image))
@@ -44,8 +43,8 @@ extension UIImageView {
         }
         StorageService.shared.downloadImage(path: photoPath)
         { [weak self] (error, photo) in
-            if error != nil {
-                print(error?.localizedDescription)
+            if let error = error {
+                print(error.localizedDescription)
                 completion?(.failure(ImageRequestError.errorCreatingImage))
             } else {
                 if let photo = photo {

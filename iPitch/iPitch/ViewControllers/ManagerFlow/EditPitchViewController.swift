@@ -195,6 +195,7 @@ class EditPitchViewController: UIViewController {
             PitchService.shared.update(pitch: pitch,
                 photo: self.avatarButton.backgroundImage(for: .normal)) {
                 [weak self] (error) in
+                WindowManager.shared.hideProgressView()
                 if let error = error {
                     WindowManager.shared.showMessage(
                         message: "UpdatePitchError".localized,

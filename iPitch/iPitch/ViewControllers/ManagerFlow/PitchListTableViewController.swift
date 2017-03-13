@@ -11,7 +11,6 @@ import FirebaseAuth
 
 class PitchListTableViewController: UITableViewController {
     
-    @IBOutlet weak var settingButton: UIBarButtonItem!
     private var pitches = [Pitch]()
 
     override func viewDidLoad() {
@@ -19,11 +18,12 @@ class PitchListTableViewController: UITableViewController {
         self.title = "PitchesList".localized
         self.tableView.register(UINib.init(nibName: "PitchListCell", bundle: nil),
             forCellReuseIdentifier: kPitchListCellId)
+        self.tableView.estimatedRowHeight = 106
+        self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tableView.estimatedRowHeight = 75
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        super.viewWillAppear(animated)
         self.fetchPitch()
     }
     
@@ -70,6 +70,10 @@ class PitchListTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func homeButtonTapped(_ sender: UIBarButtonItem) {
+        WindowManager.shared.directToMainStoryboard()
+    }
+    
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
         WindowManager.shared.logoutAction()
     }
@@ -85,18 +89,19 @@ class PitchListTableViewController: UITableViewController {
             for: indexPath) as? PitchListCell else {
             return UITableViewCell()
         }
-        cell.pitchName.text = self.pitches[indexPath.row].name
-        if let photoPath = self.pitches[indexPath.row].photoPath {
-            cell.pitchImage.fetchImage(for: photoPath, id: self.pitches[indexPath.row].id,
-                completion: nil)
-        }
+        cell.pitch = self.pitches[indexPath.row]
         return cell
     }
     
     // MARK: TableView Delegate
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedPitch = pitches[indexPath.row]
         self.performSegue(withIdentifier: "pitchDetailId", sender: selectedPitch)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.5
     }
     
 }

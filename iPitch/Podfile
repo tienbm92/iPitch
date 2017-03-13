@@ -12,4 +12,5 @@ target 'iPitch' do
   pod 'IQKeyboardManagerSwift'
   pod 'MBProgressHUD', '~> 1.0.0'
   pod 'IDMPhotoBrowser'
+  pod 'SVPullToRefresh'
 end

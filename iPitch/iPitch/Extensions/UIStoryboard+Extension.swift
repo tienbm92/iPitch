@@ -13,16 +13,17 @@ extension UIStoryboard {
     static var manager: UIStoryboard {
         return UIStoryboard(name: "Manager", bundle: nil)
     }
-    
     static var mapIPitch: UIStoryboard {
         return UIStoryboard(name: "MapIPitch", bundle: nil)
     }
-    
     static var pitchExtra: UIStoryboard {
         return UIStoryboard(name: "PitchExtra", bundle: nil)
     }
     static var OrderExtra: UIStoryboard {
         return UIStoryboard(name: "OrderExtra", bundle: nil)
+    }
+    static var main: UIStoryboard {
+        return UIStoryboard(name: "Main", bundle: nil)
     }
     
 }

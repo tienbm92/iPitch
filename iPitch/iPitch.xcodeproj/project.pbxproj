@@ -24,7 +24,6 @@
 		114250221E728A3F00DCB6A2 /* NotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114250211E728A3F00DCB6A2 /* NotificationRequest.swift */; };
 		114250241E728B4700DCB6A2 /* NotificationContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114250231E728B4700DCB6A2 /* NotificationContent.swift */; };
 		114417041E64206400B95D18 /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417031E64206400B95D18 /* District.swift */; };
-		1144170A1E6432BD00B95D18 /* PitchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417091E6432BD00B95D18 /* PitchService.swift */; };
 		1144170C1E64334700B95D18 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144170B1E64334700B95D18 /* OrderService.swift */; };
 		117E30AA1E6E6F0C0050335F /* OrderExtra.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 117E30A91E6E6F0C0050335F /* OrderExtra.storyboard */; };
 		117E30AC1E6E70BD0050335F /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117E30AB1E6E70BD0050335F /* OrderViewController.swift */; };
@@ -46,12 +45,15 @@
 		542D067EEB331F6BB8E2E1F3 /* Pods_iPitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32035D11ED8A0A1652AB1A1A /* Pods_iPitch.framework */; };
 		550C119A1E6E6CCC008F3C51 /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 550C11991E6E6CCC008F3C51 /* Manager.storyboard */; };
 		55125A8D1E66D7E500A3D373 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55125A8C1E66D7E500A3D373 /* WindowManager.swift */; };
+		55361D5A1E7243000090E50B /* PitchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417091E6432BD00B95D18 /* PitchService.swift */; };
+		55361D5F1E7243FB0090E50B /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55361D5C1E7243FB0090E50B /* OrderCell.swift */; };
+		55361D601E7243FB0090E50B /* PitchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55361D5D1E7243FB0090E50B /* PitchListCell.swift */; };
+		55361D611E7243FB0090E50B /* PitchListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55361D5E1E7243FB0090E50B /* PitchListCell.xib */; };
+		55361D621E724FA20090E50B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55961AD71E6FE22F0032DFD6 /* Localizable.strings */; };
 		5547D2271E6E5D6B00231BE2 /* PitchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5547D2261E6E5D6B00231BE2 /* PitchDetailViewController.swift */; };
 		555C42F71E69563500DB9183 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555F33871E64262400E6851F /* LoginViewController.swift */; };
 		555C42F81E69563A00DB9183 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555F33891E64265F00E6851F /* RegisterViewController.swift */; };
 		558390AC1E69026700EBBE21 /* PitchListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558390AB1E69026700EBBE21 /* PitchListTableViewController.swift */; };
-		558390AF1E6902CD00EBBE21 /* PitchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558390AD1E6902CD00EBBE21 /* PitchListCell.swift */; };
-		558390B01E6902CD00EBBE21 /* PitchListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 558390AE1E6902CD00EBBE21 /* PitchListCell.xib */; };
 		55961AD51E6FE2020032DFD6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55961AD01E6FE2020032DFD6 /* InfoPlist.strings */; };
 		55A125C61E67BC0600456844 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A125C51E67BC0600456844 /* User.swift */; };
 		55C58FCC1E69880C00736674 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C58FCB1E69880C00736674 /* MainViewController.swift */; };
@@ -100,12 +102,14 @@
 		32035D11ED8A0A1652AB1A1A /* Pods_iPitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		550C11991E6E6CCC008F3C51 /* Manager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
 		55125A8C1E66D7E500A3D373 /* WindowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
+		55361D5C1E7243FB0090E50B /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		55361D5D1E7243FB0090E50B /* PitchListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchListCell.swift; sourceTree = "<group>"; };
+		55361D5E1E7243FB0090E50B /* PitchListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PitchListCell.xib; sourceTree = "<group>"; };
+		55361D631E72728F0090E50B /* iPitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPitch.entitlements; sourceTree = "<group>"; };
 		5547D2261E6E5D6B00231BE2 /* PitchDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchDetailViewController.swift; sourceTree = "<group>"; };
 		555F33871E64262400E6851F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		555F33891E64265F00E6851F /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		558390AB1E69026700EBBE21 /* PitchListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchListTableViewController.swift; sourceTree = "<group>"; };
-		558390AD1E6902CD00EBBE21 /* PitchListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchListCell.swift; sourceTree = "<group>"; };
-		558390AE1E6902CD00EBBE21 /* PitchListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PitchListCell.xib; sourceTree = "<group>"; };
 		55961AD01E6FE2020032DFD6 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		55961AD81E6FE22F0032DFD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		55961ADA1E6FE2370032DFD6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -239,8 +243,9 @@
 			isa = PBXGroup;
 			children = (
 				55C58FCB1E69880C00736674 /* MainViewController.swift */,
-				55BCB36C1E69508C00D8B7E7 /* ManagerFlow */,
 				11E3FCFB1E63B8E700875339 /* UserFlow */,
+				55BCB36C1E69508C00D8B7E7 /* ManagerFlow */,
+				55361D5B1E7243FB0090E50B /* ReusableCell */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -253,6 +258,16 @@
 				086E09251E6FD39C00BBF924 /* SearchViewController.swift */,
 			);
 			path = UserFlow;
+			sourceTree = "<group>";
+		};
+		55361D5B1E7243FB0090E50B /* ReusableCell */ = {
+			isa = PBXGroup;
+			children = (
+				55361D5C1E7243FB0090E50B /* OrderCell.swift */,
+				55361D5D1E7243FB0090E50B /* PitchListCell.swift */,
+				55361D5E1E7243FB0090E50B /* PitchListCell.xib */,
+			);
+			path = ReusableCell;
 			sourceTree = "<group>";
 		};
 		55961ACC1E6FE18F0032DFD6 /* SupportedFiles */ = {
@@ -270,8 +285,6 @@
 				555F33871E64262400E6851F /* LoginViewController.swift */,
 				555F33891E64265F00E6851F /* RegisterViewController.swift */,
 				558390AB1E69026700EBBE21 /* PitchListTableViewController.swift */,
-				558390AD1E6902CD00EBBE21 /* PitchListCell.swift */,
-				558390AE1E6902CD00EBBE21 /* PitchListCell.xib */,
 				5547D2261E6E5D6B00231BE2 /* PitchDetailViewController.swift */,
 				113207271E691AEE008110C3 /* EditPitchViewController.swift */,
 				1187459D1E6922E600BC8664 /* PickerViewController.swift */,
@@ -370,12 +383,13 @@
 			files = (
 				08F5A8A91E6D5FEF00878E22 /* GoogleService-Info.plist in Resources */,
 				08F5A8A81E6D5E6900878E22 /* MapIPitch.storyboard in Resources */,
+				55361D621E724FA20090E50B /* Localizable.strings in Resources */,
 				11E3FCFE1E63B8E700875339 /* Main.storyboard in Resources */,
 				11E3FCFD1E63B8E700875339 /* LaunchScreen.storyboard in Resources */,
 				117E30AA1E6E6F0C0050335F /* OrderExtra.storyboard in Resources */,
 				08DE10321E71471600F3CF3C /* Assets.xcassets in Resources */,
 				11C60E1C1E68FBB2001D8CC8 /* PitchExtra.storyboard in Resources */,
-				558390B01E6902CD00EBBE21 /* PitchListCell.xib in Resources */,
+				55361D611E7243FB0090E50B /* PitchListCell.xib in Resources */,
 				550C119A1E6E6CCC008F3C51 /* Manager.storyboard in Resources */,
 				55961AD51E6FE2020032DFD6 /* InfoPlist.strings in Resources */,
 			);
@@ -436,23 +450,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1144170A1E6432BD00B95D18 /* PitchService.swift in Sources */,
 				08F5A8A61E6D5C9300878E22 /* MapIPitchControllers.swift in Sources */,
+				55361D5F1E7243FB0090E50B /* OrderCell.swift in Sources */,
 				1128A2581E6D2FC0000DDBC0 /* String+Extension.swift in Sources */,
 				117E30AC1E6E70BD0050335F /* OrderViewController.swift in Sources */,
 				11E3FD071E63BA3B00875339 /* UIView+Extension.swift in Sources */,
+				55361D601E7243FB0090E50B /* PitchListCell.swift in Sources */,
 				113207281E691AEE008110C3 /* EditPitchViewController.swift in Sources */,
 				11DEF7B71E6FE65B002D7E81 /* UIStoryboard+Extension.swift in Sources */,
 				11E3FCDF1E63B64400875339 /* AppDelegate.swift in Sources */,
 				1128A2561E6D2FB2000DDBC0 /* Date+Extension.swift in Sources */,
 				5547D2271E6E5D6B00231BE2 /* PitchDetailViewController.swift in Sources */,
+				55361D5A1E7243000090E50B /* PitchService.swift in Sources */,
 				11A359CC1E665F4200ABEF43 /* Order.swift in Sources */,
 				0838B1E31E6555190053335D /* DirectionService.swift in Sources */,
 				55C58FCC1E69880C00736674 /* MainViewController.swift in Sources */,
 				11DEF7B51E6FDF79002D7E81 /* UIViewController+Extension.swift in Sources */,
 				558390AC1E69026700EBBE21 /* PitchListTableViewController.swift in Sources */,
 				114250221E728A3F00DCB6A2 /* NotificationRequest.swift in Sources */,
-				558390AF1E6902CD00EBBE21 /* PitchListCell.swift in Sources */,
 				11DEF7B31E6FBADE002D7E81 /* GMSMapView+Extension.swift in Sources */,
 				55125A8D1E66D7E500A3D373 /* WindowManager.swift in Sources */,
 				114417041E64206400B95D18 /* District.swift in Sources */,

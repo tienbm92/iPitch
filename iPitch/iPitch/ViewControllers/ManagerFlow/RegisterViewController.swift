@@ -36,16 +36,14 @@ class RegisterViewController: UIViewController {
         FIRAuth.auth()?.createUser(withEmail: user.email, password: user.password) {
             [weak self] (user, error) in
             WindowManager.shared.hideProgressView()
-            if let error = error {
-                WindowManager.shared.showMessage(message: error.localizedDescription,
-                    title: nil, completion: nil)
-            }
-            guard let user = user else {
-                _ = self?.navigationController?.popViewController(animated: true)
+            guard user != nil else {
+                if let error = error?.localizedDescription {
+                    WindowManager.shared.showMessage(message: error,
+                        title: nil, completion: nil)
+                }
                 return
             }
-            PushNotificationService.shared.set(token: FIRInstanceID.instanceID().token(),
-                forUserId: user.uid, completion: nil)
+            _ = self?.navigationController?.popViewController(animated: true)
         }
     }
     
