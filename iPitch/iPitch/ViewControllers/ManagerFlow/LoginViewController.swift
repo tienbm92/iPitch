@@ -19,8 +19,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.emailTextField.attributedPlaceholder = NSAttributedString(string: "Email".localized, attributes: [NSForegroundColorAttributeName: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)])
-        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password".localized, attributes: [NSForegroundColorAttributeName: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)])
+        self.emailTextField.attributedPlaceholder = NSAttributedString(
+            string: "Email".localized,
+            attributes: [NSForegroundColorAttributeName: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)])
+        self.passwordTextField.attributedPlaceholder = NSAttributedString(
+            string: "Password".localized,
+            attributes: [NSForegroundColorAttributeName: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)])
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -45,7 +49,7 @@ class LoginViewController: UIViewController {
                 }
                 return
             }
-            PushNotificationService.shared.set(token: FIRInstanceID.instanceID().token(),
+            UserService.shared.set(token: FIRInstanceID.instanceID().token(),
                 forUserId: user.uid, completion: nil)
             WindowManager.shared.directToPitchList()
         }

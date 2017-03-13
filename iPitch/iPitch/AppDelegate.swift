@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
         launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        UIApplication.shared.setStatusBarStyle(.lightContent, animated: false)
         registerForRemoteNotification(application)
         FIRApp.configure()
         NotificationCenter.default.addObserver(self,

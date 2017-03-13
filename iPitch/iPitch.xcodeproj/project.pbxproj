@@ -12,7 +12,6 @@
 		0838B1E31E6555190053335D /* DirectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0838B1E21E6555190053335D /* DirectionService.swift */; };
 		086E09261E6FD39C00BBF924 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086E09251E6FD39C00BBF924 /* SearchViewController.swift */; };
 		0887881B1E764D270015049C /* DirectionOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0887881A1E764D270015049C /* DirectionOverview.swift */; };
-		0887881D1E764E4B0015049C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55961AD71E6FE22F0032DFD6 /* Localizable.strings */; };
 		0887881F1E7652830015049C /* GeocodedWaypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0887881E1E7652830015049C /* GeocodedWaypoint.swift */; };
 		088788211E7655ED0015049C /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088788201E7655ED0015049C /* Route.swift */; };
 		088788251E7657C60015049C /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088788241E7657C60015049C /* Leg.swift */; };
@@ -35,6 +34,8 @@
 		114250241E728B4700DCB6A2 /* NotificationContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114250231E728B4700DCB6A2 /* NotificationContent.swift */; };
 		114417041E64206400B95D18 /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114417031E64206400B95D18 /* District.swift */; };
 		1144170C1E64334700B95D18 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144170B1E64334700B95D18 /* OrderService.swift */; };
+		114CC0171E77887B00AEB0FA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114CC0161E77887B00AEB0FA /* UserService.swift */; };
+		114CC01B1E77A02A00AEB0FA /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114CC01A1E77A02A00AEB0FA /* Filter.swift */; };
 		117E30AA1E6E6F0C0050335F /* OrderExtra.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 117E30A91E6E6F0C0050335F /* OrderExtra.storyboard */; };
 		117E30AC1E6E70BD0050335F /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117E30AB1E6E70BD0050335F /* OrderViewController.swift */; };
 		1187459E1E6922E600BC8664 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1187459D1E6922E600BC8664 /* PickerViewController.swift */; };
@@ -99,6 +100,8 @@
 		114417031E64206400B95D18 /* District.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = District.swift; sourceTree = "<group>"; };
 		114417091E6432BD00B95D18 /* PitchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchService.swift; sourceTree = "<group>"; };
 		1144170B1E64334700B95D18 /* OrderService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
+		114CC0161E77887B00AEB0FA /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		114CC01A1E77A02A00AEB0FA /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		117E30A91E6E6F0C0050335F /* OrderExtra.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderExtra.storyboard; sourceTree = "<group>"; };
 		117E30AB1E6E70BD0050335F /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		1187459D1E6922E600BC8664 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
@@ -125,7 +128,6 @@
 		55361D5C1E7243FB0090E50B /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		55361D5D1E7243FB0090E50B /* PitchListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchListCell.swift; sourceTree = "<group>"; };
 		55361D5E1E7243FB0090E50B /* PitchListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PitchListCell.xib; sourceTree = "<group>"; };
-		55361D631E72728F0090E50B /* iPitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPitch.entitlements; sourceTree = "<group>"; };
 		5547D2261E6E5D6B00231BE2 /* PitchDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchDetailViewController.swift; sourceTree = "<group>"; };
 		555F33871E64262400E6851F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		555F33891E64265F00E6851F /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				55A125C51E67BC0600456844 /* User.swift */,
 				114250211E728A3F00DCB6A2 /* NotificationRequest.swift */,
 				114250231E728B4700DCB6A2 /* NotificationContent.swift */,
+				114CC01A1E77A02A00AEB0FA /* Filter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				11A359CE1E66754200ABEF43 /* DistrictService.swift */,
 				0838B1E21E6555190053335D /* DirectionService.swift */,
 				1142501D1E72866500DCB6A2 /* PushNotificationService.swift */,
+				114CC0161E77887B00AEB0FA /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -387,6 +391,9 @@
 						DevelopmentTeam = K6ZTG96ZCP;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -510,7 +517,6 @@
 				0887882B1E76594A0015049C /* Location.swift in Sources */,
 				114250221E728A3F00DCB6A2 /* NotificationRequest.swift in Sources */,
 				088788211E7655ED0015049C /* Route.swift in Sources */,
-				558390AF1E6902CD00EBBE21 /* PitchListCell.swift in Sources */,
 				11DEF7B31E6FBADE002D7E81 /* GMSMapView+Extension.swift in Sources */,
 				0887881B1E764D270015049C /* DirectionOverview.swift in Sources */,
 				088788291E7658E30015049C /* GoogleMapValue.swift in Sources */,
@@ -530,8 +536,10 @@
 				11E3FD011E63B98E00875339 /* Constants.swift in Sources */,
 				1187459E1E6922E600BC8664 /* PickerViewController.swift in Sources */,
 				11A359CF1E66754200ABEF43 /* DistrictService.swift in Sources */,
+				114CC01B1E77A02A00AEB0FA /* Filter.swift in Sources */,
 				55A125C61E67BC0600456844 /* User.swift in Sources */,
 				1142501E1E72866500DCB6A2 /* PushNotificationService.swift in Sources */,
+				114CC0171E77887B00AEB0FA /* UserService.swift in Sources */,
 				08362CA91E6D33F100FDB83F /* ImageStore.swift in Sources */,
 				08F5A8A71E6D5C9300878E22 /* StadiumCell.swift in Sources */,
 				086E09261E6FD39C00BBF924 /* SearchViewController.swift in Sources */,

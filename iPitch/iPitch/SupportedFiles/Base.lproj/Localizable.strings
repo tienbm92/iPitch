@@ -12,6 +12,7 @@
 "Alert" = "Cảnh báo";
 "Email" = "Email";
 "Password" = "Mật khẩu";
+"RetypePassword" = "Nhập lại mật khẩu";
 
 // MARK: - Action Strings
 
@@ -76,3 +77,4 @@
 "FilterFalse" = "Không tìm thấy kết quả!";
 "DirectionError" = "Lỗi chỉ đường";
 "DirectionFalse" = "chỉ đường thất bại";
+"LogInAnotherDevice" = "Bạn đã đăng nhập trên máy khác";

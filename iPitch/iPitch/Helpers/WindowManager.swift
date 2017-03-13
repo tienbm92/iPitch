@@ -9,6 +9,7 @@
 import Foundation
 import MBProgressHUD
 import FirebaseAuth
+import FirebaseInstanceID
 
 class WindowManager: NSObject {
     
@@ -188,8 +189,9 @@ class WindowManager: NSObject {
         guard let window = self.window else {
             return
         }
-        UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromTop, animations: { 
-            let mainViewController = UIStoryboard.main.instantiateInitialViewController()
+        let mainViewController = UIStoryboard.main.instantiateInitialViewController()
+        UIView.transition(with: window, duration: 0.5,
+            options: .transitionFlipFromBottom, animations: {
             window.rootViewController = mainViewController
         }, completion: nil)
     }
@@ -198,17 +200,32 @@ class WindowManager: NSObject {
         guard let window = self.window else {
             return
         }
-        UIView.transition(with: window, duration: 0.5, options: .transitionCurlUp, animations: {
-            if FIRAuth.auth()?.currentUser != nil {
-                let pitchManagerNavController = UIStoryboard.manager.instantiateViewController(
-                    withIdentifier: "ManagerNavControllerId")
-                window.rootViewController = pitchManagerNavController
-            } else {
-                let loginNavController = UIStoryboard.manager.instantiateViewController(
-                    withIdentifier: "LoginNavControllerId")
+        if let userId = FIRAuth.auth()?.currentUser?.uid {
+            WindowManager.shared.showProgressView()
+            UserService.shared.getToken(forUserId: userId,
+                completion: { (tokenId) in
+                WindowManager.shared.hideProgressView()
+                var rootViewController: UIViewController
+                if FIRInstanceID.instanceID().token() == tokenId {
+                    let pitchManagerNavController = UIStoryboard.manager.instantiateViewController(
+                        withIdentifier: "ManagerNavControllerId")
+                    rootViewController = pitchManagerNavController
+                } else {
+                    let loginNavController = UIStoryboard.manager.instantiateViewController(
+                        withIdentifier: "LoginNavControllerId")
+                    rootViewController = loginNavController
+                }
+                UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromTop, animations: {
+                    window.rootViewController = rootViewController
+                }, completion: nil)
+            })
+        } else {
+            let loginNavController = UIStoryboard.manager.instantiateViewController(
+                withIdentifier: "LoginNavControllerId")
+            UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromTop, animations: {
                 window.rootViewController = loginNavController
-            }
-        }, completion: nil)
+            }, completion: nil)
+        }
     }
         
     func directToPitchList() {
@@ -217,7 +234,10 @@ class WindowManager: NSObject {
         }
         let pitchManagerNavController = UIStoryboard.manager.instantiateViewController(
             withIdentifier: "ManagerNavControllerId")
-        window.rootViewController = pitchManagerNavController
+        UIView.transition(with: window, duration: 0.5,
+            options: .transitionFlipFromTop, animations: {
+            window.rootViewController = pitchManagerNavController
+        }, completion: nil)
     }
     
     func directToUserFlow() {
@@ -226,7 +246,7 @@ class WindowManager: NSObject {
         }
         let userFlowNavController = UIStoryboard.mapIPitch.instantiateInitialViewController()
         UIView.transition(with: window, duration: 0.5,
-            options: .transitionCurlDown, animations: {
+            options: .transitionFlipFromTop, animations: {
             window.rootViewController = userFlowNavController
         }, completion: nil)
     }

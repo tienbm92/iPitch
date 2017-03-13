@@ -30,13 +30,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LsW-MJ-0vA">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="640.66666666666663"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMj-lZ-9CF">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="pKf-nK-8V9">
                                                 <rect key="frame" x="132" y="20" width="150" height="150"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="150" id="hSi-F7-9ij"/>
-                                                    <constraint firstAttribute="width" secondItem="DMj-lZ-9CF" secondAttribute="height" multiplier="1:1" id="ijH-Ui-WMz"/>
-                                                </constraints>
-                                                <state key="normal" backgroundImage="img_placeholder"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="75"/>
@@ -48,6 +43,13 @@
                                                         <real key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMj-lZ-9CF">
+                                                <rect key="frame" x="132" y="20" width="150" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="hSi-F7-9ij"/>
+                                                    <constraint firstAttribute="width" secondItem="DMj-lZ-9CF" secondAttribute="height" multiplier="1:1" id="ijH-Ui-WMz"/>
+                                                </constraints>
                                                 <connections>
                                                     <action selector="onAvatarPressed:" destination="2TA-cP-Mdx" eventType="touchUpInside" id="i2D-LX-bpV"/>
                                                 </connections>
@@ -82,7 +84,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPj-ik-vpe">
                                                 <rect key="frame" x="85" y="227" width="314" height="30"/>
-                                                <state key="normal">
+                                                <state key="normal" title="Chọn Quận">
                                                     <color key="titleColor" red="0.08235294118" green="0.36078431370000003" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -123,7 +125,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdr-Qx-QLc">
                                                 <rect key="frame" x="85" y="309" width="112" height="30"/>
-                                                <state key="normal">
+                                                <state key="normal" title="Chọn">
                                                     <color key="titleColor" red="0.08235294118" green="0.36078431370000003" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -149,7 +151,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbe-bH-MVC">
                                                 <rect key="frame" x="292" y="309" width="107" height="30"/>
-                                                <state key="normal">
+                                                <state key="normal" title="Chọn">
                                                     <color key="titleColor" red="0.08235294118" green="0.36078431370000003" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -217,6 +219,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Iba-jT-ByC" firstAttribute="centerY" secondItem="H7j-jt-cXg" secondAttribute="centerY" id="0Ae-gq-Ci5"/>
+                                            <constraint firstItem="pKf-nK-8V9" firstAttribute="bottom" secondItem="DMj-lZ-9CF" secondAttribute="bottom" id="0ZA-XG-dUd"/>
                                             <constraint firstItem="2Lq-2B-FB5" firstAttribute="trailing" secondItem="vbe-bH-MVC" secondAttribute="trailing" id="0rc-P2-Tmc"/>
                                             <constraint firstItem="EPj-ik-vpe" firstAttribute="leading" secondItem="hDQ-Xz-Ndm" secondAttribute="leading" id="0y9-TI-Dft"/>
                                             <constraint firstItem="meE-i1-Hlj" firstAttribute="trailing" secondItem="3u6-c0-hmR" secondAttribute="trailing" id="138-B1-795"/>
@@ -231,11 +234,14 @@
                                             <constraint firstItem="3EA-ZE-ZJm" firstAttribute="top" secondItem="e6k-Kq-2kA" secondAttribute="bottom" constant="20" id="9GX-7t-7Uk"/>
                                             <constraint firstItem="hDQ-Xz-Ndm" firstAttribute="centerY" secondItem="NZ7-Uq-7PG" secondAttribute="centerY" id="Bfc-12-q5o"/>
                                             <constraint firstItem="vbe-bH-MVC" firstAttribute="height" secondItem="pdr-Qx-QLc" secondAttribute="height" id="Cwa-29-6ll"/>
+                                            <constraint firstItem="pKf-nK-8V9" firstAttribute="top" secondItem="DMj-lZ-9CF" secondAttribute="top" id="EP8-6U-7Fy"/>
+                                            <constraint firstItem="pKf-nK-8V9" firstAttribute="leading" secondItem="DMj-lZ-9CF" secondAttribute="leading" id="Ewi-Rf-W7Z"/>
                                             <constraint firstItem="2Lq-2B-FB5" firstAttribute="leading" secondItem="3EA-ZE-ZJm" secondAttribute="trailing" constant="10" id="F6C-La-vaX"/>
                                             <constraint firstItem="Yjq-qp-6aG" firstAttribute="top" secondItem="NZ7-Uq-7PG" secondAttribute="bottom" constant="20" id="GhW-z0-xRh"/>
                                             <constraint firstItem="meE-i1-Hlj" firstAttribute="bottom" secondItem="3u6-c0-hmR" secondAttribute="bottom" id="GiR-V3-ZTs"/>
                                             <constraint firstItem="EPj-ik-vpe" firstAttribute="height" secondItem="hDQ-Xz-Ndm" secondAttribute="height" id="IOC-1T-ljZ"/>
                                             <constraint firstItem="meE-i1-Hlj" firstAttribute="top" secondItem="3u6-c0-hmR" secondAttribute="top" id="LIQ-uL-uy7"/>
+                                            <constraint firstItem="pKf-nK-8V9" firstAttribute="trailing" secondItem="DMj-lZ-9CF" secondAttribute="trailing" id="LOG-f7-BN8"/>
                                             <constraint firstItem="Iba-jT-ByC" firstAttribute="leading" secondItem="pdr-Qx-QLc" secondAttribute="leading" id="Lgz-nT-eJQ"/>
                                             <constraint firstItem="EPj-ik-vpe" firstAttribute="centerY" secondItem="Yjq-qp-6aG" secondAttribute="centerY" id="MQo-pp-gE9"/>
                                             <constraint firstAttribute="bottom" secondItem="3u6-c0-hmR" secondAttribute="bottom" id="MoH-ac-wvl"/>
@@ -363,7 +369,7 @@
                     <connections>
                         <outlet property="addButton" destination="6Jf-rx-0tx" id="Fzh-wC-Q2V"/>
                         <outlet property="addressTextField" destination="Iba-jT-ByC" id="73i-s4-ShS"/>
-                        <outlet property="avatarButton" destination="DMj-lZ-9CF" id="IQT-Se-7tY"/>
+                        <outlet property="avatarImageView" destination="pKf-nK-8V9" id="TWm-Pv-hvP"/>
                         <outlet property="closeTimeButton" destination="vbe-bH-MVC" id="clj-ov-vf8"/>
                         <outlet property="deleteButton" destination="QfY-WQ-9ae" id="LuX-oE-ljQ"/>
                         <outlet property="districtButton" destination="EPj-ik-vpe" id="o9T-RL-x2M"/>
