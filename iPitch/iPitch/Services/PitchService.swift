@@ -110,7 +110,9 @@ class PitchService: NSObject {
                     }
                 }
             }
-            completion(pitches)
+            DispatchQueue.main.async {
+                completion(pitches)
+            }
         })
     }
 

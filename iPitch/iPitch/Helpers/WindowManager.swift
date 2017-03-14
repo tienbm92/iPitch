@@ -165,13 +165,14 @@ class WindowManager: NSObject {
             let firebaseAuth = FIRAuth.auth()
             do {
                 try firebaseAuth?.signOut()
-                self?.directToCheckLogin()
+                self?.directToMainStoryboard()
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel".localized, style: .cancel) { (action) in
-            self.alertWindow.isHidden = true
+        let cancelAction = UIAlertAction(title: "Cancel".localized, style: .cancel) {
+            [weak self] (action) in
+            self?.alertWindow.isHidden = true
         }
         logoutController.addAction(logoutAction)
         logoutController.addAction(cancelAction)
@@ -187,8 +188,10 @@ class WindowManager: NSObject {
         guard let window = self.window else {
             return
         }
-        let mainViewController = UIStoryboard.main.instantiateInitialViewController()
-        window.rootViewController = mainViewController
+        UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromTop, animations: { 
+            let mainViewController = UIStoryboard.main.instantiateInitialViewController()
+            window.rootViewController = mainViewController
+        }, completion: nil)
     }
     
     func directToCheckLogin() {
@@ -196,15 +199,15 @@ class WindowManager: NSObject {
             return
         }
         UIView.transition(with: window, duration: 0.5, options: .transitionCurlUp, animations: {
-//            if FIRAuth.auth()?.currentUser != nil {
-//                let pitchManagerNavController = UIStoryboard.manager.instantiateViewController(
-//                    withIdentifier: "ManagerNavControllerId")
-//                window.rootViewController = pitchManagerNavController
-//            } else {
+            if FIRAuth.auth()?.currentUser != nil {
+                let pitchManagerNavController = UIStoryboard.manager.instantiateViewController(
+                    withIdentifier: "ManagerNavControllerId")
+                window.rootViewController = pitchManagerNavController
+            } else {
                 let loginNavController = UIStoryboard.manager.instantiateViewController(
                     withIdentifier: "LoginNavControllerId")
                 window.rootViewController = loginNavController
-//            }
+            }
         }, completion: nil)
     }
         
@@ -223,7 +226,7 @@ class WindowManager: NSObject {
         }
         let userFlowNavController = UIStoryboard.mapIPitch.instantiateInitialViewController()
         UIView.transition(with: window, duration: 0.5,
-            options: .transitionFlipFromTop, animations: {
+            options: .transitionCurlDown, animations: {
             window.rootViewController = userFlowNavController
         }, completion: nil)
     }

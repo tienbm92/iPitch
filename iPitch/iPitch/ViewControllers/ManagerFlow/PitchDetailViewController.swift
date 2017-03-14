@@ -120,17 +120,6 @@ class PitchDetailViewController: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editPitchId" { 
-            guard let editPitchViewController = segue.destination
-                as? EditPitchViewController else {
-                return
-            }
-            editPitchViewController.pitch = self.pitch
-            editPitchViewController.type = .update
-        }
-    }
-    
     @IBAction func changeOrdersList(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -184,28 +173,20 @@ extension PitchDetailViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.delegate = self
-        cell.orderIndex = indexPath.row
+        switch orderStatus {
+        case .pending:
+            cell.order = self.pendingOrders[indexPath.row]
+        case .accept:
+            cell.order = self.acceptOrders[indexPath.row]
+        case .reject:
+            cell.order = self.rejectOrders[indexPath.row]
+        }
         return cell
     }
     
 }
 
 extension PitchDetailViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
-        forRowAt indexPath: IndexPath) {
-        guard let orderCell = cell as? OrderCell else {
-            return
-        }
-        switch orderStatus {
-        case .pending:
-            orderCell.order = self.pendingOrders[indexPath.row]
-        case .accept:
-            orderCell.order = self.acceptOrders[indexPath.row]
-        case .reject:
-            orderCell.order = self.rejectOrders[indexPath.row]
-        }
-    }
     
     func tableView(_ tableView: UITableView,
         heightForHeaderInSection section: Int) -> CGFloat {

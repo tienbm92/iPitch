@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol PitchListCellDelegate {
+    func editPitch(pitch: Pitch?)
+    func checkOrder(pitch: Pitch?)
+}
+
 class PitchListCell: UITableViewCell {
     
     @IBOutlet weak var pitchImage: UIImageView!
     @IBOutlet weak var pitchNameLabel: UILabel!
     @IBOutlet weak var pitchAddressLabel: UILabel!
     @IBOutlet weak var pitchActiveTimeLabel: UILabel!
+    var delegate: PitchListCellDelegate?
     var pitch: Pitch? {
         didSet {
             guard let pitch = pitch else {
@@ -44,6 +50,14 @@ class PitchListCell: UITableViewCell {
                 pitchImage.image = #imageLiteral(resourceName: "img_placeholder")
             }
         }
+    }
+    
+    @IBAction func checkOrderButtonTapped(_ sender: UIButton) {
+        delegate?.checkOrder(pitch: pitch)
+    }
+    
+    @IBAction func editPitchButtonTapped(_ sender: UIButton) {
+        delegate?.editPitch(pitch: pitch)
     }
 }
 

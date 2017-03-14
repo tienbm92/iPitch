@@ -163,7 +163,7 @@
         <scene sceneID="dem-IZ-ap6">
             <objects>
                 <tableViewController storyboardIdentifier="pitchListStoryboardId" id="wwT-vU-f3M" customClass="PitchListTableViewController" customModule="iPitch" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="90" sectionHeaderHeight="18" sectionFooterHeight="18" id="RzD-GI-xVj">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" allowsSelection="NO" rowHeight="90" sectionHeaderHeight="18" sectionFooterHeight="18" id="RzD-GI-xVj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -189,13 +189,14 @@
                             <barButtonItem image="ic_add" id="rmH-4j-mpP" userLabel="Logout">
                                 <connections>
                                     <action selector="createPitchButtonTapped:" destination="wwT-vU-f3M" id="Ezq-nT-XUJ"/>
-                                    <segue destination="eT1-yA-S5d" kind="show" identifier="createPitchId" id="2KO-Ls-OOD"/>
+                                    <segue destination="eT1-yA-S5d" kind="show" identifier="CreatePitchId" id="2KO-Ls-OOD"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <segue destination="gjo-Wr-7Et" kind="show" identifier="pitchDetailId" id="eOG-ix-uzC"/>
+                        <segue destination="gjo-Wr-7Et" kind="show" identifier="OrdersListId" id="eOG-ix-uzC"/>
+                        <segue destination="eT1-yA-S5d" kind="show" identifier="EditPitchId" id="HAo-Ha-GrN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yRH-2m-INm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,7 +209,7 @@
                 <viewControllerPlaceholder storyboardName="PitchExtra" id="eT1-yA-S5d" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bFk-r6-enV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1297" y="947"/>
+            <point key="canvasLocation" x="942" y="903"/>
         </scene>
         <!--Sân A-->
         <scene sceneID="9am-w1-KnU">
@@ -246,7 +247,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08/03/2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hiz-pr-Yrq">
-                                                    <rect key="frame" x="6" y="34" width="74" height="16"/>
+                                                    <rect key="frame" x="6" y="33" width="74" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="74" id="hxZ-g6-hkj"/>
                                                     </constraints>
@@ -255,7 +256,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWq-5e-f0f">
-                                                    <rect key="frame" x="86" y="8" width="1" height="67"/>
+                                                    <rect key="frame" x="86" y="8" width="1" height="66"/>
                                                     <color key="backgroundColor" red="0.83615185312813312" green="0.83615185312813312" blue="0.83615185312813312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="0.5" id="wwe-2y-gcg"/>
@@ -280,7 +281,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sd0-P1-Xor">
-                                                    <rect key="frame" x="288" y="8" width="1" height="67"/>
+                                                    <rect key="frame" x="288" y="8" width="1" height="66"/>
                                                     <color key="backgroundColor" red="0.83615185312813312" green="0.83615185312813312" blue="0.83615185312813312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="0.5" id="vcD-4X-jIO"/>
@@ -310,7 +311,7 @@
                                                     </connections>
                                                 </button>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vb4-PF-yZI">
-                                                    <rect key="frame" x="297" y="34" width="70" height="16"/>
+                                                    <rect key="frame" x="297" y="33" width="70" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -409,11 +410,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sân A" id="9jX-tA-bbJ">
                         <barButtonItem key="backBarButtonItem" title=" " id="2AB-nL-VJ5"/>
-                        <barButtonItem key="rightBarButtonItem" image="ic_edit_pitch" id="HaH-Sl-vBf">
-                            <connections>
-                                <segue destination="eT1-yA-S5d" kind="show" identifier="editPitchId" id="qGn-51-Lmm"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="ic_changeView" id="HaH-Sl-vBf"/>
                     </navigationItem>
                     <connections>
                         <outlet property="noOrderLabel" destination="WSh-XZ-qPF" id="5t4-gb-taa"/>
@@ -423,7 +420,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDg-Hs-lZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1652" y="481.70914542728639"/>
+            <point key="canvasLocation" x="1671" y="483"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="jo0-Rr-Bzy">
@@ -637,7 +634,7 @@
     <resources>
         <image name="ic_add" width="25" height="25"/>
         <image name="ic_back" width="50" height="50"/>
-        <image name="ic_edit_pitch" width="25" height="25"/>
+        <image name="ic_changeView" width="22" height="22"/>
         <image name="ic_email" width="50" height="50"/>
         <image name="ic_home" width="25" height="25"/>
         <image name="ic_logout" width="25" height="25"/>

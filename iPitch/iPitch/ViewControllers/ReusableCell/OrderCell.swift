@@ -22,7 +22,6 @@ class OrderCell: UITableViewCell {
     @IBOutlet weak var statusOrderLabel: UILabel!
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var rejectButton: UIButton!
-    var orderIndex: Int?
     var delegate: OrderCellDelegate?
     var order: Order? {
         didSet {

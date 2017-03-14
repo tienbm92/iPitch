@@ -180,7 +180,7 @@ class EditPitchViewController: UIViewController {
                 WindowManager.shared.showMessage(message: "DeletePitchError".localized,
                     title: error.localizedDescription, completion: nil)
             } else {
-                self?.back()
+                _ = self?.navigationController?.popToRootViewController(animated: true)
             }
         }
     }
@@ -203,7 +203,7 @@ class EditPitchViewController: UIViewController {
                         message: "UpdatePitchError".localized,
                         title: error.localizedDescription, completion: nil)
                 } else {
-                    self?.back()
+                    _ = self?.navigationController?.popToRootViewController(animated: true)
                 }
             }
         }
