@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PitchListCellDelegate {
+protocol PitchListCellDelegate: class {
     func editPitch(pitch: Pitch?)
     func checkOrder(pitch: Pitch?)
 }
@@ -19,7 +19,7 @@ class PitchListCell: UITableViewCell {
     @IBOutlet weak var pitchNameLabel: UILabel!
     @IBOutlet weak var pitchAddressLabel: UILabel!
     @IBOutlet weak var pitchActiveTimeLabel: UILabel!
-    var delegate: PitchListCellDelegate?
+    weak var delegate: PitchListCellDelegate?
     var pitch: Pitch? {
         didSet {
             guard let pitch = pitch else {

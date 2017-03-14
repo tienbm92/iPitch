@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol OrderCellDelegate {
+protocol OrderCellDelegate: class {
     func orderIsAccepted(order: Order?)
     func orderIsRejected(order: Order?)
 }
@@ -22,7 +22,7 @@ class OrderCell: UITableViewCell {
     @IBOutlet weak var statusOrderLabel: UILabel!
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var rejectButton: UIButton!
-    var delegate: OrderCellDelegate?
+    weak var delegate: OrderCellDelegate?
     var order: Order? {
         didSet {
             guard let order = order else {

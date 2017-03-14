@@ -8,8 +8,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -161,57 +161,13 @@
             </objects>
             <point key="canvasLocation" x="943" y="-183"/>
         </scene>
-        <!--Quản Lý Sân-->
-        <scene sceneID="dem-IZ-ap6">
-            <objects>
-                <tableViewController storyboardIdentifier="pitchListStoryboardId" id="wwT-vU-f3M" customClass="PitchListTableViewController" customModule="iPitch" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" allowsSelection="NO" rowHeight="90" sectionHeaderHeight="18" sectionFooterHeight="18" id="RzD-GI-xVj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
-                        <connections>
-                            <outlet property="dataSource" destination="wwT-vU-f3M" id="e9k-9k-eTm"/>
-                            <outlet property="delegate" destination="wwT-vU-f3M" id="sDa-Y1-lIQ"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Quản Lý Sân" id="upZ-KO-Wbw">
-                        <barButtonItem key="backBarButtonItem" title=" " id="udy-wT-r2O"/>
-                        <barButtonItem key="leftBarButtonItem" image="ic_home" id="NOw-zc-5uE" userLabel="Home">
-                            <connections>
-                                <action selector="homeButtonTapped:" destination="wwT-vU-f3M" id="v31-fd-JZe"/>
-                            </connections>
-                        </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem image="ic_logout" id="kRF-bt-9Fm" userLabel="Add">
-                                <connections>
-                                    <action selector="logoutButtonTapped:" destination="wwT-vU-f3M" id="vrq-DO-pfS"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="ic_add" id="rmH-4j-mpP" userLabel="Logout">
-                                <connections>
-                                    <action selector="createPitchButtonTapped:" destination="wwT-vU-f3M" id="Ezq-nT-XUJ"/>
-                                    <segue destination="eT1-yA-S5d" kind="show" identifier="CreatePitchId" id="2KO-Ls-OOD"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="gjo-Wr-7Et" kind="show" identifier="OrdersListId" id="eOG-ix-uzC"/>
-                        <segue destination="eT1-yA-S5d" kind="show" identifier="EditPitchId" id="HAo-Ha-GrN"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yRH-2m-INm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="942" y="483"/>
-        </scene>
         <!--PitchExtra-->
         <scene sceneID="R7N-aI-3SA">
             <objects>
                 <viewControllerPlaceholder storyboardName="PitchExtra" id="eT1-yA-S5d" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bFk-r6-enV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="942" y="903"/>
+            <point key="canvasLocation" x="942" y="927"/>
         </scene>
         <!--Sân A-->
         <scene sceneID="9am-w1-KnU">
@@ -413,7 +369,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sân A" id="9jX-tA-bbJ">
                         <barButtonItem key="backBarButtonItem" title=" " id="2AB-nL-VJ5"/>
-                        <barButtonItem key="rightBarButtonItem" image="ic_changeView" id="HaH-Sl-vBf"/>
+                        <barButtonItem key="rightBarButtonItem" image="ic_changeView" id="HaH-Sl-vBf">
+                            <connections>
+                                <action selector="refreshButtonTapped:" destination="gjo-Wr-7Et" id="gNq-wE-V7I"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="noOrderLabel" destination="WSh-XZ-qPF" id="5t4-gb-taa"/>
@@ -424,6 +384,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDg-Hs-lZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1671" y="483"/>
+        </scene>
+        <!--Danh Sách Sân-->
+        <scene sceneID="1Yv-ie-m0g">
+            <objects>
+                <viewController id="1v9-x3-xJ4" customClass="PitchesListViewController" customModule="iPitch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EKc-uD-b05"/>
+                        <viewControllerLayoutGuide type="bottom" id="aGL-cM-hJH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UPB-92-d2q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mc4-4h-0kS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="1v9-x3-xJ4" id="jHX-kB-z0W"/>
+                                    <outlet property="delegate" destination="1v9-x3-xJ4" id="UKy-m2-WDT"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4u-wl-qXe">
+                                <rect key="frame" x="30" y="212.5" width="314" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tp-YX-V83">
+                                <rect key="frame" x="15" y="606" width="345" height="46"/>
+                                <color key="backgroundColor" red="0.084986992179999998" green="0.36110067369999999" blue="0.1184882298" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="EUk-yK-sAC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Tạo sân">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="23"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="eT1-yA-S5d" kind="show" identifier="CreatePitchId" id="1pF-UT-QTq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7tp-YX-V83" firstAttribute="leading" secondItem="UPB-92-d2q" secondAttribute="leading" constant="15" id="0iS-ob-OGv"/>
+                            <constraint firstItem="K4u-wl-qXe" firstAttribute="bottom" secondItem="UPB-92-d2q" secondAttribute="centerY" constant="-100" id="7eR-Xc-f5J"/>
+                            <constraint firstAttribute="trailing" secondItem="mc4-4h-0kS" secondAttribute="trailing" id="8fJ-Tt-DDE"/>
+                            <constraint firstItem="aGL-cM-hJH" firstAttribute="top" secondItem="7tp-YX-V83" secondAttribute="bottom" constant="15" id="G5C-Wc-eeG"/>
+                            <constraint firstItem="7tp-YX-V83" firstAttribute="top" secondItem="mc4-4h-0kS" secondAttribute="bottom" constant="15" id="JRe-Gs-Pwc"/>
+                            <constraint firstItem="K4u-wl-qXe" firstAttribute="leading" secondItem="UPB-92-d2q" secondAttribute="leading" constant="30" id="OSe-GD-7Vb"/>
+                            <constraint firstItem="mc4-4h-0kS" firstAttribute="top" secondItem="UPB-92-d2q" secondAttribute="topMargin" id="Obc-Hv-sUe"/>
+                            <constraint firstItem="mc4-4h-0kS" firstAttribute="leading" secondItem="UPB-92-d2q" secondAttribute="leading" id="UpK-Oe-bRC"/>
+                            <constraint firstAttribute="trailing" secondItem="7tp-YX-V83" secondAttribute="trailing" constant="15" id="u2l-C5-d1w"/>
+                            <constraint firstItem="K4u-wl-qXe" firstAttribute="centerX" secondItem="UPB-92-d2q" secondAttribute="centerX" id="wZG-HA-cAh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Danh Sách Sân" id="JFV-w6-PTg">
+                        <barButtonItem key="backBarButtonItem" title=" " id="TOu-UB-jeH"/>
+                        <barButtonItem key="leftBarButtonItem" image="ic_home" id="hLC-cH-1zr">
+                            <connections>
+                                <action selector="homeButtonTapped:" destination="1v9-x3-xJ4" id="SNS-Jj-rRo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="ic_logout" id="kHD-x3-MKv">
+                            <connections>
+                                <action selector="logoutButtonTapped:" destination="1v9-x3-xJ4" id="ehE-IU-gFy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="noPitchLabel" destination="K4u-wl-qXe" id="6pc-KD-TuN"/>
+                        <outlet property="pitchesListTableView" destination="mc4-4h-0kS" id="jai-Hx-XZh"/>
+                        <segue destination="eT1-yA-S5d" kind="show" identifier="EditPitchId" id="ZnW-ce-geW"/>
+                        <segue destination="gjo-Wr-7Et" kind="show" identifier="OrdersListId" id="9E2-lq-Wg3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZU1-Cf-a0z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="942" y="483"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="jo0-Rr-Bzy">
@@ -635,7 +680,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="wwT-vU-f3M" kind="relationship" relationship="rootViewController" id="o4r-hn-6tc"/>
+                        <segue destination="1v9-x3-xJ4" kind="relationship" relationship="rootViewController" id="fkS-Xf-Fxl"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cjo-8V-5h6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -644,7 +689,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_add" width="25" height="25"/>
         <image name="ic_back" width="50" height="50"/>
         <image name="ic_changeView" width="22" height="22"/>
         <image name="ic_email" width="50" height="50"/>
@@ -653,6 +697,6 @@
         <image name="ic_password" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2KO-Ls-OOD"/>
+        <segue reference="ZnW-ce-geW"/>
     </inferredMetricsTieBreakers>
 </document>

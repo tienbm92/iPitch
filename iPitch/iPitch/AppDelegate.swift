@@ -33,10 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+        FIRDatabase.database().goOnline()
         connectToFcm()
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
+        FIRDatabase.database().goOffline()
         FIRMessaging.messaging().disconnect()
         print("Disconnected from FCM.")
     }

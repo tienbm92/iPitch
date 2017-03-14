@@ -191,7 +191,7 @@ class WindowManager: NSObject {
         }
         let mainViewController = UIStoryboard.main.instantiateInitialViewController()
         UIView.transition(with: window, duration: 0.5,
-            options: .transitionFlipFromBottom, animations: {
+            options: .transitionFlipFromTop, animations: {
             window.rootViewController = mainViewController
         }, completion: nil)
     }

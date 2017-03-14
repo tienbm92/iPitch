@@ -60,11 +60,11 @@
 		55361D5F1E7243FB0090E50B /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55361D5C1E7243FB0090E50B /* OrderCell.swift */; };
 		55361D601E7243FB0090E50B /* PitchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55361D5D1E7243FB0090E50B /* PitchListCell.swift */; };
 		55361D611E7243FB0090E50B /* PitchListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55361D5E1E7243FB0090E50B /* PitchListCell.xib */; };
-		55361D621E724FA20090E50B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55961AD71E6FE22F0032DFD6 /* Localizable.strings */; };
 		5547D2271E6E5D6B00231BE2 /* PitchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5547D2261E6E5D6B00231BE2 /* PitchDetailViewController.swift */; };
 		555C42F71E69563500DB9183 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555F33871E64262400E6851F /* LoginViewController.swift */; };
 		555C42F81E69563A00DB9183 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555F33891E64265F00E6851F /* RegisterViewController.swift */; };
-		558390AC1E69026700EBBE21 /* PitchListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558390AB1E69026700EBBE21 /* PitchListTableViewController.swift */; };
+		555E913B1E77D02A001D3B54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55961AD71E6FE22F0032DFD6 /* Localizable.strings */; };
+		555E913D1E77D537001D3B54 /* PitchesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555E913C1E77D537001D3B54 /* PitchesListViewController.swift */; };
 		55961AD51E6FE2020032DFD6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55961AD01E6FE2020032DFD6 /* InfoPlist.strings */; };
 		55A125C61E67BC0600456844 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A125C51E67BC0600456844 /* User.swift */; };
 		55C58FCC1E69880C00736674 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C58FCB1E69880C00736674 /* MainViewController.swift */; };
@@ -129,9 +129,9 @@
 		55361D5D1E7243FB0090E50B /* PitchListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchListCell.swift; sourceTree = "<group>"; };
 		55361D5E1E7243FB0090E50B /* PitchListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PitchListCell.xib; sourceTree = "<group>"; };
 		5547D2261E6E5D6B00231BE2 /* PitchDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchDetailViewController.swift; sourceTree = "<group>"; };
+		555E913C1E77D537001D3B54 /* PitchesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchesListViewController.swift; sourceTree = "<group>"; };
 		555F33871E64262400E6851F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		555F33891E64265F00E6851F /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		558390AB1E69026700EBBE21 /* PitchListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchListTableViewController.swift; sourceTree = "<group>"; };
 		55961AD01E6FE2020032DFD6 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		55961AD81E6FE22F0032DFD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		55961ADA1E6FE2370032DFD6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -325,7 +325,7 @@
 			children = (
 				555F33871E64262400E6851F /* LoginViewController.swift */,
 				555F33891E64265F00E6851F /* RegisterViewController.swift */,
-				558390AB1E69026700EBBE21 /* PitchListTableViewController.swift */,
+				555E913C1E77D537001D3B54 /* PitchesListViewController.swift */,
 				5547D2261E6E5D6B00231BE2 /* PitchDetailViewController.swift */,
 				113207271E691AEE008110C3 /* EditPitchViewController.swift */,
 				1187459D1E6922E600BC8664 /* PickerViewController.swift */,
@@ -427,7 +427,7 @@
 			files = (
 				08F5A8A91E6D5FEF00878E22 /* GoogleService-Info.plist in Resources */,
 				08F5A8A81E6D5E6900878E22 /* MapIPitch.storyboard in Resources */,
-				55361D621E724FA20090E50B /* Localizable.strings in Resources */,
+				555E913B1E77D02A001D3B54 /* Localizable.strings in Resources */,
 				11E3FCFE1E63B8E700875339 /* Main.storyboard in Resources */,
 				11E3FCFD1E63B8E700875339 /* LaunchScreen.storyboard in Resources */,
 				117E30AA1E6E6F0C0050335F /* OrderExtra.storyboard in Resources */,
@@ -513,8 +513,8 @@
 				0838B1E31E6555190053335D /* DirectionService.swift in Sources */,
 				55C58FCC1E69880C00736674 /* MainViewController.swift in Sources */,
 				11DEF7B51E6FDF79002D7E81 /* UIViewController+Extension.swift in Sources */,
-				558390AC1E69026700EBBE21 /* PitchListTableViewController.swift in Sources */,
 				0887882B1E76594A0015049C /* Location.swift in Sources */,
+				555E913D1E77D537001D3B54 /* PitchesListViewController.swift in Sources */,
 				114250221E728A3F00DCB6A2 /* NotificationRequest.swift in Sources */,
 				088788211E7655ED0015049C /* Route.swift in Sources */,
 				11DEF7B31E6FBADE002D7E81 /* GMSMapView+Extension.swift in Sources */,
