@@ -35,14 +35,15 @@ class MapIPitchControllers: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Initialize the location manager.
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.distanceFilter = 50
-        locationManager.startUpdatingLocation()
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
+            locationManager.requestWhenInUseAuthorization()
+        } else {
+            locationManager.startUpdatingLocation()
+        }
         // Setting map
         mapView.settings.myLocationButton = true
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
         // Setting table view
@@ -74,25 +75,42 @@ class MapIPitchControllers: UIViewController {
         WindowManager.shared.showProgressView()
         self.directionService.getDirections(origin: origin,
             destination: destination,
-            travelMode: TravelModes.driving) { [weak self] (status, success) in
+            travelMode: TravelModes.driving) { [weak self] (success) in
             if success {
                 self?.drawRoute()
                 WindowManager.shared.hideProgressView()
+                if let totalDistance = self?.directionService.totalDistance,
+                    let totalDuration = self?.directionService.totalDuration {
+                    DispatchQueue.main.async {
+                        let total = totalDistance + "\n" + totalDuration
+                        WindowManager.shared.showMessage(message: total,
+                            title: "TotalDistanceAndDuration".localized,
+                            completion: { (action) in
+                            self?.directionService.totalDistanceInMeters = 0
+                            self?.directionService.totalDurationInSeconds = 0
+                        })
+                    }
+                }
             } else {
-                print(status ?? "")
-                // TODO
+                WindowManager.shared.showMessage(
+                    message: "DirectionError".localized,
+                    title: "DirectionFalse".localized, completion: nil)
             }
         }
     }
     
     // Draw route
     fileprivate func drawRoute() {
-        if let route = directionService.overviewPolyline["points"] as? String,
-            let path = GMSPath(fromEncodedPath: route) {
-            let routePolyline = GMSPolyline(path: path)
-            routePolyline.strokeColor = UIColor.red
-            routePolyline.strokeWidth = 2.0
-            routePolyline.map = mapView
+        for step in self.directionService.selectSteps {
+            if step.polyline.points != "" {
+                let path = GMSPath(fromEncodedPath: step.polyline.points)
+                let routePolyline = GMSPolyline(path: path)
+                routePolyline.strokeColor = UIColor.red
+                routePolyline.strokeWidth = 2.0
+                routePolyline.map = mapView
+            } else {
+                return
+            }
         }
     }
     
@@ -120,16 +138,12 @@ class MapIPitchControllers: UIViewController {
     
     fileprivate func reloadMapView(mode: modeReload) {
         mapView.clear()
-        // show current location
-        let currentLocation = CLLocationCoordinate2D(
-            latitude: originLatitude, longitude: originLongtitude)
-        let camera = GMSCameraPosition.camera(withTarget:
-            currentLocation, zoom: zoomLevel)
-        mapView.animate(to: camera)
         let imageView = UIImageView(image: #imageLiteral(resourceName: "ic_stadium"))
-        imageView.bounds.size = CGSize(width: 30, height: 30)
-        let marker = GMSMarker(position: currentLocation)
-        marker.map = self.mapView
+        imageView.bounds.size = CGSize(width: 36, height: 36)
+        imageView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        imageView.borderColor = #colorLiteral(red: 0.08357391538, green: 0.3608524935, blue: 0.1193320996, alpha: 1)
+        imageView.borderWidth = 1.0
+        imageView.cornerRadius = 18
         // show stadium
         let array = (mode == .reloadFilter && filterPitch.count > 0) ?
             filterPitch : pitches
@@ -191,7 +205,8 @@ class MapIPitchControllers: UIViewController {
     }
     
     @IBAction func buttonReload(_ sender: UIBarButtonItem) {
-        reloadMapView(mode: .reloadMap)
+        mapView.clear()
+        getData()
         filterPitch.removeAll()
         listStadium.reloadData()
     }
@@ -236,29 +251,14 @@ extension MapIPitchControllers: CLLocationManagerDelegate, GMSMapViewDelegate {
             } else {
                 mapView.animate(to: camera)
             }
-            let marker = GMSMarker(position: CLLocationCoordinate2D(
-                latitude: locationLatitude,
-                longitude: locationLongtitude))
-            marker.isFlat = true
-            marker.map = self.mapView
         }
     }
     
     // Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager,
         didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .restricted:
-            print("Location access was restricted.")
-        case .denied:
-            print("User denied access to location.")
-            // Display the map using the default location.
-            mapView.isHidden = false
-        case .notDetermined:
-            print("Location status not determined.")
-        case .authorizedAlways: fallthrough
-        case .authorizedWhenInUse:
-            print("Location status is OK.")
+        if status == .authorizedWhenInUse {
+            manager.startUpdatingLocation()
         }
     }
     
