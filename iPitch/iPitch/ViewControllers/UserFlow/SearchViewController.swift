@@ -8,24 +8,20 @@
 
 import UIKit
 
-protocol searchViewControllerDelegate {
+protocol SearchViewControllerDelegate: class {
     func searchViewController(_ searchViewController: SearchViewController,
-        didCloseWith result: Any?)
+        didCloseWith filter: Filter?)
 }
 
 class SearchViewController: UIViewController {
 
-    @IBOutlet weak var countyTextField: UITextField!
+    @IBOutlet weak var startTimeButton: UIButton!
+    @IBOutlet weak var districtButton: UIButton!
     @IBOutlet weak var radiusTextField: UITextField!
-    @IBOutlet weak var timeFromTextField: UITextField!
-    @IBOutlet weak var timeToTextField: UITextField!
-    fileprivate var editingTextField: UITextField?
-    var delegate: searchViewControllerDelegate?
-    var districtID: Int?
-    var timeFrom: Date?
-    var timeTo: Date?
-    var radius: Double?
-    var result: [String: Any] = [:]
+    @IBOutlet weak var endTimeButton: UIButton!
+    fileprivate var editingButton: UIButton?
+    weak var delegate: SearchViewControllerDelegate?
+    var filter = Filter()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -35,7 +31,6 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     @IBAction func onClose(_ sender: Any) {
@@ -46,28 +41,24 @@ class SearchViewController: UIViewController {
     @IBAction func onSubmit(_ sender: Any) {
         if let radiusText = radiusTextField.text,
             let radius = Double(radiusText) {
-            self.radius = radius
+            filter.radius = radius
         }
-        result["timeFrom"] = timeFrom
-        result["timeTo"] = timeTo
-        result["radius"] = radius
-        result["districtID"] = districtID
-        delegate?.searchViewController(self, didCloseWith: result)
+        delegate?.searchViewController(self, didCloseWith: filter)
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func actionCounty(_ sender: Any) {
-        editingTextField = countyTextField
+    @IBAction func actionCounty(_ sender: UIButton) {
+        editingButton = sender
         openPicker(withType: .district)
     }
     
-    @IBAction func actionTimeFrom(_ sender: Any) {
-        editingTextField = timeFromTextField
+    @IBAction func actionTimeFrom(_ sender: UIButton) {
+        editingButton = sender
         openPicker(withType: .time)
     }
     
-    @IBAction func actionTimeTo(_ sender: Any) {
-        editingTextField = timeToTextField
+    @IBAction func actionTimeTo(_ sender: UIButton) {
+        editingButton = sender
         openPicker(withType: .time)
     }
     
@@ -101,26 +92,21 @@ class SearchViewController: UIViewController {
 extension SearchViewController: PickerViewControllerDelegate {
     
     func pickerViewController(_ pickerViewController: PickerViewController,
-                              didCloseWith result: Any?) {
-        if let editingTextField = editingTextField {
+        didCloseWith result: Any?) {
+        if let editingButton = editingButton {
             switch pickerViewController.type {
             case .district:
                 if let district = result as? District {
-                    if let districtID = district.id {
-                        self.districtID = districtID
-                    }
-                    countyTextField.text = district.name
-                    print(countyTextField.text ?? "")
+                    filter.district = district
+                    districtButton.setTitle(district.name, for: .normal)
                 }
             case .time:
                 if let time = result as? Date {
-                    editingTextField.text = time.toTimeString()
-                    if editingTextField === timeFromTextField {
-                        self.timeFrom = time
-                        timeFromTextField.text = editingTextField.text
-                    } else if editingTextField === timeToTextField {
-                        timeToTextField.text = editingTextField.text
-                        self.timeTo = time
+                    editingButton.setTitle(time.toTimeString(), for: .normal)
+                    if editingButton === startTimeButton {
+                        filter.startTime = time
+                    } else if editingButton === endTimeButton {
+                        filter.endTime = time
                     }
                 }
             }

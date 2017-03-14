@@ -17,6 +17,7 @@ enum EditPitchType {
 
 class EditPitchViewController: UIViewController {
 
+    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var closeTimeButton: UIButton!
     @IBOutlet weak var openTimeButton: UIButton!
     @IBOutlet weak var districtButton: UIButton!
@@ -24,7 +25,6 @@ class EditPitchViewController: UIViewController {
     @IBOutlet weak var updateButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
@@ -55,12 +55,12 @@ class EditPitchViewController: UIViewController {
                 for: .normal)
             closeTimeButton.setTitle(pitch.activeTimeTo?.toTimeString(),
                 for: .normal)
+            phoneTextField.text = pitch.phone
             if let photoPath = pitch.photoPath {
                 StorageService.shared.downloadImage(path: photoPath,
                     completion: { [weak self] (error, image) in
                     if let image = image {
-                        self?.avatarButton.setBackgroundImage(image,
-                            for: .normal)
+                        self?.avatarImageView.image = image
                     } else {
                         print("Can't download image: \(error?.localizedDescription ?? "")")
                     }
@@ -89,7 +89,7 @@ class EditPitchViewController: UIViewController {
             message: nil, preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "PreviewPhoto".localized, style: .default,
             handler: { [weak self] (action) in
-            self?.previewImage(self?.avatarButton.image(for: .normal))
+            self?.previewImage(self?.avatarImageView.image)
         }))
         actionSheet.addAction(UIAlertAction(title: "TakePhoto".localized,
             style: .default, handler: { [weak self] (action) in
@@ -101,8 +101,7 @@ class EditPitchViewController: UIViewController {
         }))
         actionSheet.addAction(UIAlertAction(title: "DeletePhoto".localized,
             style: .destructive, handler: { [weak self] (action) in
-            self?.avatarButton.setBackgroundImage(#imageLiteral(resourceName: "img_placeholder"),
-                for: .normal)
+            self?.avatarImageView.image = #imageLiteral(resourceName: "img_placeholder")
         }))
         actionSheet.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel,
             handler: nil))
@@ -153,7 +152,7 @@ class EditPitchViewController: UIViewController {
         } else {
             WindowManager.shared.showProgressView()
             PitchService.shared.create(pitch: pitch,
-                photo: self.avatarButton.backgroundImage(for: .normal)) {
+                photo: self.avatarImageView.image) {
                 [weak self] (error) in
                 WindowManager.shared.hideProgressView()
                 if let error = error {
@@ -195,7 +194,7 @@ class EditPitchViewController: UIViewController {
         } else {
             WindowManager.shared.showProgressView()
             PitchService.shared.update(pitch: pitch,
-                photo: self.avatarButton.backgroundImage(for: .normal)) {
+                photo: self.avatarImageView.image) {
                 [weak self] (error) in
                 WindowManager.shared.hideProgressView()
                 if let error = error {
@@ -297,7 +296,7 @@ extension EditPitchViewController: UINavigationControllerDelegate,
     func imagePickerController(_ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            avatarButton.setBackgroundImage(image, for: .normal)
+            self.avatarImageView.image = image
         } else {
             WindowManager.shared.showMessage(message: "PhotoError".localized, title: nil,
                 completion: nil)
@@ -341,6 +340,9 @@ extension EditPitchViewController: CLLocationManagerDelegate {
             if type == .update, let pitch = pitch {
                 location = CLLocation(latitude: pitch.latitude,
                     longitude: pitch.longitude)
+            } else if (type == .create) {
+                pitch?.latitude = location.coordinate.latitude
+                pitch?.longitude = location.coordinate.longitude
             }
             mapView.camera = GMSCameraPosition.camera(
                 withLatitude: location.coordinate.latitude,

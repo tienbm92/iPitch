@@ -14,8 +14,7 @@ class StadiumCell: UITableViewCell {
     @IBOutlet weak var nameStadium: UILabel!
     @IBOutlet weak var addressStadium: UILabel!
     @IBOutlet weak var imageStadium: UIImageView!
-    @IBOutlet weak var loadingContainer: UIView!
-    @IBOutlet weak var loadingView: UIActivityIndicatorView!
+    @IBOutlet weak var timeLabel: UILabel!
     var pitch: Pitch? {
         didSet {
             guard let pitch = pitch else {
@@ -25,8 +24,16 @@ class StadiumCell: UITableViewCell {
                 return
             }
             nameStadium.text = pitch.name
-            addressStadium.text = pitch.address
+            if let district = pitch.district?.name {
+                addressStadium.text = pitch.address + " - " + district
+            } else {
+                addressStadium.text = pitch.address
+            }
             imageStadium.image = #imageLiteral(resourceName: "img_placeholder")
+            if let timeFrom = pitch.activeTimeFrom?.toTimeString(),
+                let timeTo = pitch.activeTimeTo?.toTimeString() {
+                timeLabel.text = timeFrom + " - " + timeTo
+            }
             imageStadium.fetchImage(
                 for: pitch.photoPath, id: pitch.id, completion: nil)
         }

@@ -17,14 +17,13 @@ class PushNotificationService {
     }
     
     static let shared = PushNotificationService()
-    private let ref = FIRDatabase.database().reference()
     private let session: URLSession = {
         return URLSession(configuration: .default)
     }()
     
     func pushNotification(message: String, toUserId id: String,
         completion: ((Error?) -> Void)?) {
-        getToken(forUserId: id) { [unowned self] (tokenId) in
+        UserService.shared.getToken(forUserId: id) { [unowned self] (tokenId) in
             guard let tokenId = tokenId else {
                 completion?(PushNotificationServiceError.errorGettingUserToken)
                 return
@@ -48,22 +47,6 @@ class PushNotificationService {
             }
             task.resume()
         }
-    }
-    
-    func set(token: String?, forUserId id: String, completion: ((Error?) -> Void)?) {
-        ref.child("users/\(id)").setValue(token) { (error, ref) in
-            completion?(error)
-        }
-    }
-    
-    func getToken(forUserId id: String, completion: @escaping (String?) -> Void) {
-        ref.child("users/\(id)").observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let tokenId = snapshot.value as? String else {
-                completion(nil)
-                return
-            }
-            completion(tokenId)
-        })
     }
     
 }

@@ -11,8 +11,9 @@ import Firebase
 
 class MainViewController: UIViewController {
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        UIApplication.shared.setStatusBarHidden(false, with: .fade)
     }
     
     @IBAction func userFlowButton(_ sender: UIButton) {

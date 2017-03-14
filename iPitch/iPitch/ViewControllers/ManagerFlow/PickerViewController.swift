@@ -13,7 +13,7 @@ enum PickerViewType {
     case district
 }
 
-protocol PickerViewControllerDelegate {
+protocol PickerViewControllerDelegate: class {
     func pickerViewController(_ pickerViewController: PickerViewController,
         didCloseWith result: Any?)
 }
@@ -22,7 +22,7 @@ class PickerViewController: UIViewController {
     
     @IBOutlet weak var datePickerView: UIDatePicker!
     @IBOutlet weak var pickerView: UIPickerView!
-    var delegate: PickerViewControllerDelegate?
+    weak var delegate: PickerViewControllerDelegate?
     var districts = [District]()
     var type: PickerViewType = .time
     var result: Any? {

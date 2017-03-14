@@ -11,6 +11,7 @@ import GoogleMaps
 
 class PitchInfoViewController: UIViewController {
     
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var districtLabel: UILabel!
@@ -33,6 +34,10 @@ class PitchInfoViewController: UIViewController {
         addressLabel.text = pitch.address
         phoneLabel.text = pitch.phone
         districtLabel.text = pitch.district?.name
+        if let timeFrom = pitch.activeTimeFrom?.toTimeString(),
+            let timeTo = pitch.activeTimeTo?.toTimeString() {
+            timeLabel.text = timeFrom + " - " + timeTo
+        }
         avatarImageView.fetchImage(for: pitch.photoPath, id: pitch.id,
             completion: nil)
         mapView.camera = GMSCameraPosition.camera(withTarget: pitch.coordinate,

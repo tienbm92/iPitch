@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 
-enum modeReload: Int {
+enum ModeReload: Int {
     case reloadFilter
     case reloadMap
 }
@@ -37,11 +37,6 @@ class MapIPitchControllers: UIViewController {
         // Initialize the location manager.
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
-            locationManager.requestWhenInUseAuthorization()
-        } else {
-            locationManager.startUpdatingLocation()
-        }
         // Setting map
         mapView.settings.myLocationButton = true
         mapView.isMyLocationEnabled = true
@@ -49,8 +44,16 @@ class MapIPitchControllers: UIViewController {
         // Setting table view
         listStadium.dataSource = self
         listStadium.delegate = self
+        listStadium.estimatedRowHeight = 100;
+        listStadium.rowHeight = UITableViewAutomaticDimension
+        segmentedChangeView.titleForSegment(at: 0)
         // loading data
         getData()
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
+            locationManager.requestWhenInUseAuthorization()
+        } else {
+            locationManager.startUpdatingLocation()
+        }
     }
     
     @IBAction func changeViewType(_ sender: UISegmentedControl) {
@@ -120,30 +123,32 @@ class MapIPitchControllers: UIViewController {
         WindowManager.shared.showProgressView()
         PitchService.shared.getPitch(searchText: nil, radius: nil,
         districtId: nil, timeFrom: nil, timeTo: nil) { [weak self] (pitches) in
-        WindowManager.shared.hideProgressView()
-        self?.pitches = pitches
-        self?.listStadium.reloadData()
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "ic_stadium"))
-        imageView.bounds.size = CGSize(width: 30, height: 30)
-        // show stadium
-        for pitch in pitches {
-            let location = CLLocationCoordinate2D(latitude:
-                pitch.latitude, longitude: pitch.longitude)
-            let markerStadium = GMSMarker(position: location)
-            markerStadium.title = pitch.name
-            markerStadium.snippet = pitch.address
-            markerStadium.map = self?.mapView
-            markerStadium.iconView = imageView
+            WindowManager.shared.hideProgressView()
+            self?.pitches = pitches
+            self?.listStadium.reloadData()
+            let imageView = UIImageView(image: #imageLiteral(resourceName: "ic_stadium"))
+            imageView.bounds.size = CGSize(width: 36, height: 36)
+            imageView.borderColor = #colorLiteral(red: 0.08235294118, green: 0.3607843137, blue: 0.1176470588, alpha: 1)
+            imageView.borderWidth = 1.0
+            imageView.cornerRadius = 18
+            // show stadium
+            for pitch in pitches {
+                let location = CLLocationCoordinate2D(latitude:
+                    pitch.latitude, longitude: pitch.longitude)
+                let markerStadium = GMSMarker(position: location)
+                markerStadium.title = pitch.name
+                markerStadium.snippet = pitch.address
+                markerStadium.map = self?.mapView
+                markerStadium.iconView = imageView
             }
         }
     }
     
-    fileprivate func reloadMapView(mode: modeReload) {
+    fileprivate func reloadMapView(mode: ModeReload) {
         mapView.clear()
         let imageView = UIImageView(image: #imageLiteral(resourceName: "ic_stadium"))
         imageView.bounds.size = CGSize(width: 36, height: 36)
-        imageView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        imageView.borderColor = #colorLiteral(red: 0.08357391538, green: 0.3608524935, blue: 0.1193320996, alpha: 1)
+        imageView.borderColor = #colorLiteral(red: 0.08235294118, green: 0.3607843137, blue: 0.1176470588, alpha: 1)
         imageView.borderWidth = 1.0
         imageView.cornerRadius = 18
         // show stadium
@@ -325,39 +330,29 @@ extension MapIPitchControllers: UITableViewDataSource, UITableViewDelegate {
         self.pushPitchInfoViewController()
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    
 }
 
-extension MapIPitchControllers: searchViewControllerDelegate {
+extension MapIPitchControllers: SearchViewControllerDelegate {
     
     func searchViewController(_ searchViewController: SearchViewController,
-        didCloseWith result: Any?) {
-        var radius: Double?
-        var timeFrom: Date?
-        var timeTo: Date?
-        var districtID: Int?
-        var searchText: String?
-        guard let resultDict = result as? [String:Any] else {
+        didCloseWith filter: Filter?) {
+        guard let filter = filter else {
             return
         }
-        if let radiusDouble = resultDict["radius"] as? Double {
-            radius = radiusDouble
-        }
-        if let timeFromDict = resultDict["timeFrom"] as? Date {
-            timeFrom = timeFromDict
-        }
-        if let timeToDict = resultDict["timeTo"] as? Date {
-            timeTo = timeToDict
-        }
-        if let districtIDDict = resultDict["districtID"] as? Int {
-            districtID = districtIDDict
-        }
-        searchText = (self.searchBar.text == "") ? nil : self.searchBar.text
-        PitchService.shared.getPitch(searchText: searchText,
-                                     radius: radius, districtId: districtID,
-                                     timeFrom: timeFrom, timeTo: timeTo)
-        { [weak self] (pitches) in
+        let searchText = (self.searchBar.text == "") ? nil : self.searchBar.text
+        PitchService.shared.getPitch(searchText: searchText, radius: filter.radius,
+            districtId: filter.district?.id, timeFrom: filter.startTime,
+            timeTo: filter.endTime) { [weak self] (pitches) in
             self?.filterPitch = pitches
-            if let filterCount = self?.filterPitch.count, filterCount > 0 {
+            if !pitches.isEmpty {
                 self?.reloadMapView(mode: .reloadFilter)
                 self?.listStadium.reloadData()
             } else {
@@ -366,6 +361,29 @@ extension MapIPitchControllers: searchViewControllerDelegate {
                     title: "TitleFilter".localized, completion: nil)
             }
         }
+    }
+}
+
+extension MapIPitchControllers: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField === searchBar {
+            WindowManager.shared.showProgressView()
+            PitchService.shared.getPitch(searchText: textField.text,
+                radius: nil, districtId: nil, timeFrom: nil, timeTo: nil, completion: {
+                [weak self] (pitches) in
+                WindowManager.shared.hideProgressView()
+                self?.filterPitch = pitches
+                self?.reloadMapView(mode: .reloadFilter)
+                self?.listStadium.reloadData()
+            })
+        }
+        return true
     }
     
 }
