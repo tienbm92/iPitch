@@ -35,7 +35,6 @@ class PitchesListViewController: UIViewController {
         WindowManager.shared.showProgressView()
         PitchService.shared.getPitchForManager() { [weak self] (pitches) in
             WindowManager.shared.hideProgressView()
-            ImageStore.shared.deleteAllCache()
             if !pitches.isEmpty {
                 self?.noPitchLabel.isHidden = true
             } else {
@@ -71,10 +70,6 @@ class PitchesListViewController: UIViewController {
     
     @IBAction func homeButtonTapped(_ sender: UIBarButtonItem) {
         WindowManager.shared.directToMainStoryboard()
-    }
-    
-    @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
-        WindowManager.shared.logoutAction()
     }
 
 }

@@ -78,3 +78,9 @@
 "DirectionError" = "Lỗi chỉ đường";
 "DirectionFalse" = "chỉ đường thất bại";
 "LogInAnotherDevice" = "Bạn đã đăng nhập trên máy khác";
+"NoDataFilter" = "Không tìm thấy kết quả";
+"NoSendPasswordMess" = "Không gửi được password reset";
+"NoSendPasswordTitle" = "Lỗi gửi passoword";
+"ResetPasswordSuccess" = "reset mật khẩu thành công";
+"ChangePasswordFalse" = "Thay đổi mật khẩu thất bại!";
+"ChangePasswordSuccess" = "Thay đổi mật khẩu thành công!";

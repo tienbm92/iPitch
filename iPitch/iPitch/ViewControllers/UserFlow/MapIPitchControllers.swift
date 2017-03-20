@@ -8,18 +8,25 @@
 
 import UIKit
 import GoogleMaps
+import SVPullToRefresh
 
 enum ModeReload: Int {
     case reloadFilter
     case reloadMap
 }
 
+enum ModeGetData {
+    case getPullToRefresh
+    case noPullToRefresh
+}
+
 class MapIPitchControllers: UIViewController {
     
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var listStadium: UITableView!
-    @IBOutlet weak var searchBar: UITextField!
+    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var segmentedChangeView: UISegmentedControl!
+    @IBOutlet weak var noFilterLabel: UILabel!
     let locationManager = CLLocationManager()
     let directionService = DirectionService()
     let dictPitch = [String:Any]()
@@ -29,11 +36,26 @@ class MapIPitchControllers: UIViewController {
     var destinationLatitude: Double = 0
     var destinationLongtitude: Double = 0
     var pitches = [Pitch]()
-    var filterPitch = [Pitch]()
+    var filterPitch = [Pitch]() {
+        didSet {
+            if !filterPitch.isEmpty {
+                self.noFilterLabel.isHidden = true
+                self.reloadMapView(mode: .reloadFilter)
+                self.listStadium.reloadData()
+            } else {
+                self.pitches.removeAll()
+                self.reloadMapView(mode: .reloadFilter)
+                self.listStadium.reloadData()
+                self.noFilterLabel.isHidden = false
+                self.noFilterLabel.text = "NoDataFilter".localized
+            }
+        }
+    }
     var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchTextField.doneInvocation = (self, #selector(search))
         // Initialize the location manager.
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -44,15 +66,25 @@ class MapIPitchControllers: UIViewController {
         // Setting table view
         listStadium.dataSource = self
         listStadium.delegate = self
-        listStadium.estimatedRowHeight = 100;
+        listStadium.estimatedRowHeight = 100
         listStadium.rowHeight = UITableViewAutomaticDimension
         segmentedChangeView.titleForSegment(at: 0)
         // loading data
-        getData()
+        getData(mode: .noPullToRefresh)
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
             locationManager.requestWhenInUseAuthorization()
         } else {
             locationManager.startUpdatingLocation()
+        }
+        self.noFilterLabel.isHidden = true
+        self.listStadium.addPullToRefresh { [weak self] in
+            self?.filterPitch.removeAll()
+            self?.getData(mode: .getPullToRefresh)
+            DispatchQueue.main.async {
+                self?.mapView.clear()
+                self?.listStadium.reloadData()
+                self?.noFilterLabel.isHidden = true
+            }
         }
     }
     
@@ -119,11 +151,19 @@ class MapIPitchControllers: UIViewController {
         
     }
     
-    fileprivate func getData() -> Void {
-        WindowManager.shared.showProgressView()
+    fileprivate func getData(mode: ModeGetData) -> Void {
+        if mode == .noPullToRefresh {
+            WindowManager.shared.showProgressView()
+        }
         PitchService.shared.getPitch(searchText: nil, radius: nil,
         districtId: nil, timeFrom: nil, timeTo: nil) { [weak self] (pitches) in
-            WindowManager.shared.hideProgressView()
+            if mode == .noPullToRefresh {
+                WindowManager.shared.hideProgressView()
+            } else {
+                self?.listStadium.pullToRefreshView.stopAnimating()
+            }
+            
+            self?.listStadium.pullToRefreshView?.stopAnimating()
             self?.pitches = pitches
             self?.listStadium.reloadData()
             let imageView = UIImageView(image: #imageLiteral(resourceName: "ic_stadium"))
@@ -212,8 +252,9 @@ class MapIPitchControllers: UIViewController {
     }
     
     @IBAction func buttonReload(_ sender: UIBarButtonItem) {
+        noFilterLabel.isHidden = true
         mapView.clear()
-        getData()
+        getData(mode: .noPullToRefresh)
         filterPitch.removeAll()
         listStadium.reloadData()
     }
@@ -234,6 +275,19 @@ class MapIPitchControllers: UIViewController {
         pitchInfoViewController.pitch = array[index]
         self.navigationController?.pushViewController(pitchInfoViewController,
                                                       animated: true)
+    }
+    
+    func search() {
+        guard let searchStirng = searchTextField.text else {
+            return
+        }
+        WindowManager.shared.showProgressView()
+        PitchService.shared.getPitch(searchText: searchStirng,
+            radius: nil, districtId: nil, timeFrom: nil, timeTo: nil,
+            completion: { [weak self] (pitches) in
+            WindowManager.shared.hideProgressView()
+            self?.filterPitch = pitches
+        })
     }
  
 }
@@ -293,8 +347,19 @@ extension MapIPitchControllers: GMSMapViewDelegate {
                 self.index = i
             }
         }
+        self.view.endEditing(true)
         self.showAlertMapView(message: "DirectionOrDetail".localized,
                               title: "TitleDirection".localized, completion: nil)
+        
+    }
+    
+    func mapView(_ mapView: GMSMapView,
+                 didTapAt coordinate: CLLocationCoordinate2D) {
+        self.view.endEditing(true)
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTap overlay: GMSOverlay) {
+        self.view.endEditing(true)
     }
     
 }
@@ -321,6 +386,7 @@ extension MapIPitchControllers: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
         cell.pitch = pitches[indexPath.row]
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -328,14 +394,6 @@ extension MapIPitchControllers: UITableViewDataSource, UITableViewDelegate {
         didSelectRowAt indexPath: IndexPath) {
         self.index = indexPath.row
         self.pushPitchInfoViewController()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.01
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
     }
     
 }
@@ -347,18 +405,21 @@ extension MapIPitchControllers: SearchViewControllerDelegate {
         guard let filter = filter else {
             return
         }
-        let searchText = (self.searchBar.text == "") ? nil : self.searchBar.text
+        let searchText = (self.searchTextField.text == "") ? nil : self.searchTextField.text
         PitchService.shared.getPitch(searchText: searchText, radius: filter.radius,
             districtId: filter.district?.id, timeFrom: filter.startTime,
             timeTo: filter.endTime) { [weak self] (pitches) in
             self?.filterPitch = pitches
             if !pitches.isEmpty {
+                self?.noFilterLabel.isHidden = true
                 self?.reloadMapView(mode: .reloadFilter)
                 self?.listStadium.reloadData()
             } else {
-                WindowManager.shared.showMessage(
-                    message: "FilterFalse".localized,
-                    title: "TitleFilter".localized, completion: nil)
+                self?.pitches.removeAll()
+                self?.reloadMapView(mode: .reloadFilter)
+                self?.listStadium.reloadData()
+                self?.noFilterLabel.isHidden = false
+                self?.noFilterLabel.text = "NoDataFilter".localized
             }
         }
     }
@@ -367,22 +428,8 @@ extension MapIPitchControllers: SearchViewControllerDelegate {
 extension MapIPitchControllers: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if textField === searchBar {
-            WindowManager.shared.showProgressView()
-            PitchService.shared.getPitch(searchText: textField.text,
-                radius: nil, districtId: nil, timeFrom: nil, timeTo: nil, completion: {
-                [weak self] (pitches) in
-                WindowManager.shared.hideProgressView()
-                self?.filterPitch = pitches
-                self?.reloadMapView(mode: .reloadFilter)
-                self?.listStadium.reloadData()
-            })
-        }
+        self.view.endEditing(true)
+        search()
         return true
     }
     

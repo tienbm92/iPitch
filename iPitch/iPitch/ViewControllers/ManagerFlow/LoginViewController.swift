@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
 import FirebaseAuth
 import FirebaseInstanceID
 

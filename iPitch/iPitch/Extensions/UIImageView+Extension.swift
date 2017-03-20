@@ -33,8 +33,10 @@ extension UIImageView {
             DispatchQueue.main.async {
                 self.image = image
                 completion?(.success(image))
+                return
             }
-            return
+        } else {
+            ImageStore.shared.deleteImage(forKey: imageKey)
         }
         guard let photoPath = url else {
             self.image = #imageLiteral(resourceName: "img_placeholder")

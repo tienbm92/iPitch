@@ -39,6 +39,7 @@ class OrderViewController: UIViewController {
     }
     
     @IBAction func onConfirmPressed(_ sender: Any) {
+        self.view.endEditing(true)
         if let errorString = order.validate() {
             WindowManager.shared.showMessage(message: errorString,
                 title: nil, completion: nil)
