@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0826C8731E852423008112B0 /* EditPitchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0826C8721E852423008112B0 /* EditPitchTableViewController.swift */; };
 		08362CA91E6D33F100FDB83F /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08362CA81E6D33F100FDB83F /* ImageStore.swift */; };
 		08362CAF1E6D3DFD00FDB83F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08362CAE1E6D3DFD00FDB83F /* UIImageView+Extension.swift */; };
 		0838B1E31E6555190053335D /* DirectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0838B1E21E6555190053335D /* DirectionService.swift */; };
@@ -32,7 +33,6 @@
 		1128A2561E6D2FB2000DDBC0 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128A2551E6D2FB2000DDBC0 /* Date+Extension.swift */; };
 		1128A2581E6D2FC0000DDBC0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128A2571E6D2FC0000DDBC0 /* String+Extension.swift */; };
 		1128A25C1E6D4B8E000DDBC0 /* BigMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1128A25B1E6D4B8E000DDBC0 /* BigMapViewController.swift */; };
-		113207281E691AEE008110C3 /* EditPitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113207271E691AEE008110C3 /* EditPitchViewController.swift */; };
 		1142501E1E72866500DCB6A2 /* PushNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1142501D1E72866500DCB6A2 /* PushNotificationService.swift */; };
 		114250221E728A3F00DCB6A2 /* NotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114250211E728A3F00DCB6A2 /* NotificationRequest.swift */; };
 		114250241E728B4700DCB6A2 /* NotificationContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114250231E728B4700DCB6A2 /* NotificationContent.swift */; };
@@ -75,6 +75,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0826C8721E852423008112B0 /* EditPitchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPitchTableViewController.swift; sourceTree = "<group>"; };
 		08362CA81E6D33F100FDB83F /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		08362CAE1E6D3DFD00FDB83F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		0838B1E21E6555190053335D /* DirectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionService.swift; sourceTree = "<group>"; };
@@ -99,7 +100,6 @@
 		1128A2551E6D2FB2000DDBC0 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		1128A2571E6D2FC0000DDBC0 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1128A25B1E6D4B8E000DDBC0 /* BigMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigMapViewController.swift; sourceTree = "<group>"; };
-		113207271E691AEE008110C3 /* EditPitchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPitchViewController.swift; sourceTree = "<group>"; };
 		1142501A1E72710C00DCB6A2 /* iPitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPitch.entitlements; sourceTree = "<group>"; };
 		1142501D1E72866500DCB6A2 /* PushNotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationService.swift; sourceTree = "<group>"; };
 		114250211E728A3F00DCB6A2 /* NotificationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationRequest.swift; sourceTree = "<group>"; };
@@ -337,13 +337,13 @@
 				555F33891E64265F00E6851F /* RegisterViewController.swift */,
 				555E913C1E77D537001D3B54 /* PitchesListViewController.swift */,
 				5547D2261E6E5D6B00231BE2 /* PitchDetailViewController.swift */,
-				113207271E691AEE008110C3 /* EditPitchViewController.swift */,
 				1187459D1E6922E600BC8664 /* PickerViewController.swift */,
 				1128A25B1E6D4B8E000DDBC0 /* BigMapViewController.swift */,
 				11DEF7B01E6FB122002D7E81 /* PitchInfoViewController.swift */,
 				117E30AB1E6E70BD0050335F /* OrderViewController.swift */,
 				086BCDFB1E7BEAA6009190A1 /* ForgotPassViewController.swift */,
 				089A8A0C1E7F66B20094CC60 /* UpdatePasswordTableViewController.swift */,
+				0826C8721E852423008112B0 /* EditPitchTableViewController.swift */,
 			);
 			path = ManagerFlow;
 			sourceTree = "<group>";
@@ -401,7 +401,7 @@
 					11E3FCDA1E63B64400875339 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = K6ZTG96ZCP;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -513,9 +513,9 @@
 				117E30AC1E6E70BD0050335F /* OrderViewController.swift in Sources */,
 				11E3FD071E63BA3B00875339 /* UIView+Extension.swift in Sources */,
 				55361D601E7243FB0090E50B /* PitchListCell.swift in Sources */,
+				0826C8731E852423008112B0 /* EditPitchTableViewController.swift in Sources */,
 				088788311E76696A0015049C /* Step.swift in Sources */,
 				088788331E766EB60015049C /* Bounds.swift in Sources */,
-				113207281E691AEE008110C3 /* EditPitchViewController.swift in Sources */,
 				11DEF7B71E6FE65B002D7E81 /* UIStoryboard+Extension.swift in Sources */,
 				11E3FCDF1E63B64400875339 /* AppDelegate.swift in Sources */,
 				1128A2561E6D2FB2000DDBC0 /* Date+Extension.swift in Sources */,
@@ -684,8 +684,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.framgia.iPitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5091c4a0-7ff0-4689-a472-6a3e59971fcb";
-				PROVISIONING_PROFILE_SPECIFIER = iPitchDevNew;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -696,15 +696,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = iPitch/iPitch.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = K6ZTG96ZCP;
 				INFOPLIST_FILE = iPitch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.framgia.iPitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4d64e27d-9720-4c05-b855-5fe27c59ef9a";
-				PROVISIONING_PROFILE_SPECIFIER = iPitchDisNew;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

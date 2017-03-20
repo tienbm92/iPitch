@@ -35,9 +35,6 @@ extension UIImageView {
                 completion?(.success(image))
                 return
             }
-        } else {
-            WindowManager.shared.showProgressView()
-            ImageStore.shared.deleteImage(forKey: imageKey)
         }
         guard let photoPath = url else {
             self.image = #imageLiteral(resourceName: "img_placeholder")
@@ -59,30 +56,6 @@ extension UIImageView {
                     }
                 }
             }
-        }
-    }
-    
-    func fetchImageMap(for url: String?, id: String?) {
-        guard let id = id else {
-            self.image = #imageLiteral(resourceName: "img_placeholder")
-            return
-        }
-        let imageKey = "path\(id)"
-        if let image = ImageStore.shared.image(forKey: imageKey) {
-            self.image = image
-            return
-        } else {
-            ImageStore.shared.deleteImage(forKey: imageKey)
-        }
-        guard let url = url else {
-            self.image = #imageLiteral(resourceName: "img_placeholder")
-            return
-        }
-        if  let url = URL(string: url),
-            let data = try? Data(contentsOf: url) {
-            self.image = UIImage(data: data)
-        } else {
-            self.image = #imageLiteral(resourceName: "img_placeholder")
         }
     }
     

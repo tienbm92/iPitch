@@ -19,9 +19,9 @@ class MarkerView: UIView {
                 return
             }
             nameLabel.text = pitch.name
-//            imageMarker.fetchImage(
-//                for: pitch.photoPath, id: pitch.id, completion: nil)
-            imageMarker.fetchImageMap(for: pitch.photoPath, id: pitch.id)
+            imageMarker.fetchImage(
+                for: pitch.photoPath, id: pitch.id, completion: nil)
+//            imageMarker.fetchImageMap(for: pitch.photoPath, id: pitch.id)
         }
     }
     

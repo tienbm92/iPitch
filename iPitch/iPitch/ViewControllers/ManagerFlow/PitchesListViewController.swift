@@ -48,13 +48,13 @@ class PitchesListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreatePitchId" { 
             guard let createPitchVC = segue.destination
-                as? EditPitchViewController else {
+                as? EditPitchTableViewController else {
                     return
             }
             createPitchVC.type = .create
         } else if segue.identifier == "EditPitchId" { 
             guard let editPitchViewController = segue.destination
-                as? EditPitchViewController else {
+                as? EditPitchTableViewController else {
                     return
             }
             editPitchViewController.pitch = self.selectedPitch

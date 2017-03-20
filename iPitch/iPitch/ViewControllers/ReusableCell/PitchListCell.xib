@@ -27,6 +27,11 @@
                             <constraint firstAttribute="width" constant="68" id="HKM-EK-Nsw"/>
                             <constraint firstAttribute="width" secondItem="ltg-ml-WEV" secondAttribute="height" multiplier="1:1" id="N1s-17-PWu"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDl-An-amk">
                         <rect key="frame" x="88" y="10" width="249" height="17"/>

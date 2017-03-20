@@ -113,12 +113,12 @@ class MapIPitchControllers: UIViewController {
             destination: destination,
             travelMode: travelMode) { [weak self] (success) in
             if success {
-                self?.drawRoute()
                 WindowManager.shared.hideProgressView()
-                if let totalDistance = self?.directionService.totalDistance,
-                    let totalDuration = self?.directionService.totalDuration {
-                    let total = totalDistance + ". " + totalDuration
-                    DispatchQueue.main.async {
+                DispatchQueue.main.async {
+                    self?.drawRoute()
+                    if let totalDistance = self?.directionService.totalDistance,
+                        let totalDuration = self?.directionService.totalDuration {
+                        let total = totalDistance + ". " + totalDuration
                         self?.isHiddenButton(isHidden: .hidden)
                         UIView.animate(withDuration: 0.3, animations: {
                             self?.isHiddenLabel(isHidden: .noHidden)
@@ -151,7 +151,6 @@ class MapIPitchControllers: UIViewController {
                 return
             }
         }
-        
     }
     
     fileprivate func getData(mode: ModeGetData, searchText: String?) -> Void {
@@ -168,7 +167,7 @@ class MapIPitchControllers: UIViewController {
             self?.pitches = pitches
             self?.listStadium.reloadData()
             self?.reloadMapView(mode: .reloadMap)
-            self?.searchTextField.text = nil
+//            self?.searchTextField.text = nil
             if !pitches.isEmpty {
                 self?.noFilterLabel.isHidden = true
             } else {
@@ -248,10 +247,12 @@ class MapIPitchControllers: UIViewController {
         self.directionService.totalDurationInSeconds = 0
         self.directionService.selectLegs.removeAll()
         self.directionService.selectSteps.removeAll()
-        self.heightOptionVehicle.constant = 0
-        UIView.animate(withDuration: 0.3, animations: { 
-            self.view.layoutIfNeeded()
-        })
+        if self.heightOptionVehicle.constant != 0 {
+            self.heightOptionVehicle.constant = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
     }
     
     @IBAction func chooseVehicle(_ sender: UIButton) {
@@ -327,6 +328,7 @@ class MapIPitchControllers: UIViewController {
         }
         self.moveButtonDirectionDetail(isHidden: .hidden)
     }
+    
     
 }
 
@@ -408,6 +410,7 @@ extension MapIPitchControllers: GMSMapViewDelegate {
         }
         let markerLatitude = marker.position.latitude
         let markerLongitude = marker.position.longitude
+        marker.tracksInfoWindowChanges = true
         self.destinationLatitude = markerLatitude
         self.destinationLongtitude = markerLongitude
         for i in 0..<pitches.count {
@@ -417,7 +420,6 @@ extension MapIPitchControllers: GMSMapViewDelegate {
         }
         markerCustom.pitch = self.pitches[index]
         self.moveButtonDirectionDetail(isHidden: .hidden)
-        
         return markerCustom
     }
     
@@ -479,6 +481,13 @@ extension MapIPitchControllers: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         self.search()
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField == self.searchTextField {
+            self.search()
+        }
         return true
     }
     
