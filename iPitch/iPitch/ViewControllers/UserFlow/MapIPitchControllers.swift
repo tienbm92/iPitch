@@ -10,23 +10,37 @@ import UIKit
 import GoogleMaps
 import SVPullToRefresh
 
-enum ModeReload: Int {
-    case reloadFilter
-    case reloadMap
-}
-
-enum ModeGetData {
-    case getPullToRefresh
-    case noPullToRefresh
-}
-
 class MapIPitchControllers: UIViewController {
     
+    enum ModeReload {
+        case reloadFilter
+        case reloadMap
+    }
+    
+    enum ModeGetData {
+        case getPullToRefresh
+        case noPullToRefresh
+    }
+    
+    enum isHidden {
+        case hidden
+        case noHidden
+    }
+    
+    @IBOutlet weak var glassBackground: UIImageView!
+    @IBOutlet weak var directionButton: UIButton!
+    @IBOutlet weak var detailButton: UIButton!
+    @IBOutlet weak var viewDirection: UIView!
+    @IBOutlet weak var drivingButton: UIButton!
+    @IBOutlet weak var bicyclingButton: UIButton!
+    @IBOutlet weak var walkingButton: UIButton!
+    @IBOutlet weak var heightOptionVehicle: NSLayoutConstraint!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var listStadium: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var segmentedChangeView: UISegmentedControl!
     @IBOutlet weak var noFilterLabel: UILabel!
+    @IBOutlet weak var detailDirectionLabel: UILabel!
     let locationManager = CLLocationManager()
     let directionService = DirectionService()
     let dictPitch = [String:Any]()
@@ -36,41 +50,23 @@ class MapIPitchControllers: UIViewController {
     var destinationLatitude: Double = 0
     var destinationLongtitude: Double = 0
     var pitches = [Pitch]()
-    var filterPitch = [Pitch]() {
-        didSet {
-            if !filterPitch.isEmpty {
-                self.noFilterLabel.isHidden = true
-                self.reloadMapView(mode: .reloadFilter)
-                self.listStadium.reloadData()
-            } else {
-                self.pitches.removeAll()
-                self.reloadMapView(mode: .reloadFilter)
-                self.listStadium.reloadData()
-                self.noFilterLabel.isHidden = false
-                self.noFilterLabel.text = "NoDataFilter".localized
-            }
-        }
-    }
     var index = 0
+    var travelMode = TravelModes.driving
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchTextField.doneInvocation = (self, #selector(search))
-        // Initialize the location manager.
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        // Setting map
         mapView.settings.myLocationButton = true
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
-        // Setting table view
         listStadium.dataSource = self
         listStadium.delegate = self
         listStadium.estimatedRowHeight = 100
+        listStadium.isHidden = true
         listStadium.rowHeight = UITableViewAutomaticDimension
-        segmentedChangeView.titleForSegment(at: 0)
-        // loading data
-        getData(mode: .noPullToRefresh)
+        getData(mode: .noPullToRefresh, searchText: nil)
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
             locationManager.requestWhenInUseAuthorization()
         } else {
@@ -78,17 +74,22 @@ class MapIPitchControllers: UIViewController {
         }
         self.noFilterLabel.isHidden = true
         self.listStadium.addPullToRefresh { [weak self] in
-            self?.filterPitch.removeAll()
-            self?.getData(mode: .getPullToRefresh)
-            DispatchQueue.main.async {
-                self?.mapView.clear()
-                self?.listStadium.reloadData()
-                self?.noFilterLabel.isHidden = true
-            }
+            self?.getData(mode: .getPullToRefresh, searchText: nil)
+        }
+        self.noFilterLabel.text = "NoDataFilter".localized
+        self.heightOptionVehicle.constant = 0
+        self.isHiddenButton(isHidden: .hidden)
+        self.moveButtonDirectionDetail(isHidden: .hidden)
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            self.glassBackground.makeBlurEffect()
+        }else{
+            self.glassBackground.image = nil
         }
     }
     
     @IBAction func changeViewType(_ sender: UISegmentedControl) {
+        self.closeDetailDirection()
+        self.moveButtonDirectionDetail(isHidden: .hidden)
         switch segmentedChangeView.selectedSegmentIndex {
         case 0:
             listStadium.isHidden = true
@@ -103,34 +104,36 @@ class MapIPitchControllers: UIViewController {
     
     // direction user - stadium
     fileprivate func directionUserStadium() {
+        self.reloadMapView(mode: .reloadMap)
         let origin: String = "\(originLatitude),\(originLongtitude)"
         let destination: String =
             "\(destinationLatitude),\(destinationLongtitude)"
         WindowManager.shared.showProgressView()
         self.directionService.getDirections(origin: origin,
             destination: destination,
-            travelMode: TravelModes.driving) { [weak self] (success) in
+            travelMode: travelMode) { [weak self] (success) in
             if success {
                 self?.drawRoute()
                 WindowManager.shared.hideProgressView()
                 if let totalDistance = self?.directionService.totalDistance,
                     let totalDuration = self?.directionService.totalDuration {
+                    let total = totalDistance + ". " + totalDuration
                     DispatchQueue.main.async {
-                        let total = totalDistance + "\n" + totalDuration
-                        WindowManager.shared.showMessage(message: total,
-                            title: "TotalDistanceAndDuration".localized,
-                            completion: { (action) in
-                            self?.directionService.totalDistanceInMeters = 0
-                            self?.directionService.totalDurationInSeconds = 0
-                            self?.directionService.selectLegs.removeAll()
-                            self?.directionService.selectSteps.removeAll()
+                        self?.isHiddenButton(isHidden: .hidden)
+                        UIView.animate(withDuration: 0.3, animations: {
+                            self?.isHiddenLabel(isHidden: .noHidden)
+                            self?.detailDirectionLabel.text = total
+                            self?.moveButtonDirectionDetail(isHidden: .hidden)
                         })
                     }
                 }
             } else {
-                WindowManager.shared.showMessage(
-                    message: "DirectionError".localized,
-                    title: "DirectionFalse".localized, completion: nil)
+                WindowManager.shared.hideProgressView()
+                DispatchQueue.main.async {
+                    WindowManager.shared.showMessage(
+                        message: "DirectionError".localized,
+                        title: "DirectionFalse".localized, completion: nil)
+                }
             }
         }
     }
@@ -151,35 +154,25 @@ class MapIPitchControllers: UIViewController {
         
     }
     
-    fileprivate func getData(mode: ModeGetData) -> Void {
+    fileprivate func getData(mode: ModeGetData, searchText: String?) -> Void {
         if mode == .noPullToRefresh {
             WindowManager.shared.showProgressView()
         }
-        PitchService.shared.getPitch(searchText: nil, radius: nil,
+        PitchService.shared.getPitch(searchText: searchText, radius: nil,
         districtId: nil, timeFrom: nil, timeTo: nil) { [weak self] (pitches) in
             if mode == .noPullToRefresh {
                 WindowManager.shared.hideProgressView()
             } else {
                 self?.listStadium.pullToRefreshView.stopAnimating()
             }
-            
-            self?.listStadium.pullToRefreshView?.stopAnimating()
             self?.pitches = pitches
             self?.listStadium.reloadData()
-            let imageView = UIImageView(image: #imageLiteral(resourceName: "ic_stadium"))
-            imageView.bounds.size = CGSize(width: 36, height: 36)
-            imageView.borderColor = #colorLiteral(red: 0.08235294118, green: 0.3607843137, blue: 0.1176470588, alpha: 1)
-            imageView.borderWidth = 1.0
-            imageView.cornerRadius = 18
-            // show stadium
-            for pitch in pitches {
-                let location = CLLocationCoordinate2D(latitude:
-                    pitch.latitude, longitude: pitch.longitude)
-                let markerStadium = GMSMarker(position: location)
-                markerStadium.title = pitch.name
-                markerStadium.snippet = pitch.address
-                markerStadium.map = self?.mapView
-                markerStadium.iconView = imageView
+            self?.reloadMapView(mode: .reloadMap)
+            self?.searchTextField.text = nil
+            if !pitches.isEmpty {
+                self?.noFilterLabel.isHidden = true
+            } else {
+                self?.noFilterLabel.isHidden = false
             }
         }
     }
@@ -192,9 +185,7 @@ class MapIPitchControllers: UIViewController {
         imageView.borderWidth = 1.0
         imageView.cornerRadius = 18
         // show stadium
-        let array = (mode == .reloadFilter && filterPitch.count > 0) ?
-            filterPitch : pitches
-        for pitch in array {
+        for pitch in pitches {
             let location = CLLocationCoordinate2D(latitude:
                 pitch.latitude, longitude: pitch.longitude)
             let markerStadium = GMSMarker(position: location)
@@ -202,45 +193,12 @@ class MapIPitchControllers: UIViewController {
             markerStadium.snippet = pitch.address
             markerStadium.iconView = imageView
             markerStadium.map = self.mapView
-            markerStadium.index(ofAccessibilityElement: pitch)
-        }
-    }
-    
-    fileprivate func showAlertMapView(message: String, title: String,
-        completion: ((UIAlertAction) -> Void)?) {
-        WindowManager.shared.alertWindow.windowLevel =
-            WindowManager.shared.getCurrentWindowLevel() + 0.1
-        let alertController = UIAlertController(
-            title: title, message: message, preferredStyle: .alert)
-        let diretionAction = UIAlertAction(title: "Direction".localized,
-                                           style: .default)
-            { [weak self] (action) in
-            WindowManager.shared.alertWindow.isHidden = true
-            if let completion = completion {
-                completion(action)
-            }
-            self?.reloadMapView(mode: .reloadMap)
-            self?.directionUserStadium()
-        }
-        let detailAction = UIAlertAction(title: "Detail".localized,
-                                         style: .default)
-            { [weak self] (action) in
-            WindowManager.shared.alertWindow.isHidden = true
-            if let completion = completion {
-                completion(action)
-            }
-            self?.pushPitchInfoViewController()
-        }
-        alertController.addAction(diretionAction)
-        alertController.addAction(detailAction)
-        DispatchQueue.main.async {
-            WindowManager.shared.alertWindow.isHidden = false
-            WindowManager.shared.alertWindow.rootViewController?.present(
-                alertController, animated: true, completion: nil)
         }
     }
     
     @IBAction func actionOptionSearch(_ sender: UIButton) {
+        self.closeDetailDirection()
+        self.moveButtonDirectionDetail(isHidden: .hidden)
         guard let searchViewController =
             storyboard?.instantiateViewController(
             withIdentifier: String(describing: SearchViewController.self))
@@ -252,11 +210,9 @@ class MapIPitchControllers: UIViewController {
     }
     
     @IBAction func buttonReload(_ sender: UIBarButtonItem) {
-        noFilterLabel.isHidden = true
-        mapView.clear()
-        getData(mode: .noPullToRefresh)
-        filterPitch.removeAll()
-        listStadium.reloadData()
+        getData(mode: .noPullToRefresh, searchText: nil)
+        self.closeDetailDirection()
+        self.moveButtonDirectionDetail(isHidden: .hidden)
     }
     
     @IBAction func homeButtonTapped(_ sender: UIBarButtonItem) {
@@ -264,32 +220,114 @@ class MapIPitchControllers: UIViewController {
     }
     
     fileprivate func pushPitchInfoViewController() {
-        let orderExtraStoryboard = UIStoryboard(name: "OrderExtra", bundle: nil)
         guard let pitchInfoViewController =
-            orderExtraStoryboard.instantiateViewController(withIdentifier:
+            UIStoryboard.orderExtra.instantiateViewController(withIdentifier:
             String(describing: PitchInfoViewController.self))
             as? PitchInfoViewController else {
             return
         }
-        let array = (filterPitch.count > 0) ? filterPitch : pitches
-        pitchInfoViewController.pitch = array[index]
+        pitchInfoViewController.pitch = pitches[index]
         self.navigationController?.pushViewController(pitchInfoViewController,
                                                       animated: true)
     }
     
     func search() {
-        guard let searchStirng = searchTextField.text else {
+        guard let searchText = searchTextField.text else {
             return
         }
+        self.closeDetailDirection()
+        self.moveButtonDirectionDetail(isHidden: .hidden)
         WindowManager.shared.showProgressView()
-        PitchService.shared.getPitch(searchText: searchStirng,
-            radius: nil, districtId: nil, timeFrom: nil, timeTo: nil,
-            completion: { [weak self] (pitches) in
-            WindowManager.shared.hideProgressView()
-            self?.filterPitch = pitches
+        self.getData(mode: .noPullToRefresh, searchText: searchText)
+    }
+    
+    fileprivate func closeDetailDirection() {
+        self.isHiddenLabel(isHidden: .hidden)
+        self.isHiddenButton(isHidden: .hidden)
+        self.directionService.totalDistanceInMeters = 0
+        self.directionService.totalDurationInSeconds = 0
+        self.directionService.selectLegs.removeAll()
+        self.directionService.selectSteps.removeAll()
+        self.heightOptionVehicle.constant = 0
+        UIView.animate(withDuration: 0.3, animations: { 
+            self.view.layoutIfNeeded()
         })
     }
- 
+    
+    @IBAction func chooseVehicle(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            self.travelMode = TravelModes.walking
+        case 1:
+            self.travelMode = TravelModes.bicycling
+        case 2:
+            self.travelMode = TravelModes.driving
+        default:
+            print("error")
+            break
+        }
+        self.moveButtonDirectionDetail(isHidden: .hidden)
+        self.directionUserStadium()
+    }
+    
+    fileprivate func isHiddenButton(isHidden: isHidden) {
+        switch isHidden {
+        case .noHidden:
+            self.walkingButton.isHidden = false
+            self.bicyclingButton.isHidden = false
+            self.drivingButton.isHidden = false
+        case .hidden:
+            self.walkingButton.isHidden = true
+            self.bicyclingButton.isHidden = true
+            self.drivingButton.isHidden = true
+        }
+    }
+    
+    fileprivate func isHiddenLabel(isHidden: isHidden) {
+        switch isHidden {
+        case .hidden:
+            self.detailDirectionLabel.isHidden = true
+            self.viewDirection.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        case .noHidden:
+            self.detailDirectionLabel.isHidden = false
+            self.viewDirection.backgroundColor = #colorLiteral(red: 0.1254394945, green: 0.5569097896, blue: 0.1852708614, alpha: 0.515812286)
+        }
+    }
+    
+    fileprivate func moveButtonDirectionDetail(isHidden: isHidden) {
+        switch isHidden {
+        case .noHidden:
+            self.detailButton.isHidden = false
+            self.directionButton.isHidden = false
+        case .hidden:
+            self.detailButton.isHidden = true
+            self.directionButton.isHidden = true
+        }
+    }
+    
+    @IBAction func actionDetailOrDirection(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            self.pushPitchInfoViewController()
+            self.heightOptionVehicle.constant = 0
+        case 1:
+            self.isHiddenLabel(isHidden: .hidden)
+            self.isHiddenButton(isHidden: .noHidden)
+            self.walkingButton.alpha = 0.0
+            self.drivingButton.alpha = 0.0
+            self.bicyclingButton.alpha = 0.0
+            UIView.animate(withDuration: 0.3) {
+                self.walkingButton.alpha = 1.0
+                self.drivingButton.alpha = 1.0
+                self.bicyclingButton.alpha = 1.0
+            }
+        default:
+            print("error action detail direction")
+            break
+        }
+        self.moveButtonDirectionDetail(isHidden: .hidden)
+    }
+    
 }
 
 extension MapIPitchControllers: CLLocationManagerDelegate {
@@ -336,30 +374,51 @@ extension MapIPitchControllers: GMSMapViewDelegate {
     
     // Event tab marker
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        let markerLatitude = marker.position.latitude
-        let markerLongitude = marker.position.longitude
-        self.destinationLatitude = markerLatitude
-        self.destinationLongtitude = markerLongitude
-        let array = (self.filterPitch.count > 0)
-            ? self.filterPitch : self.pitches
-        for i in 0..<array.count {
-            if markerLatitude == array[i].latitude {
-                self.index = i
-            }
-        }
         self.view.endEditing(true)
-        self.showAlertMapView(message: "DirectionOrDetail".localized,
-                              title: "TitleDirection".localized, completion: nil)
-        
+        self.closeDetailDirection()
+        self.heightOptionVehicle.constant = 40
+        self.moveButtonDirectionDetail(isHidden: .noHidden)
+        self.detailButton.alpha = 0.0
+        self.directionButton.alpha = 0.0
+        UIView.animate(withDuration: 0.3, animations: { 
+            self.view.layoutIfNeeded()
+            self.detailButton.alpha = 1.0
+            self.directionButton.alpha = 1.0
+        }, completion: nil)
     }
     
     func mapView(_ mapView: GMSMapView,
                  didTapAt coordinate: CLLocationCoordinate2D) {
         self.view.endEditing(true)
+        self.closeDetailDirection()
+        self.moveButtonDirectionDetail(isHidden: .hidden)
     }
     
     func mapView(_ mapView: GMSMapView, didTap overlay: GMSOverlay) {
         self.view.endEditing(true)
+        self.closeDetailDirection()
+        self.moveButtonDirectionDetail(isHidden: .hidden)
+    }
+    
+    func mapView(_ mapView: GMSMapView,
+                 markerInfoWindow marker: GMSMarker) -> UIView? {
+        guard let markerCustom = Bundle.main.loadNibNamed(
+            "MarkerView", owner: nil, options: nil)?[0] as? MarkerView else {
+            return UIView()
+        }
+        let markerLatitude = marker.position.latitude
+        let markerLongitude = marker.position.longitude
+        self.destinationLatitude = markerLatitude
+        self.destinationLongtitude = markerLongitude
+        for i in 0..<pitches.count {
+            if markerLatitude == pitches[i].latitude {
+                self.index = i
+            }
+        }
+        markerCustom.pitch = self.pitches[index]
+        self.moveButtonDirectionDetail(isHidden: .hidden)
+        
+        return markerCustom
     }
     
 }
@@ -368,9 +427,6 @@ extension MapIPitchControllers: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        if filterPitch.count > 0 {
-            return filterPitch.count
-        }
         return pitches.count
     }
     
@@ -381,12 +437,9 @@ extension MapIPitchControllers: UITableViewDataSource, UITableViewDelegate {
             as? StadiumCell  else {
                 return UITableViewCell()
         }
-        if filterPitch.count > 0 {
-            cell.pitch = filterPitch[indexPath.row]
-            return cell
-        }
         cell.pitch = pitches[indexPath.row]
         cell.selectionStyle = .none
+        cell.layoutIfNeeded()
         return cell
     }
     
@@ -409,18 +462,14 @@ extension MapIPitchControllers: SearchViewControllerDelegate {
         PitchService.shared.getPitch(searchText: searchText, radius: filter.radius,
             districtId: filter.district?.id, timeFrom: filter.startTime,
             timeTo: filter.endTime) { [weak self] (pitches) in
-            self?.filterPitch = pitches
+            self?.pitches = pitches
             if !pitches.isEmpty {
                 self?.noFilterLabel.isHidden = true
-                self?.reloadMapView(mode: .reloadFilter)
-                self?.listStadium.reloadData()
             } else {
-                self?.pitches.removeAll()
-                self?.reloadMapView(mode: .reloadFilter)
-                self?.listStadium.reloadData()
                 self?.noFilterLabel.isHidden = false
-                self?.noFilterLabel.text = "NoDataFilter".localized
             }
+            self?.listStadium.reloadData()
+            self?.reloadMapView(mode: .reloadFilter)
         }
     }
 }
@@ -429,7 +478,7 @@ extension MapIPitchControllers: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
-        search()
+        self.search()
         return true
     }
     

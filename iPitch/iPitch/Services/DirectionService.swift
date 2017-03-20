@@ -9,10 +9,10 @@
 import UIKit
 import GoogleMaps
 
-enum TravelModes: Int {
-    case driving
-    case walking
-    case bicycling
+enum TravelModes: String {
+    case driving = "driving"
+    case walking = "walking"
+    case bicycling = "Bicycling"
 }
 
 class DirectionService: NSObject, CLLocationManagerDelegate {
@@ -39,7 +39,7 @@ class DirectionService: NSObject, CLLocationManagerDelegate {
     }
     
     func getDirections(origin: String?,
-        destination: String?, travelMode: TravelModes?,
+        destination: String?, travelMode: TravelModes,
         getDirectionStatus: @escaping ((_ success: Bool) -> Void)) {
         guard let originAddress = origin else {
             getDirectionStatus(false)
@@ -51,21 +51,7 @@ class DirectionService: NSObject, CLLocationManagerDelegate {
         }
         var directionsURLString = baseURLDirections + "origin=" +
             originAddress + "&destination=" + destinationAddress
-        if (travelMode) != nil {
-            var travelModeString = ""
-            switch travelMode?.rawValue {
-            case TravelModes.walking.rawValue?:
-                travelModeString = "walking"
-            case TravelModes.bicycling.rawValue?:
-                travelModeString = "bicycling"
-            default:
-                travelModeString = "driving"
-            }
-            directionsURLString += "&mode=" + travelModeString +
-                "&key=" + API_KEY
-        } else {
-            directionsURLString += "&key=" + API_KEY
-        }
+        directionsURLString += "&mode=" + travelMode.rawValue + "&key=" + API_KEY
         self.parseJsonGoogleMap(directionsURLString: directionsURLString)
             { (success) in
             if success {

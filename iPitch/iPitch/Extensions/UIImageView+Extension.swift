@@ -36,6 +36,7 @@ extension UIImageView {
                 return
             }
         } else {
+            WindowManager.shared.showProgressView()
             ImageStore.shared.deleteImage(forKey: imageKey)
         }
         guard let photoPath = url else {
@@ -45,6 +46,7 @@ extension UIImageView {
         }
         StorageService.shared.downloadImage(path: photoPath)
         { [weak self] (error, photo) in
+            WindowManager.shared.hideProgressView()
             if let error = error {
                 print(error.localizedDescription)
                 completion?(.failure(ImageRequestError.errorCreatingImage))
@@ -58,6 +60,38 @@ extension UIImageView {
                 }
             }
         }
+    }
+    
+    func fetchImageMap(for url: String?, id: String?) {
+        guard let id = id else {
+            self.image = #imageLiteral(resourceName: "img_placeholder")
+            return
+        }
+        let imageKey = "path\(id)"
+        if let image = ImageStore.shared.image(forKey: imageKey) {
+            self.image = image
+            return
+        } else {
+            ImageStore.shared.deleteImage(forKey: imageKey)
+        }
+        guard let url = url else {
+            self.image = #imageLiteral(resourceName: "img_placeholder")
+            return
+        }
+        if  let url = URL(string: url),
+            let data = try? Data(contentsOf: url) {
+            self.image = UIImage(data: data)
+        } else {
+            self.image = #imageLiteral(resourceName: "img_placeholder")
+        }
+    }
+    
+    func makeBlurEffect() {
+        let blurEffect = UIBlurEffect(style: .extraLight)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.addSubview(blurEffectView)
     }
     
 }

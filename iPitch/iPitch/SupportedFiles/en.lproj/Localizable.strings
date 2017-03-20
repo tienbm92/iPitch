@@ -42,8 +42,8 @@
 "Confirm" = "Xác nhận";
 "AcceptConfirm" = "Bạn có chắc chắn chấp nhận yêu cầu đặt sân này không?";
 "RejectConfirm" = "Bạn có chắc chắn từ chối yêu cầu đặt sân này không?";
-"TotalDistance" = "Tổng quãng đường: ";
-"TotalDuration" = "Tổng thời gian: ";
+"TotalDistance" = "Quãng đường: ";
+"TotalDuration" = "Thời gian: ";
 "TotalDistanceAndDuration" = "Tổng quãng đường và thời gian: ";
 
 // MARK: - Error Strings
