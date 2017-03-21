@@ -62,7 +62,8 @@ class PitchService: NSObject {
                 }
                 if var searchText = searchText {
                     searchText = searchText.uppercased()
-                    guard pitch.name.uppercased().contains(searchText) ||
+                    guard searchText == "" ||
+                        pitch.name.uppercased().contains(searchText) ||
                         pitch.address.uppercased().contains(searchText) ||
                         pitch.phone.uppercased().contains(searchText) else {
                         return false

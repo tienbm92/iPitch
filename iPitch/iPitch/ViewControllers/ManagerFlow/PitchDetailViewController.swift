@@ -27,9 +27,11 @@ class PitchDetailViewController: UIViewController {
         self.fetchOrder()
         self.ordersListTableView.addInfiniteScrolling { 
             [weak self] in
-            DispatchQueue.main.async {
-                self?.fetchOrder()
-            }
+            self?.fetchOrder()
+        }
+        self.ordersListTableView.addPullToRefresh { 
+            [weak self] in
+            self?.fetchOrder()
         }
     }
     
@@ -43,6 +45,7 @@ class PitchDetailViewController: UIViewController {
                 lastOrder: pendingOrders.last) { [weak self] (orders) in
                 WindowManager.shared.hideProgressView()
                 self?.ordersListTableView.infiniteScrollingView.stopAnimating()
+                self?.ordersListTableView.pullToRefreshView.stopAnimating()
                 if let currentSelf = self {
                     currentSelf.pendingOrders.append(contentsOf: orders)
                     currentSelf.reloadData(orders: currentSelf.pendingOrders)
@@ -53,6 +56,7 @@ class PitchDetailViewController: UIViewController {
                 lastOrder: acceptOrders.last) { [weak self] (orders) in
                 WindowManager.shared.hideProgressView()
                 self?.ordersListTableView.infiniteScrollingView.stopAnimating()
+                self?.ordersListTableView.pullToRefreshView.stopAnimating()
                 if let currentSelf = self {
                     currentSelf.acceptOrders.append(contentsOf: orders)
                     currentSelf.reloadData(orders: currentSelf.acceptOrders)
@@ -63,6 +67,7 @@ class PitchDetailViewController: UIViewController {
                 lastOrder: rejectOrders.last) { [weak self] (orders) in
                 WindowManager.shared.hideProgressView()
                 self?.ordersListTableView.infiniteScrollingView.stopAnimating()
+                self?.ordersListTableView.pullToRefreshView.stopAnimating()
                 if let currentSelf = self {
                     currentSelf.rejectOrders.append(contentsOf: orders)
                     currentSelf.reloadData(orders: currentSelf.rejectOrders)
