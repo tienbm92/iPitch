@@ -19,7 +19,7 @@ extension UIStoryboard {
     static var pitchExtra: UIStoryboard {
         return UIStoryboard(name: "PitchExtra", bundle: nil)
     }
-    static var OrderExtra: UIStoryboard {
+    static var orderExtra: UIStoryboard {
         return UIStoryboard(name: "OrderExtra", bundle: nil)
     }
     static var main: UIStoryboard {

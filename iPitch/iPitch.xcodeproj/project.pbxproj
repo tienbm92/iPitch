@@ -10,6 +10,8 @@
 		08362CA91E6D33F100FDB83F /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08362CA81E6D33F100FDB83F /* ImageStore.swift */; };
 		08362CAF1E6D3DFD00FDB83F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08362CAE1E6D3DFD00FDB83F /* UIImageView+Extension.swift */; };
 		0838B1E31E6555190053335D /* DirectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0838B1E21E6555190053335D /* DirectionService.swift */; };
+		085B25A31E8263AA005888FF /* MarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 085B25A11E8263AA005888FF /* MarkerView.xib */; };
+		085B25A51E82731B005888FF /* MarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085B25A41E82731B005888FF /* MarkerView.swift */; };
 		086BCDFC1E7BEAA6009190A1 /* ForgotPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086BCDFB1E7BEAA6009190A1 /* ForgotPassViewController.swift */; };
 		086E09261E6FD39C00BBF924 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086E09251E6FD39C00BBF924 /* SearchViewController.swift */; };
 		0887881B1E764D270015049C /* DirectionOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0887881A1E764D270015049C /* DirectionOverview.swift */; };
@@ -76,6 +78,8 @@
 		08362CA81E6D33F100FDB83F /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		08362CAE1E6D3DFD00FDB83F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		0838B1E21E6555190053335D /* DirectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionService.swift; sourceTree = "<group>"; };
+		085B25A11E8263AA005888FF /* MarkerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerView.xib; sourceTree = "<group>"; };
+		085B25A41E82731B005888FF /* MarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerView.swift; sourceTree = "<group>"; };
 		086BCDFB1E7BEAA6009190A1 /* ForgotPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPassViewController.swift; sourceTree = "<group>"; };
 		086E09251E6FD39C00BBF924 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0887881A1E764D270015049C /* DirectionOverview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionOverview.swift; sourceTree = "<group>"; };
@@ -311,6 +315,8 @@
 				55361D5C1E7243FB0090E50B /* OrderCell.swift */,
 				55361D5D1E7243FB0090E50B /* PitchListCell.swift */,
 				55361D5E1E7243FB0090E50B /* PitchListCell.xib */,
+				085B25A11E8263AA005888FF /* MarkerView.xib */,
+				085B25A41E82731B005888FF /* MarkerView.swift */,
 			);
 			path = ReusableCell;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 				11C60E1C1E68FBB2001D8CC8 /* PitchExtra.storyboard in Resources */,
 				55361D611E7243FB0090E50B /* PitchListCell.xib in Resources */,
 				550C119A1E6E6CCC008F3C51 /* Manager.storyboard in Resources */,
+				085B25A31E8263AA005888FF /* MarkerView.xib in Resources */,
 				55961AD51E6FE2020032DFD6 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,6 +551,7 @@
 				11E3FD011E63B98E00875339 /* Constants.swift in Sources */,
 				1187459E1E6922E600BC8664 /* PickerViewController.swift in Sources */,
 				11A359CF1E66754200ABEF43 /* DistrictService.swift in Sources */,
+				085B25A51E82731B005888FF /* MarkerView.swift in Sources */,
 				114CC01B1E77A02A00AEB0FA /* Filter.swift in Sources */,
 				55A125C61E67BC0600456844 /* User.swift in Sources */,
 				1142501E1E72866500DCB6A2 /* PushNotificationService.swift in Sources */,

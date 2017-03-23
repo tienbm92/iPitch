@@ -89,6 +89,7 @@ extension PitchesListViewController: UITableViewDataSource {
         }        
         cell.pitch = self.pitches[indexPath.row]
         cell.delegate = self
+        cell.layoutIfNeeded()
         return cell
     }
     
